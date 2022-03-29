@@ -1,0 +1,575 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap");
+
+#root {
+  font-family: "Exo 2", sans-serif;
+}
+
+a {
+  color: var(--modeAccent);
+}
+
+header,
+footer {
+  background: transparent;
+  display: block;
+  width: 100%;
+  height: 5rem;
+}
+
+footer {
+  height: fit-content;
+  margin: 0;
+}
+
+header > div,
+footer > div {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  max-width: 68.75rem;
+  margin: 1rem auto;
+  height: fit-content;
+}
+
+footer > div {
+  height: fit-content;
+  margin: 0 auto;
+}
+
+header > div > div,
+footer > div > div {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+header > div > div > svg,
+footer > div > div > svg {
+  fill: var(--modeAccent);
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: auto;
+}
+
+header > div > div > a,
+footer > div > div > a,
+header > div > div > span,
+footer > div > div > span {
+  align-self: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--modeSenary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+footer > div > div > a,
+footer > div > div > span {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--modeSenary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header > div > div > a:hover,
+footer > div > div > a:hover,
+header > div > div > span:hover,
+footer > div > div > span:hover {
+  color: var(--modeSenary);
+}
+
+header > div > nav > ul,
+footer > div > nav > ul {
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+header > div > nav > ul li {
+  flex-direction: column;
+  display: grid;
+  place-content: center;
+  height: 3rem;
+}
+
+header > div > nav > ul li > a,
+footer > div > nav > ul li > a,
+header > div > nav > ul li > span,
+footer > div > nav > ul li > span {
+  color: var(--modeSenary);
+  text-decoration: none;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+header > div > nav > ul li > a:last-child,
+footer > div > nav > ul li > a:last-child,
+header > div > nav > ul li > span:last-child,
+footer > div > nav > ul li > span:last-child {
+  margin: 0 0 0 1rem;
+}
+
+header > div > nav > ul li > a:hover,
+footer > div > nav > ul li > a:hover,
+header > div > nav > ul li > span:hover,
+footer > div > nav > ul li > span:hover {
+  color: var(--modeAccent);
+}
+
+main {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: calc(100vh - 8.5rem);
+}
+
+.alert {
+  width: 100%;
+}
+
+.alert > div {
+  width: 90vw;
+  max-width: 68.75rem;
+  margin: auto;
+  position: relative;
+}
+
+.alert > p {
+  padding: 0;
+  margin: 0;
+}
+
+.alert span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.modal-header div:nth-child(2) {
+  cursor: pointer;
+}
+
+
+.shortcutToggle,
+.shortcutMode,
+.gameChat,
+.openChat,
+.sendChat,
+.closeChat,
+.delayChat {
+  max-height: 0;
+  max-width: 0;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+#hero,
+#aac,
+#average,
+#gamers,
+#game,
+#process,
+#testimonials,
+#calltoaction,
+#getstarted {
+  display: grid;
+  place-content: center;
+  width: 90vw;
+  max-width: 68.75rem;
+  margin: 4rem auto;
+  height: max(calc(100vh - 20rem), calc(100% + 100vh));
+}
+
+#hero {
+  min-height: calc(100vh - 11rem);
+}
+
+#hero .row,
+#aac .row,
+#average .row,
+#gamers .row,
+#game .row,
+#process .row,
+#testimonials .row,
+#calltoaction .row,
+#getstarted .row {
+  width: 90vw;
+  max-width: 68.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.75rem, 1fr));
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+#aac,
+#aac h2 {
+  text-align: center;
+}
+
+#aac .row div div {
+  display: grid;
+  place-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  margin: 0 auto 2rem;
+}
+
+#aac .row div:nth-child(1) div {
+  background: rgb(var(--themeInfo));
+  color: rgb(var(--themeInfoT));
+}
+
+#aac .row div:nth-child(2) div {
+  background: rgb(var(--themePrimary));
+  color: rgb(var(--themePrimaryT));
+}
+
+#aac .row div:nth-child(3) div {
+  background: rgb(var(--themeSuccess));
+  color: rgb(var(--themeSuccessT));
+}
+
+#aac .row div:nth-child(4) div {
+  background: rgb(var(--themeDanger));
+  color: rgb(var(--themeDangerT));
+}
+
+#aac .row div:nth-child(1) div svg {
+  fill: rgb(var(--themeInfoT));
+}
+
+#aac .row div:nth-child(2) div svg {
+  fill: rgb(var(--themePrimaryT));
+}
+
+#aac .row div:nth-child(3) div svg {
+  fill: rgb(var(--themeSuccessT));
+}
+
+#aac .row div:nth-child(4) div svg {
+  fill: rgb(var(--themeDangerT));
+}
+
+#aac .row div div svg {
+  width: 1.5rem;
+  height: auto;
+}
+
+#aac .row div h3 {
+  margin: 0 0 1rem 0;
+}
+
+#aac .fadesvg {
+  height: auto;
+  width: 90vw;
+  max-width: 68.75rem;
+  transform: rotate(180deg);
+  z-index: 1;
+  margin-top: -10%;
+}
+
+#gamers ul {
+  list-style: none;
+  display: block;
+  padding-left: 0;
+}
+
+#gamers ul li {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  grid-gap: 1rem;
+}
+
+#gamers ul li div {
+  display: grid;
+  place-content: center;
+  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#gamers ul li:nth-child(1) div {
+  background: rgb(var(--themeSuccess));
+  color: rgb(var(--themeSuccessT));
+}
+
+#gamers ul li:nth-child(2) div {
+  background: rgb(var(--themeDanger));
+  color: rgb(var(--themeDangerT));
+}
+
+#gamers ul li:nth-child(3) div {
+  background: rgb(var(--themePrimary));
+  color: rgb(var(--themePrimaryT));
+}
+
+#process .fadesvg {
+  height: auto;
+  width: 90vw;
+  max-width: 68.75rem;
+  z-index: 1;
+  margin-bottom: -10%;
+}
+
+#process > p {
+  text-align: center;
+  margin: auto;
+}
+
+#process .row {
+  grid-gap: 1rem;
+  place-content: center;
+  margin: 2rem 0;
+}
+
+#process .col {
+  display: grid;
+  max-width: 320px;
+  grid-gap: 1rem;
+  margin: auto;
+}
+
+#process .subrow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 1rem;
+  align-items: center;
+}
+
+#process img {
+  width: clamp(2rem, 7vw, 5rem);
+  border-radius: 100%;
+  border: 0.25rem solid;
+}
+
+#process .subrow p {
+  background: var(--modeSecondary);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  position: relative;
+}
+
+#process .subrow p:before {
+  content: "";
+  position: absolute;
+  background: var(--modeSecondary);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  bottom: -0.5rem;
+}
+
+#process .col:last-child .subrow:last-child p:before {
+  left: 1.1rem;
+}
+
+#process .col:first-child .subrow:last-child,
+#process .col:last-child .subrow:last-child {
+  direction: rtl;
+}
+
+#testimonials > h2,
+#testimonials > h5 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+#testimonials .row {
+  grid-gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+#testimonials .row div > img {
+  height: 1.2rem;
+  margin: 0 1rem 0.5rem 0;
+}
+
+#testimonials .row div div {
+  display: flex;
+  align-content: center;
+  width: 12rem;
+}
+
+#testimonials .row div div > img {
+  height: 3rem;
+  margin: 0 1rem 0 0;
+  border-radius: 100%;
+  border: 0.125rem solid;
+}
+
+#testimonials h5 span {
+  color: var(--modeAccent);
+  font-size: 1.2rem;
+}
+
+#testimonials h5 {
+  font-size: 1rem;
+}
+
+#calltoaction .row {
+  padding: 3rem;
+  width: 80vw;
+  max-width: 61.11rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.75rem, 1fr));
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(
+    0.25turn,
+    var(--modeAccent),
+    rgb(var(--themePrimary)),
+    var(--modeAccent)
+  );
+  color: rgb(var(--themePrimaryT));
+  border-radius: 0.5rem;
+}
+
+#calltoaction .row > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0;
+  max-width: 55%;
+}
+
+#calltoaction .row > div h3 {
+  flex-grow: 1;
+}
+
+#calltoaction .btn.btn-accent {
+  background: rgb(var(--themePrimaryT));
+  color: rgb(var(--themePrimary));
+}
+
+#calltoaction .btn.btn-accent:hover {
+  background: rgb(var(--themePrimary));
+  color: rgb(var(--themePrimaryT));
+}
+
+#calltoaction svg {
+  fill: rgb(var(--themePrimaryT));
+  width: 100%;
+  max-width: 15rem;
+  height: auto;
+  margin: 2rem auto 0;
+}
+
+@media screen and (min-width: 480px) {
+  header > div,
+  footer > div {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 3rem;
+  }
+
+  header > div > div,
+  footer > div > div {
+    flex-direction: row;
+    margin: 0;
+  }
+
+  header > div > div > svg,
+  footer > div > div > svg {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+  }
+
+  header > div > div > a,
+  footer > div > div > a,
+  header > div > div > span,
+  footer > div > div > span {
+    font-size: 2rem;
+  }
+
+  footer > div > div > a,
+  footer > div > div > span {
+    font-size: 1rem;
+    align-self: center;
+    margin-bottom: 1rem;
+  }
+
+  header > div > nav > ul,
+  footer > div > nav > ul {
+    justify-content: flex-end;
+  }
+
+  header > div > nav > ul li > a,
+  footer > div > nav > ul li > a,
+  header > div > nav > ul li > span,
+  footer > div > nav > ul li > span {
+    flex-direction: row;
+  }
+
+  header > div > nav > ul li > a,
+  footer > div > nav > ul li > a,
+  header > div > nav > ul li > span,
+  footer > div > nav > ul li > span {
+    margin: 0 2rem;
+  }
+
+  .row.reverse {
+    direction: rtl;
+  }
+
+  .row.reverse div {
+    direction: ltr;
+  }
+
+  #process .col:first-child .subrow:last-child,
+  #process .col:last-child .subrow:first-child {
+    direction: rtl;
+  }
+
+  #process .col:last-child .subrow:last-child {
+    direction: ltr;
+  }
+
+  #aac {
+    text-align: left;
+  }
+
+  #aac .row div div {
+    margin: 0 0 2rem 0;
+  }
+
+  #testimonials .row {
+    margin-left: 0.5rem;
+  }
+
+  #calltoaction .row > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  #calltoaction svg {
+    fill: rgb(var(--themePrimaryT));
+    width: 80%;
+    max-width: 15rem;
+    height: auto;
+    margin: auto;
+  }
+}

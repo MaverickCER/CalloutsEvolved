@@ -1,0 +1,49 @@
+{
+  "name": "callouts-evolved",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@discordjs/opus": "^0.6.0",
+    "bootstrap": "5.1.1",
+    "connected-react-router": "6.9.1",
+    "discord-speech-recognition": "^1.0.7",
+    "discord-tts": "^1.2.0",
+    "discord.js": "^13.1.0",
+    "firebase": "8.10.0",
+    "react": "17.0.2",
+    "react-adsense": "0.1.0",
+    "react-bootstrap": "1.6.3",
+    "react-colorful": "5.4.0",
+    "react-dom": "17.0.2",
+    "react-paypal-button-v2": "2.6.3",
+    "react-redux": "7.2.4",
+    "react-router": "5.2.0",
+    "react-router-dom": "5.3.0",
+    "react-router-hash-link": "2.4.3",
+    "react-scripts": "4.0.3",
+    "react-sound": "1.2.0",
+    "react-speech-recognition": "3.8.2",
+    "redux-logger": "3.0.6",
+    "redux-persist": "6.0.0",
+    "redux-thunk": "2.3.0",
+    "styled-components": "5.3.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
