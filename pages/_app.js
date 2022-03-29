@@ -2,25 +2,30 @@ import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import Layout from '../components/Layout';
 import { AuthProvider } from '../contexts/AuthContext';
+import { analytics } from '../firebase/firebaseClient';
 import { useRouter } from 'next/router';
-import * as gtag from '../gtag/gtag';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      gtag.pageview(url);
-    };
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
+  const routers = useRouter();
 
   useEffect(() => {
     hotjar.initialize(2873078, 6);
+    const logEvent = (url) => {
+      analytics().setCurrentScreen(url);
+      analytics().logEvent('screen_view', {
+        screen_name: url,
+      });
+    };
+
+    routers.events.on('routeChangeComplete', logEvent);
+    //For First Page
+    logEvent(window.location.pathname);
+
+    //Remvove Event Listener after un-mount
+    return () => {
+      routers.events.off('routeChangeComplete', logEvent);
+    };
   }, []);
 
   return (
