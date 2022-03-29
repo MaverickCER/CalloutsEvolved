@@ -1,0 +1,10 @@
+.template__comp button {
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.template__comp p {
+  padding: 0.5rem 1rem;
+  margin: 0;
+}

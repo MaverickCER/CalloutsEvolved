@@ -1,0 +1,25 @@
+# LICENSE
+
+    Callouts Evolved
+    Copyright(C) 2017-2022 by Maverick Manasco
+    All rights reserved.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+## Notes
+
+- Callouts Evolved is free to use, and will remain free to use indefinitely.
+- A paid version is available to unlock additional features. Pull requests that make paid features free or create database tasking features or features that would encourage trolls to abuse the free version of the site will never be merged with the main branch.
+- This will become an open-source project in 2023, which allows you to learn from (and contribute to) the communication interface.
+- But Callouts Evolved and it's extensions will not be permissively licensed!
+- The long-term plan is to eventually open the license up to something really
+  permissive (probably MIT), when the site is closer to feature-complete.
+- In the near-term I would like to avoid forks of the website, since I feel it
+  would cause confusion in the community to have several similar-but-different
+  communication interfaces available. If you have a really good idea, I'd be happy to pay you for it!

@@ -1,0 +1,38 @@
+{
+  "theme_color": "#003DA5",
+  "background_color": "#000f24",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Callouts Evolved",
+  "app_name": "Callouts Evolved",
+  "short_name": "Callouts Evolved",
+  "description": "A shared Augmentative and Alternative Communication interface that makes mic based video game communication more accessibile.",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
