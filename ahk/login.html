@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Callouts Evolved</title>
+	<!-- <meta charset="UTF-8"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <script src="firebase.js"></script>
+  <script src="localStorage_imitation.js"></script>
+  <script src="login.js"></script>
+<!--===============================================================================================-->	
+  <link rel="icon" type="image/png" href="favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<!--===============================================================================================-->
+
+<style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #DDD;
+    }
+    *.hide {
+      display: none !important;
+    }
+    .title-btn {
+      padding: 0.35em 1.0em;
+      cursor: pointer;
+      vertical-align: bottom;
+    }
+    .title-btn:hover {
+      background: rgba(0, 0, 0, .2);
+    }
+    .title-btn-close:hover {
+      background: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <div id="start"></div>
+	<!-- Title Bar -->
+	<header>
+		<div class="d-flex align-items-stretch bg-dark text-white">
+		  <span class="flex-grow-1 px-2 py-1" onmousedown="neutron.DragTitleBar()">Callouts Evolved</span>
+		  <span class="title-btn" onclick="neutron.Minimize()">&#65343;</span>
+		  <span class="title-btn" onclick="neutron.Maximize()">&#9632;</span>
+		  <span class="title-btn title-btn-close" onclick="neutron.Close()">&#10005;</span>
+		</div>
+	</header>
+  <!-- End Title Bar -->
+  
+	<!-- Login Page -->
+  <div id="login" class="text-center p-5" >
+    <h3>Welcome to the Callouts Evolved PC Extension</h3>
+    <p class="h4 mb-4" style="margin-top: 3rem;">Please Sign in</p>
+    <!-- Email -->
+    <input type="email" id="LoginFormEmail" class="form-control mb-4" placeholder="E-mail" name="LoginFormEmail">
+    <!-- Password -->
+    <input type="password" id="LoginFormPassword" class="form-control mb-4" placeholder="Password" name="LoginFormPassword">
+    <!-- Sign in button -->
+    <button class="btn btn-info btn-block my-4" onclick="signIn()" style="background: #1e90ff">Sign in</button>
+    <!-- Register -->
+    <p>If you do not have an account, you will have to Sign Up on https://www.calloutsevolved.com</p>
+    <hr/>
+    <div class="col-md-12" style="height: 295px; text-align: left; overflow-y: scroll;">
+      <h2>CALLOUTS EVOLVED READ ME</h2>
+      <p>Version 2.0.0 September 2020 NOTE: This script is only to be used in conjunction with https://www.calloutsevolved.com.</p>
+      <p>Shoutout to the people in Discord's AutoHotKey group https://discord.gg/28d4cT for helping get this started.</p>
+      <h2>INSTALLATION:</h2>
+      <ol>
+      <li>Move the CalloutsEvolved folder out of the zip file to an easy to reach area on your computer.</li>
+      <li>Double Click on “AutoHotKeyInstaller.exe” and go through the installation process. In version 2.1 this will not be required.</li>
+      <li>After installing AutoHotKey, Double Click on “CalloutsEvolved.AHK”.</li>
+      <li>Sign in with your email and password from https://www.calloutsevolved.com. If you do not have an account then please go sign up.</li>
+      <li>After signing in you have completed the installation process.</li>
+      </ol>
+      <h2>CONFIGURATION:</h2>
+      <ol>
+      <li>As soon as you sign in, you are greeted by 18 different input fields. They are intentionally laid out like the number pad to the left of your keyboard. Note: If you do not have a number pad you can still trigger the callouts by clicking the keys after the “or” statements above each input.</li>
+      <li>In addition to these 18 input fields, you have a toggle that swaps between “no Shortcuts”, “Number pad Shortcuts”, and “Keyboard Shortcuts”. This toggle ensures that you can make callouts when you need to, but can turn them off when you want to type normally. Typing a shortcut key during “No Shortcuts” will type the key normally. Typing a number pad key during “Keyboard Shortcuts” will also type the key normally. Same for keyboard keys during “Number pad Shortcuts”. Typing a keyboard key during “Keyboard Shortcuts” will send the key value to the CalloutsEvolved database and type whatever is in the corresponding input field.</li>
+      <li>The input fields house your quick messages that can be sent while playing the game. To send the fastest messages, you want to ensure that the Chat Input matches your key to open the chat and that the Delay is set as follows. Set the Delay to “50”, fill out another input, ensure that your shortcuts are on, and then try to send the message in game. If your message doesn’t send at all, then increase the delay by 10 and try again. Once the message sends you want to try it 5 more times to ensure that the message will be sent consistently.</li>
+      <li>Each input can be customized and will be sent to your in game chat whenever you type on the key above the input field.</li>
+      </ol>
+      <h2>OPERATION:</h2>
+      <ol>
+      <li>When you first start the script, the toggle will be on “No Shortcuts” by default so that it does not interfere with you trying to launch a game.</li>
+      <li>Once the game is loaded up you can type on the ` key to the left of your 1 key and below your esc key to toggle the system to “Number pad Shortcuts”.</li>
+      <li>While in number pad shortcuts mode, your number pad types will be sent to the CalloutsEvolved database and the script will type out whatever text you have in the corresponding input field.</li>
+      <li>Typing ` again will toggle the system into “Keyboard Shortcut” mode and send keyboard types to the database while typing out whatever text you have in the corresponding input field.</li>
+      <li>Typing ` for a 4th time will cycle back to “No Shortcuts” and nothing will be sent to the database and your keys will behave like normal.</li>
+      <li>The input values in this script do not have to match the inputs on CalloutsEvolved but you want them to be related in order to avoid confusion. Having a text input set as “absolute” and the CalloutsEvolved text to speech as “pushing” could have some unexpected results.</li>
+      </ol>
+      <h2>MANIFEST:</h2>
+      <ol>
+      <li>AAAREADMEAAA.txt: This document that you are reading now.</li>
+      <li>ACalloutsEvolved.ahk: The script that should be ran while playing games in order to send keys to the database and send text messages in game as fast as possible.</li>
+      <li>AutoHotKeyInstaller.exe: The windows installer for auto hot key. A freeware program that provides the foundation of this project. 13 more files that are required to run the script. Do not edit any files as such action could result in you permanently deleting your boot drive and having to reinstall a fresh copy of windows. You have been warned.</li>
+      <li>Ideally, the files above will always be condensed into a single ACalloutsEvolvedPC.exe file for the best user experience. Sadly, this may not always be the case due to the complexity of this project.</li>
+      </ol>
+      <h2>COPYRIGHT LAW:</h2>
+      <p>https://www.autohotkey.com/docs/license.htm#GNU_GENERAL_PUBLIC_LICENSE Unless you read and agree to the copyright laws above and below you cannot redistribute this software. While AutoHotKey is freeware and can be distributed as such but the sounds used in this program are under copyright. You take any liability when redistributing this software except by directing people to the site above. This is not a paid service so please request a refund. Copyright 2020 All rights reserved.</p>
+      <h2>Terms and Conditions:</h2>
+      <p>You agreed to the Terms and Conditions upon signing up for the website. If you obtianed this program without signing up then your computer may be at risk. You can always find the Terms and Conditions on our website under your Account settings.</p>
+      <h2>TROUBLESHOOTING:</h2>
+      <ol>
+      <li>Teammates cannot hear me: Check troubleshooting information on https://www.calloutsevovled.com as this extension does not have any sound.</li>
+      <li>The program doesn’t do anything: Ensure that the .ahk file is running, press `, and if that fails try to restart your computer.</li>
+      <li>I changed the files and am now having issues: Redownload the files and start from scratch. Make sure your boot folder still exists as you were warned.</li>
+      <li>I would like this in a different language: Instructions are provided on how to edit scripts, feel free to use google translate.</li>
+      <li>I cannot figure any of this out: Contact me on reddit with your preferences and I will do my best to help out.</li>
+      </ol>
+      <h2>VERSION 0.1 2017</h2>
+      <p>Discord Bot: LevCalls: https://discordapp.com/api/oauth2/authorize?client_id=363079279019556867&amp;permissions=43008&amp;scope=bot LevCalls2: https://discordapp.com/api/oauth2/authorize?client_id=386168043639668738&amp;permissions=43008&amp;scope=bot Both Bots are required for completing the Guantlet encounter in the Leviathan Raid.</p>
+      <h2>VERSION 0.2 2017</h2>
+      <p>https://drive.google.com/open?id=1PkeHIOft3gcvfWAAeby1Vf60X0gdKj2q This link is for a ZIP file that contains the software required to turn your keyboard into a soundbaord for audio call outs. It also includes all the sound files for the leviathan raid. If you need additional sounds then use this site with “George” as the voice: http://www.fromtexttospeech.com</p>
+      <h2>VERSION 0.3 2018</h2>
+      <p>https://www.jarvis9940.com This site is no longer functioning properly and without my co-developer I do not believe that it will be functional anytime soon. This is why I have built this desktop program. It cannot reach the same amount of users but at least it can provide some support.</p>
+      <h2>VERSION 1.0 2019</h2>
+      <p>An earlier version of this program that was not released to the public as it was too costly to get into.</p>
+      <h2>VERSION 1.1 2019</h2>
+      <p>Updated software foundation and improved voice to be less robotic.</p>
+      <h2>UPDATES: 2020</h2>
+      <p>No voices in PC extension. Unlimited customization and support for all encounters.</p>
+      <h2>PLANS: 2021</h2>
+      <p>Remove reliance on AutoHotkey. Possibly make this a standalone application.</p>
+      </div>      
+  </div>
+  <!-- End Login Page -->
+
+
+  <!-- Home Page -->
+  <div id="home" class="text-left p-5 hide">
+    <div id="login" class="text-center" >
+      <h3>Callouts Evolved PC Extension</h3>
+    </div>
+    <div class="form-row" style="margin-top: 1.5rem;">
+      <div class="form-group col-md-3">
+        <select id="changeGame" class="changeGame">
+          <option value="default">-Choose a Game-</option>
+          <option value="tutorials">Tutorials</option>
+          <option value="destiny">Destiny</option>
+          <option value="destiny2">Destiny 2</option>
+          <option value="discontinued">Discontinued</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <select id="changeActivity" class="changeActivity">
+          <option value="default" data-target="default">-Choose an Activity-</option>
+          <option value="tutorials" data-target="tutorials" class="hide">Tutorials</option>
+          <option value="vog" data-target="destiny" class="hide">Vault of Glass</option>
+          <option value="ce" data-target="destiny" class="hide">Crota's End</option>
+          <option value="kf" data-target="destiny" class="hide">King's Fall</option>
+          <option value="wotm" data-target="destiny" class="hide">Wrath of the Machine</option>
+          <option value="lw" data-target="destiny2" class="hide">Last Wish</option>
+          <option value="gos" data-target="destiny2" class="hide">Garden of Salvation</option>
+          <option value="d2pvp" data-target="destiny2" class="hide">Destiny 2 PvP</option>
+          <option value="lev" data-target="discontinued" class="hide">Leviathan</option>
+          <option value="eow" data-target="discontinued" class="hide">Eater of Worlds</option>
+          <option value="sos" data-target="discontinued" class="hide">Spire of Stars</option>
+          <option value="sotp" data-target="discontinued" class="hide">Scourge of the Past</option>
+          <option value="cos" data-target="discontinued" class="hide">Crown of Sorrow</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <select id="changeEncounter" class="changeEncounter">
+          <option value="gen" data-target="default">-Choose an Encounter-</option>
+          <option value="gen" data-target="gen">General</option>
+          <option value="intro" data-target="tutorials" class="hide">Introduction</option>
+          <option value="dropdowns" data-target="tutorials" class="hide">Dropdowns</option>
+          <option value="callouts" data-target="tutorials" class="hide">Callouts</option>
+          <option value="timers" data-target="tutorials" class="hide">Timers</option>
+          <option value="avu" data-target="tutorials" class="hide">Audio, Video, User</option>
+          <option value="spireandconfluxes" data-target="vog" class="hide">Spire and Confluxes</option>
+          <option value="destroytheoracles" data-target="vog" class="hide">Destroy the Oracles</option>
+          <option value="killthetemplar" data-target="vog" class="hide">Kill the Templar</option>
+          <option value="thegorgonslabyrinth" data-target="vog" class="hide">The Gorgons' Labyrinth</option>
+          <option value="awakentheglassthrone" data-target="vog" class="hide">Awaken the Glass Throne</option>
+          <option value="destroyatheon" data-target="vog" class="hide">Destroy Atheon</option>
+          <option value="thehellmouth" data-target="ce" class="hide">The Hellmouth</option>
+          <option value="oversoulthrone" data-target="ce" class="hide">Oversoul Throne</option>
+          <option value="entercrotasthrone" data-target="ce" class="hide">Enter Crota's Throne</option>
+          <option value="defeatcrota" data-target="ce" class="hide">Defeat Crota</option>
+          <option value="entertheascendentplane" data-target="kf" class="hide">Enter the Ascendent Plane</option>
+          <option value="annihilatortotems" data-target="kf" class="hide">Annihilator Totems</option>
+          <option value="defeatthewarpriest" data-target="kf" class="hide">Defeat the Warpriest</option>
+          <option value="defeatgolgoroth" data-target="kf" class="hide">Defeat Golgoroth</option>
+          <option value="daughtersoforyx" data-target="kf" class="hide">Daughters of Oryx</option>
+          <option value="oyrxthetakenking" data-target="kf" class="hide">Oryx, The Taken King</option>
+          <option value="outbreakprime" data-target="wotm" class="hide">Outbreak Prime</option>
+          <option value="defeatvosik" data-target="wotm" class="hide">Defeat Vosik</option>
+          <option value="aksis" data-target="wotm" class="hide">Aksis</option>
+          <option value="castellum" data-target="lev" class="hide">Castellum</option>
+          <option value="gauntlet" data-target="lev" class="hide">Gauntlet</option>
+          <option value="pleasuregardens" data-target="lev" class="hide">Pleasure Gardens</option>
+          <option value="royalpools" data-target="lev" class="hide">Royal Pools</option>
+          <option value="throne" data-target="lev" class="hide">Throne</option>
+          <option value="escapethereactor" data-target="eow" class="hide">Escape the Reactor</option>
+          <option value="breakthebarrier" data-target="eow" class="hide">Break the Barrier</option>
+          <option value="defeatargos" data-target="eow" class="hide">Defeat Argos</option>
+          <option value="acceptcalussgift" data-target="sos" class="hide">Accept Calus's Gift</option>
+          <option value="stopvalcauorsfleet" data-target="sos" class="hide">Stop Val Ca'uor's Fleet</option>
+          <option value="neutralizevalcauor" data-target="sos" class="hide">Neutralize Val Ca'uor</option>
+          <option value="berserkersotp" data-target="sotp" class="hide">Berserker</option>
+          <option value="vaultaccess" data-target="sotp" class="hide">Vault Access</option>
+          <option value="insurrectionprime" data-target="sotp" class="hide">Insurrection Prime</option>
+          <option value="kaliandshurochi" data-target="lw" class="hide">Kali and Shuro Chi</option>
+          <option value="morgeth" data-target="lw" class="hide">Morgeth</option>
+          <option value="vault" data-target="lw" class="hide">Vault</option>
+          <option value="symbols" data-target="lw" class="hide">Symbols</option>
+          <option value="riven" data-target="lw" class="hide">Riven</option>
+          <option value="queenswalk" data-target="lw" class="hide">Queens Walk</option>
+          <option value="dispelhiveward" data-target="cos" class="hide">Dispel Hive Ward</option>
+          <option value="reachthepinnacle" data-target="cos" class="hide">Reach the Pinnacle</option>
+          <option value="defeatgahlransdeception" data-target="cos" class="hide">Defeat Gahlran's Deception</option>
+          <option value="defeatgahlran" data-target="cos" class="hide">Defeat Gahlran</option>
+          <option value="embrace" data-target="gos" class="hide">Embrace</option>
+          <option value="undergrowth" data-target="gos" class="hide">Undergrowth</option>
+          <option value="consecratedmind" data-target="gos" class="hide">Consecrated Mind</option>
+          <option value="sanctifiedmind" data-target="gos" class="hide">Sanctified Mind</option>
+          <option value="d2pvp" data-target="d2pvp" class="hide">Destiny 2 PvP</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <select class="form-control">
+          <option onclick="signOut()" id="signOut">Sign Out</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="form-row" style="margin-top: 1.5rem;">
+      <div class="form-group col-md-3">
+        <label for="selectSound">Text to Speech Voice</label>
+        <select id="selectSound" class="form-control">
+          <option value="10">None</option>
+          <option value="0">Microsoft David</option>
+          <option value="1" selected>Microsoft Anna</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_1">#/ or 7</label>
+        <input type="text" class="form-control" id="inputHotkey_1">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_3">#* or 8</label>
+        <input type="text" class="form-control" id="inputHotkey_3">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_5">#- or 9 O</label>
+        <input type="text" class="form-control" id="inputHotkey_5">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_8">#7 or Y</label>
+        <input type="text" class="form-control" id="inputHotkey_8">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_10">#8 or U</label>
+        <input type="text" class="form-control" id="inputHotkey_10">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_12">#9 or I</label>
+        <input type="text" class="form-control" id="inputHotkey_12">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_14">#+ or L</label>
+        <input type="text" class="form-control" id="inputHotkey_14">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_16">#4 or H</label>
+        <input type="text" class="form-control" id="inputHotkey_16">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_18">#5 or J</label>
+        <input type="text" class="form-control" id="inputHotkey_18">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_20">#6 or K</label>
+        <input type="text" class="form-control" id="inputHotkey_20">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_22">#1 or N</label>
+        <input type="text" class="form-control" id="inputHotkey_22">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_24">#2 or M</label>
+        <input type="text" class="form-control" id="inputHotkey_24">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_26">#3 or &lt;</label>
+        <input type="text" class="form-control" id="inputHotkey_26">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_28">#ENTER or &gt;</label>
+        <input type="text" class="form-control" id="inputHotkey_28">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputHotkey_30">#0 or SPACEBAR</label>
+        <input type="text" class="form-control" id="inputHotkey_30">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputHotkey_32">#Dot or RALT</label>
+        <input type="text" class="form-control" id="inputHotkey_32">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputChat">Chat Input</label>
+        <select id="inputChat" class="form-control">
+          <option value="Enter" selected>Enter</option>
+          <option value="T">T</option>
+          <option value="Y">Y</option>
+        </select>
+      </div>
+      <div class="form-group col-md-1">
+        <label for="inputTime">Delay</label>
+        <input type="number" class="form-control" id="inputTime" min="0" step="1" value="100">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="inputListen">Please enter callouts separated by a space:</label>
+        <input type="text" class="form-control" id="inputListen" placeholder="hello, can you look for more, hello how are you, what is up, can you hear us, i will be right back, be right back, ready, do you know what to do, what is callouts evolved">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12" style="overflow: hidden;">
+        <div class="form-control" style="white-space: nowrap; display: grid; align-items: center; position: relative;"><input id="output" placeholder="" style="width: 1000%; border: none; background: transparent; text-align: right; position: absolute; right: 0;"><div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <div class="text-center">Visit https://www.calloutsevolved.com to see our communication solutions!</div>
+      </div>
+    </div>
+  </div>
+  <!-- End Home Page -->
+  <div id="end"></div>
+  <audio id="sadtrombone" src="sadtrombone.wav"></audio>
+  <img id="favicon" src="favicon.ico"/>
+</body>
+</html>

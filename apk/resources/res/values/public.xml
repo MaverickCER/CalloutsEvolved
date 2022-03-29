@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="ya" id="2130837504" />
+    <public type="anim" name="fadein" id="2130903040" />
+    <public type="anim" name="fadeout" id="2130903041" />
+    <public type="anim" name="hold" id="2130903042" />
+    <public type="anim" name="slide_enter" id="2130903043" />
+    <public type="anim" name="slide_enter_reverse" id="2130903044" />
+    <public type="anim" name="slide_exit" id="2130903045" />
+    <public type="anim" name="slide_exit_reverse" id="2130903046" />
+    <public type="anim" name="slide_v_enter" id="2130903047" />
+    <public type="anim" name="slide_v_enter_reverse" id="2130903048" />
+    <public type="anim" name="slide_v_exit" id="2130903049" />
+    <public type="anim" name="slide_v_exit_reverse" id="2130903050" />
+    <public type="anim" name="zoom_enter" id="2130903051" />
+    <public type="anim" name="zoom_enter_reverse" id="2130903052" />
+    <public type="anim" name="zoom_exit" id="2130903053" />
+    <public type="anim" name="zoom_exit_reverse" id="2130903054" />
+</resources>

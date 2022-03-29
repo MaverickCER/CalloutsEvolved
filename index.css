@@ -1,0 +1,886 @@
+/*
+https://www.freeformatter.com/css-beautifier.html
+version 0.9.0
+*/
+
+:root {
+    /* Sets background, color, and standard font */
+    --accent: #1e90ff;
+    --col1: #ff0000;
+    --col2: #bb5500;
+    --col3: #999900;
+    --col4: #007700;
+    --col5: #000055;
+    --col6: #330033;
+    --bla: #202225;
+    --onx: #2f3136;
+    --cha: #393c43;
+    --gra: #666666;
+    --sil: #757575;
+    --ivo: #aaaaaa;
+    --whi: #cccccc;
+    --textSize: 16px;
+    font-size: var(--textSize);
+}
+
+* .hide {
+    display: none !important;
+}
+
+.back-col0 {
+    background: var(--onx);
+    color: var(--whi);
+}
+
+.back-col1 {
+    background: var(--col1);
+    color: var(--bla);
+}
+
+.back-col2 {
+    background: var(--col2);
+    color: var(--bla);
+}
+
+.back-col3 {
+    background: var(--col3);
+    color: var(--bla);
+}
+
+.back-col4 {
+    background: var(--col4);
+    color: var(--whi);
+}
+
+.back-col5 {
+    background: var(--col5);
+    color: var(--whi);
+}
+
+.back-col6 {
+    background: var(--col6);
+    color: var(--whi);
+}
+
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+p,
+h5,
+a,
+em,
+img,
+form,
+label,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+audio,
+video {
+    font-family: "Roboto Mono", "Roboto Condensed", monospace;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* FONT SIZES */
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+h5 {
+    font-weight: normal;
+    font-size: 0.75rem;
+}
+
+body {
+    /* Sets background, color, and standard font */
+    background: var(--bla);
+    text-align: center;
+    line-height: 1.15;
+    color: var(--whi);
+    font-size: var(--textSize);
+    width: 100vw;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    /* hides the scrollbar without removing function */
+    display: none;
+}
+
+#selectMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 20rem;
+    padding: 0;
+    margin: 0;
+    transition: right 0.3s ease-in-out;
+    background: var(--onx);
+    z-index: 1;
+}
+
+#selectMenu.hidden {
+    right: -20.1rem !important;
+}
+
+#menuHeader {
+    line-height: 1em;
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+    text-align: left;
+}
+
+#menuHeader:hover {
+    background: var(--cha);
+    cursor: pointer;
+}
+
+.menuLink {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 3.43rem;
+    font-size: 0.75rem;
+    line-height: 1em;
+    color: var(--sil);
+    text-decoration: none;
+}
+
+.menuLink:hover {
+    background: var(--cha);
+    color: var(--accent);
+    cursor: pointer;
+}
+
+#menuFooter {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 3.43rem;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1em;
+    color: var(--sil);
+    text-decoration: none;
+}
+
+#menuFooter:hover {
+    background: var(--cha);
+    color: var(--whi);
+    cursor: pointer;
+}
+
+#menu {
+    height: calc(100vh - 7rem);
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#menu .option {
+    line-height: 1em;
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+    text-align: left;
+    font-size: 1.75rem;
+}
+
+#menu .option:hover {
+    background: var(--cha);
+    cursor: pointer;
+}
+
+.menuData {
+    margin: 1.25rem;
+    height: fit-content;
+}
+
+.menuData a,
+.menuData a:visited {
+    color: inherit;
+    cursor: pointer;
+}
+
+.menuData a:hover {
+    color: var(--accent);
+    cursor: pointer;
+}
+
+.inputTop {
+    border-radius: 0.625rem 0.625rem 0 0;
+    padding: 0.625rem 0.625rem 0.187rem 0.625rem;
+    background: var(--cha);
+    color: var(--whi);
+    text-align: left;
+    margin: 0.625rem auto 0;
+    width: 16.25rem;
+    position: relative;
+    font-size: 0.75rem;
+    border: 1px solid transparent;
+}
+
+.inputBottom {
+    border-radius: 0 0 0.625rem 0.625rem;
+    padding: 0.125rem 0.625rem 0.625rem 0.625rem;
+    margin: -0.125rem auto 0.625rem;
+    background: var(--cha);
+    color: var(--whi);
+    text-align: left;
+    box-shadow: none;
+    outline: none;
+    margin: auto;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    width: 16.25rem;
+}
+
+.selectBottom {
+    border-radius: 0 0 0.625rem 0.625rem;
+    padding: 0.125rem 0.875rem 0.625rem 0.375rem;
+    background: var(--cha);
+    color: var(--whi);
+    text-align: left;
+    box-shadow: none;
+    outline: none;
+    margin: -0.125rem auto 0.625rem;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    width: 17.7rem;
+}
+
+.inputBottom::placeholder,
+.selectBottom::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--sil);
+    font-size: 1rem;
+}
+
+.inputBottom:focus-within {
+    color: var(--whi);
+    background: var(--onx);
+    border-top: 1px solid var(--accent);
+}
+
+.inputBottom:-webkit-autofill,
+.inputBottom:-webkit-autofill:hover,
+.selectBottom:-webkit-autofill,
+.selectBottom:-webkit-autofill:hover,
+#chatmsg:-webkit-autofill,
+#chatmsg:-webkit-autofill:hover {
+    outline: none;
+    -webkit-text-fill-color: var(--whi);
+    -webkit-box-shadow: 0 0 0 1.875rem var(--cha) inset !important;
+    box-shadow: 0 0 0 1.875rem var(--cha) inset !important;
+    border: 1px solid var(--cha);
+}
+
+.inputBottom:-webkit-autofill:focus,
+.selectBottom:-webkit-autofill:focus,
+#chatmsg:-webkit-autofill:focus {
+    outline: none;
+    -webkit-text-fill-color: var(--whi);
+    -webkit-box-shadow: 0 0 0 1.875rem var(--onx) inset !important;
+    box-shadow: 0 0 0 1.875rem var(--onx) inset !important;
+    border-top: 1px solid var(--accent);
+    border-right: 1px solid var(--onx);
+    border-bottom: 1px solid var(--onx);
+    border-left: 1px solid var(--onx);
+}
+
+label[id="taclabel"] {
+    font-size: 0.75rem;
+    display: inline-block;
+    width: 16.51rem;
+    margin: 0 0 -1.25rem -1.25rem;
+    padding: 0.125rem 1.25rem 1.25rem 2.375rem;
+    text-align: right;
+}
+
+#fplabel,
+#rplabel {
+    font-size: 0.75rem;
+    width: 16.51rem;
+    margin: 0 0 -1.25rem -1.25rem;
+    padding: 0.125rem 1.25rem 1.25rem 2.375rem;
+    text-align: right;
+}
+
+.ermsg {
+    margin: 10px auto;
+    font-size: 12px;
+    width: 270px;
+    height: 1.5rem;
+}
+
+.passwordReveal {
+    position: absolute;
+    right: 0.1875rem;
+    top: 1.875rem;
+    font-size: 1.75rem;
+}
+
+.submitLogin {
+    background: var(--accent);
+    color: var(--whi);
+    font-weight: boler;
+    font-size: 1.75rem;
+    cursor: pointer;
+    border-radius: 0.625rem;
+    box-shadow: none;
+    margin: 1.25rem 0;
+    padding: 1rem;
+}
+
+#chatmsgs {
+    border-radius: 0.625rem 0.625rem 0 0;
+    padding: 0.125rem 0.625rem 0.625rem 0.625rem;
+    margin: -0.125rem auto 0.625rem;
+    background: var(--cha);
+    color: var(--whi);
+    text-align: left;
+    box-shadow: none;
+    outline: none;
+    margin: auto;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    width: 16.25rem;
+    height: 19rem;
+    word-wrap: break-word;
+    overflow-x: hidden;
+}
+
+#chatmsgs p {
+    text-align: left;
+}
+
+#chatmsg {
+    border-radius: 0 0 0.625rem 0.625rem;
+    padding: 0.125rem 2rem 0.625rem 0.625rem;
+    margin: -0.125rem -1.5rem 0 0;
+    background: var(--cha);
+    color: var(--whi);
+    text-align: left;
+    box-shadow: none;
+    outline: none;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    width: 14.88rem;
+    float: left;
+}
+
+#chatmsg:focus {
+    outline: none;
+    -webkit-text-fill-color: var(--whi);
+    -webkit-box-shadow: 0 0 0 1.875rem var(--onx) inset !important;
+    box-shadow: 0 0 0 1.875rem var(--onx) inset !important;
+    border-top: 1px solid var(--accent);
+    border-right: 1px solid var(--onx);
+    border-bottom: 1px solid var(--onx);
+    border-left: 1px solid var(--onx);
+}
+
+#chatmsgSend {
+    position: absolute;
+    top: -1px;
+    right: -2px;
+    background: var(--accent);
+    border: none;
+    outline: none;
+    text-align: center;
+    color: var(--whi);
+    font-size: 1.3rem;
+    float: right;
+    font-weight: bold;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 0 0 0.625rem 0;
+    cursor: pointer;
+    padding: 0;
+}
+
+#chatmsgSection {
+    position: relative;
+    width: 280px;
+    margin-bottom: 3.5rem;
+}
+
+main {
+    display: grid;
+    width: 90vw;
+    margin: 0 -5vw 0 0;
+    padding: 0 5vw;
+    margin-left: 0;
+    height: fit-content;
+    background: transparent;
+    min-height: 100vh;
+}
+
+.selectBTN {
+    font-size: 3.3vh;
+    display: grid;
+    justify-self: right;
+    align-items: center;
+    background: var(--onx);
+    color: var(--whi);
+    font-weight: bolder;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: auto;
+    width: 100%;
+    height: 5vh;
+}
+
+/*
+.selectBTN {
+  display: grid;
+  justify-self: right;
+  align-items: center;
+  background: var(--onx);
+  color: var(--whi);
+  font-weight: bolder;
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 2rem;
+  margin: auto;
+}
+*/
+
+.indexRing {
+    text-align: center;
+    border: 5px solid var(--accent);
+    border-radius: 100%;
+    width: 1rem;
+    height: 1rem;
+    display: grid;
+    align-items: center;
+    margin-top: 0.05rem;
+}
+
+.indexGap {
+    display: grid;
+    grid-template-columns: 1.875rem 1fr;
+    grid-gap: 0.625rem;
+}
+
+.indexFeature {
+    display: grid;
+    grid-template-columns: repeat(64px);
+    grid-gap: 0.625rem;
+    justify-content: center;
+}
+
+.indexRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    margin: 40px auto;
+    grid-gap: 2.375rem;
+    max-width: 41.25rem;
+    text-align: left;
+}
+
+#lwicons {
+    width: 90vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin: 10px auto;
+    user-select: none;
+}
+
+.gridBTNs {
+    width: 90vw;
+    height: calc(100vh - 20px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin: 10px auto;
+    user-select: none;
+}
+
+#sttBoxes {
+    display: grid;
+    grid-column: span 4;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-gap: 10px;
+    margin-bottom: 0;
+    max-height: 16vh;
+}
+
+.sttBox {
+    background: var(--onx);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2rem;
+    max-height: 16vh;
+}
+
+.outputContainer {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.output {
+    height: 100%;
+    width: calc(100% - 1rem);
+    background-color: transparent;
+    color: var(--whi);
+    border: none;
+    text-align: left;
+    direction: ltr;
+    overflow: hidden;
+    font-size: 4vh;
+}
+
+.output:focus {
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+.output::placeholder {
+    color: var(--whi);
+    text-align: right;
+}
+
+.sttBoxView {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 4vh;
+}
+
+.showBTN,
+.hideBTN {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-size: 4vh;
+}
+
+.showBTN:hover,
+.hideBTN:hover {
+    cursor: pointer;
+}
+
+/*
+.output {
+  white-space: nowrap;
+  display: grid;
+  align-items: flex-end;
+  justify-content: right;
+  font-size: 1rem;
+  text-align: right;
+  margin: 1rem;
+}*/
+
+#syncBTNs {
+    background: var(--onx);
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#syncBTNs .toggleBTN {
+    background: var(--cha);
+    border: none;
+    color: var(--whi);
+    padding: 10px;
+    margin: 10px;
+}
+
+#syncBTNs .icon-close {
+    display: grid;
+    border-radius: 100%;
+    justify-content: center;
+    justify-self: right;
+    align-items: center;
+    padding-left: .9rem;
+}
+
+.gridCell {
+    background: var(--onx);
+    border-radius: 10px;
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.npText {
+    padding: 0;
+    margin: 0;
+    display: inline;
+    color: var(--accent);
+}
+
+.kbText {
+    padding: 0;
+    margin: 0;
+    display: inline;
+    color: var(--sil);
+}
+
+.npkpColon {
+    padding: 0;
+    margin: 0;
+    display: inline;
+    color: var(--whi);
+}
+
+.gridBTNToggle {
+    border-radius: 10px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    text-align: left;
+    font-size: 18vh;
+    overflow: hidden;
+}
+
+.gridBTN {
+    border-radius: 10px;
+    position: relative;
+    overflow: auto;
+    align-items: center;
+    padding: 1rem;
+    text-align: left;
+}
+
+.gridBTNText {
+    justify-content: left;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    background: transparent;
+    font-size: 1rem;
+}
+
+.gridEdit {
+    width: 90vw;
+    display: grid;
+    grid-gap: 5px;
+    margin: 5px auto;
+}
+
+.gridInputRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    background: var(--onx);
+    width: calc(90vw - 10px);
+    padding: 5px;
+    margin: 5px auto;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.gridInputRow label {
+    display: inline-block;
+    width: 90%;
+    margin: auto;
+}
+
+.gridInputRow .inputTop {
+    margin-top: 0;
+}
+
+.gridInputRow .selectBottom {
+    margin: auto;
+    width: 17.63rem;
+}
+
+#updateSettings {
+    background: var(--accent);
+}
+
+#deleteUser {
+    background: var(--col1);
+    text-align: center;
+    line-height: 2em;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: var(--whi);
+    border: none;
+    outline: none;
+}
+
+#signoutBTN {
+    background: var(--col3);
+}
+
+#audioHowTo a:hover,
+#audioHowTo a:visited {
+    color: var(--col5);
+    text-decoration: none;
+}
+
+.syncBTN {
+    color: var(--whi);
+    background: var(--cha);
+    padding: 0.5rem;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    width: fit-content;
+    margin: auto;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#tac {
+    display: grid;
+    text-align: left;
+    height: 100%;
+    width: 90vw;
+}
+
+#tac a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+#tac a:hover,
+#tac a:visited {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+#tac.hide {
+    display: none;
+}
+
+#tacrtt {
+    display: grid;
+    position: sticky;
+    height: 1.6rem;
+    width: 0.1rem;
+    bottom: 3rem;
+    background: var(--bla);
+    border-radius: 100%;
+    font-size: 1.5rem;
+    color: var(--accent);
+    justify-content: center;
+    justify-self: right;
+    align-items: center;
+    padding-left: 1.5rem;
+}
+
+select option[value="back-col0"] {
+    background: var(--bla);
+}
+
+select option[value="back-col1"] {
+    background: var(--col1);
+}
+
+select option[value="back-col2"] {
+    background: var(--col2);
+}
+
+select option[value="back-col3"] {
+    background: var(--col3);
+}
+
+select option[value="back-col4"] {
+    background: var(--col4);
+}
+
+select option[value="back-col5"] {
+    background: var(--col5);
+    color: var(--whi);
+}
+
+select option[value="back-col6"] {
+    background: var(--col6);
+    color: var(--whi);
+}
+
+i {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "icomoon" !important;
+    font-size: inherit;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: inherit;
+    height: inherit;
+    position: relative;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:before {
+    display: grid;
+    width: inherit;
+    height: inherit;
+    position: relative;
+    align-self: center;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+}
+
+.icon-snakes {
+    padding-left: 120%;
+}
+
+.icon-fishup:before,
+.icon-snakei:before,
+.icon-snakes:before,
+.icon-snakew:before {
+    padding-left: 120%;
+}

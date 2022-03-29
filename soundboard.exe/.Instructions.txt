@@ -1,0 +1,48 @@
+The call outs were created by Textbook1987 so go give this guy a follow! https://www.twitch.tv/textbook_1987 https://www.youtube.com/channel/UCIliR0ODd0R4Xc3x_FYBujQ
+The Soundboard idea, research, and development were composed by M4V3R1C8 so if you have questions or suggestions feel free to reach out:
+https://www.twitch.tv/m4v3r1c8 https://www.youtube.com/channel/UCL-c4A49FCbSEZgkT4Psnnw https://ww.facebook.com/M4V3R1C8
+
+Step 1: Download either the mac or windows version of the newest Soundplant application from http://soundplant.org/download.htm  
+Step 2: Install Soundplant43.exe
+1. Right click on "Soundplant43.exe" and click run as administrator. 
+2. The Setup application will guide you through the proccess. 
+3. At "Select Additional Tasks", under "File extensions:", make sure that the checkbox for "Associate .keymap files with Soundplant 43" stays checked.
+Step 3: Unzip the files by dragging the "soundboard" folder to your desktop. 
+Step 4: First time start
+1. Double click to open the "Soundboard" folder on your desktop. 
+2. Double click to start "Crota's End.keymap" 
+3. The Soundplant 43 app will start and give you a pop up.
+4. Click on "Locate file...", "Desktop", "Soundboard", "Sounds", and find the missing file mentioned at the top left of the window.
+5. Double click on the missing file, let Soundplant 43 populate, and then click the "save keymap" button at the top left of the window. It looks like a floppy disk.
+6. Repeat steps 2-5 for each raid keymap. 
+Step 5: Preparing for the raid!
+1. You will need several items
+	- A windows or mac computer with a 3.5 mm headphone jack, Soundplant, and the audio files installed.
+	- This 4-pole audio cable (4ft): https://www.amazon.com/ARCHEER-Auxiliary-Extension-Headphone-Smartphone/dp/B01N0V809K/
+	- This 4-pole splitter cable: https://www.amazon.com/ENVEL-Convertors-Smartphone-Microphone-Simultaneously/dp/B01M0T6PSF/ 
+	- A PS4 / Xbox controller* Note: xbox controllers need a 3.5mm jack or an "Xbox One Stereo Headset Adapter"
+	- Any keyboard (USB/Bluetooth/doesn't matter) 
+	- OPTIONAL: If you want to be more than ~3 feet from your windows device you will need some extension cables. 
+		a. Must be a "4 pole audio extension cable" https://www.amazon.com/Zeskit-Braided-Nylon-Premium-Audio/dp/B00S1R7F2U/
+		b. A bluetooth keyboard is great, but if you have usb then get this: https://www.amazon.com/AmazonBasics-Extension-Cable-Male-Female/dp/B00NH11PEY/
+	-Additional Considerations: If you have a laptop you may want to get a usb keyboard so that you don't have to game with the laptop restricting you. 
+2. Setting up the hardware
+	- Plug the black single end of the 4-pole splitter cable into the computer's 3.5 mm headphone (not microphone) jack. 
+	- Plug the one end of the 4-pole audio cable into the pink microphone end of 4-pole splitter cable.s
+		*If you are using an extention cable then plug the one end of the 4-pole extension cable into the pink microphone end of 4-pole splitter cable and then plug the audio cable into the extension cable.
+	- Plug the other end of the 4-pole audio cable into the controller's 3.5 mm headphone jack or into the "Xbox One Stereo Headset Adapter"
+	- Double check all connections from the computer to the controller.
+Step 6: Time to Raid! 
+1. With the hardware setup open one of the raid keymaps.
+2. Join the party of your raid group and introduce yourself by pressing the "i" key on the keyboard.
+	- Note: There is a setting in the top menu bar called "background key input" with an on / off toggle. 
+	- If off is lightly shaded then you must click on the soundplant app for the sounds to start.
+	- If on is lightly shaded then the keyboard will make the callouts regardless of what you're doing (I don't recommend this as sending a text message could lead to a LOT of noise) 
+3. After double checking that the sound is working and your teammates can hear the callouts you're all set. 
+	- Troubleshooting: If your teammates can't hear you then double check the connections in all the cables and turn up the volume on your computer. 
+	- If your teammates still can't hear you make sure that you're not muted in the party and that the mute button hasn't been pressed on the Xbox One Stereo Headset Adapter
+	- Make sure that the "headphones" or "speakers" are set as the defualt audio device. Use youtube to see how this works.
+	- If you're still having issues then get a friend to check the cables on other devices to see which part is broken. 
+
+Finally, Soundplant is a tool to be utilized by each person individually. The full version without pop ups and additional support can be purchased here: http://soundplant.org/spfaq.htm 
+However, a purchase of soundplant is in no way required for you to use this amazing tool. 

@@ -1,0 +1,1239 @@
+<!--  
+  www.freeformatter.com/html-formatter.html
+  version 0.9.0
+  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta property="og:title" content="Callouts Evolved: A video game companion application for the Vault of Glass, Crota's End, King's Fall, Wrath of the Machine, Last Wish, and Garden of Salvation raids with support for player vs player communication in Destiny 2, Overwatch, ESO, WOW, and Call of Duty to come in a future update. Featured in this week at bungie and where is xur.">
+    <meta name="twitter:title" content="Callouts Evolved: A video game companion application">
+    <meta name="keywords" content="callouts evolved,callouts,evolved,video game,communication,destiny,destiny 2,">
+    <meta name="description" content="Callouts Evolved is a new video game companion app that augments communication in games like Destiny, Destiny 2, Overwatch, ESO, WOW, and others in order to make video games more accessible. Visible, Audible, and Pictographic elements help players cross communication barriers and sieze victory in end game content like the Vault of Glass, Crota's End, King's Fall, Wrath of the Machine, Last Wish, Garden of Salvation raids. We also support player vs player content like Overwatch, Call of Duty, and PUBG PlayerUnknown's Battlegrounds">
+    <meta property="og:description" content="A new video game companion app that supports all players.">
+    <meta property="og:image" content="https://www.calloutsevolved.com/image/preview.png">
+    <meta property="og:url" content="https://www.calloutsevolved.com/">
+    <title>Callouts&nbsp;Evolved</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/__/firebase/7.7.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div id="top"></div>
+    <header id="selectMenu" class="hidden">
+        <div id="menuHeader">
+            <i id="sidebar" class="icon-right" style="position: absolute; font-size: 4rem; margin: -1.5429rem 0 0 -5rem"></i>
+            <h1>CALLOUTS&nbsp;EVOLVED</h1>
+        </div>
+        <div id="menu">
+            <div id="login" class="">
+                <div class="selectSignup option">SIGN UP</div>
+                <div id="selectSignup" class="menuData hide">
+                    <h5 class="ermsg">&nbsp;</h5>
+                    <form>
+                        <label for="signupEmail">
+                  <h5 class="inputTop">Email:</h5>
+                  <input id="signupEmail" class="inputBottom" placeholder="you@gmail.com" type="email" required="">
+                </label>
+                        <label for="signupPassword">
+                  <h5 class="inputTop">
+                    Password:
+                    <div class="passwordReveal" for="signupPassword"><i class="icon-show"></i></div>
+                  </h5>
+                  <input id="signupPassword" class="inputBottom" placeholder="P••••0••" type="password" required="">
+                </label>
+                        <label for="confirmPassword">
+                  <h5 class="inputTop">
+                    Confirm Password:
+                    <div class="passwordReveal" for="confirmPassword"><i class="icon-show"></i></div>
+                  </h5>
+                  <input id="confirmPassword" class="inputBottom" placeholder="P••••0••" type="password" required="">
+                </label>
+                    </form>
+                    <label id="taclabel" for="agreecheckbox">
+              <input id="agreecheckbox" type="checkbox" required="">&nbsp;I&nbsp;agree&nbsp;to&nbsp;the&nbsp;<a href="#tac" class="tacToggle"><u>Terms&nbsp;and&nbsp;Conditions</u></a>.
+              </label>
+                    <div id="signupBTN" class="submitLogin">
+                        <h4>HOLD TO SIGN UP</h4>
+                    </div>
+                </div>
+                <div class="selectSignin option">SIGN IN</div>
+                <div id="selectSignin" class="menuData hide">
+                    <h5 class="ermsg">&nbsp;</h5>
+                    <form>
+                        <label for="signinEmail">
+                  <h5 class="inputTop">Email:</h5>
+                  <input id="signinEmail" class="inputBottom" placeholder="you@gmail.com" type="email" required="">
+                </label>
+                        <label for="signinPassword">
+                  <h5 class="inputTop">
+                    Password:
+                    <div class="passwordReveal" for="signinPassword"><i class="icon-show"></i></div>
+                  </h5>
+                  <input id="signinPassword" class="inputBottom" placeholder="P••••0••" type="password" required="">
+                </label>
+                    </form>
+                    <a id="fplabel" class="resetLink selectReset">Forgot Password?</a>
+                    <div id="signinBTN" class="submitLogin">
+                        <h4>SUBMIT</h4>
+                    </div>
+                </div>
+                <div class="selectReset option">FORGOT PASSWORD?</div>
+                <div id="selectReset" class="menuData hide">
+                    <h5 class="ermsg">&nbsp;</h5>
+                    <label for="resetEmail">
+                <h5 class="inputTop">Email:</h5>
+                <input id="resetEmail" class="inputBottom" placeholder="you@gmail.com" type="email" required="">
+              </label>
+                    <a id="rplabel" class="resetLink">Remember Password?</a>
+                    <div id="resetButton" class="submitLogin">
+                        <h4>SUBMIT</h4>
+                    </div>
+                </div>
+            </div>
+            <div id="chat" class="hide">
+                <div id="chatHeadOpen" class="option">
+                    <h2>CHAT</h2>
+                </div>
+                <div id="chatHeadClose" class="option hide">
+                    <h2>CHAT</h2>
+                </div>
+                <div id="selectChat" class="menuData hide">
+                    <div id="chatBody" class="chatBody">
+                        <div id="chatmsgs"></div>
+                        <div id="chatmsgSection"><input type='text' id="chatmsg" maxlength="530" placeholder='Global Chat'><button id="chatmsgSend" class="submit" type="button"><i class="icon-send"></i></button></div>
+                    </div>
+                </div>
+            </div>
+            <div id="user" class="">
+                <div id="audioHeadOpen" class="option">AUDIO</div>
+                <div id="audioHeadClose" class="option hide">AUDIO</div>
+                <div id="selectAudio" class="menuData hide">
+                    <label for="selectSoundLang">
+                <h5 class="inputTop">Speech to Text Language:</h5>
+                <select id="selectSoundLang" class="selectBottom">
+                  <option value="en-US">English US</option>
+                  <option value="en-UK">English UK</option>
+                  <option value="es-do">Spanish Caribbean</option>
+                  <option value="es-mx">Spanish Latin America</option>
+                  <option value="es-es">Spanish Traditional</option>
+                  <option value="nl-be">Dutch Belgium</option>
+                  <option value="nl-nl">Dutch Netherlands</option>
+                  <option value="disabled" selected>Disabled</option>
+                </select>
+              </label>
+                    <label id="sttLoca" for="selectSoundLoca" class="hide">
+                <h5 class="inputTop">Speech to Text Output:</h5>
+                <select id="selectSoundLoca" class="selectBottom">
+                  <option value="#output1" selected>Only change if output 1 is active</option>
+                  <option value="#output1">Output 1</option>
+                  <option value="#output2">Output 2</option>
+                  <option value="#output3">Output 3</option>
+                  <option value="#output4">Output 4</option>
+                  <option value="#output5">Output 5</option>
+                  <option value="#output6">Output 6</option>
+                </select>
+              </label>
+                    <label for="selectSound">
+                <h5 class="inputTop">Text to Speech Voice:</h5>
+                <select id="selectSound" class="selectBottom">
+                  <option value="mute" selected>Mute</option>
+                  <option value="Microsoft David Desktop - English (United States)">English Male US</option>
+                  <option value="Google UK English Male">English Male UK</option>
+                  <option value="Microsoft Zira Desktop - English (United States)">English Female US</option>
+                  <option value="Google UK English Female">English Female UK</option>
+                  <option value="Google español (es-ES)">Google Español (es-ES)</option>
+                  <option value="Google español de Estados Unidos (es-US)">Google Español (es-US)</option>
+                  <option value="Google Deutsch (de-DE)">Google Deutsch (de-DE)</option>
+                  <option value="mute" disabled="disabled">More Coming Soon!</option>
+                </select>
+              </label>
+                    <label for="volumeVal">
+                <h5 class="inputTop">Text to Speech Volume:</h5>
+                <input id="volumeVal" class="inputBottom" placeholder="100" type="number" min="0" max="100" step="1">
+              </label>
+                    <label for="pitchVal">
+                <h5 class="inputTop">Text to Speech Pitch:</h5>
+                <input id="pitchVal" class="inputBottom" placeholder="1" type="number" min="0" max="2" step="0.1">
+              </label>
+                    <label for="uRate">
+                <h5 class="inputTop">Text to Speech Rate:</h5>
+                <input id="uRate" class="inputBottom" placeholder="1" type="number" min="0.1" max="10" step="0.1">
+              </label>
+                </div>
+                <div id="vidioHeadOpen" class="option">VIDEO</div>
+                <div id="vidioHeadClose" class="option hide">VIDEO</div>
+                <div id="selectVideo" class="menuData hide">
+                    <label for="selectCol">
+                <h5 class="inputTop">Mode:</h5>
+                <select id="selectCol" class="selectBottom">
+                  <option value="dark" selected="">Dark</option>
+                  <option value="light">Light</option>
+                </select>
+              </label>
+                    <label for="selectColBlind">
+                <h5 class="inputTop" style="display: grid; grid-template-columns: 8fr 1fr 1fr 1fr 1fr 1fr 1fr;"><div>Color Vision:</div><div class="back-col1">R</div><div class="back-col2">O</div><div class="back-col3">Y</div><div class="back-col4">G</div><div class="back-col5">B</div><div class="back-col6">P</div></h5>
+                <select id="selectColBlind" class="selectBottom">
+                  <option value="polychromatic" selected="">Polychromatic</option>
+                  <option value="deuteranopia">Deuteranopia</option>
+                  <option value="protanopia">Protanopia</option>
+                  <option value="tritanopia">Tritanopia</option>
+                  <option value="monochromatic">Monochromatic</option>
+                </select>
+              </label>
+                    <label for="selectTextSize">
+                <h5 class="inputTop">Text Size:</h5>
+                <select id="selectTextSize" class="selectBottom">
+                  <option value="12px">12px</option>
+                  <option value="16px" selected="">16px</option>
+                  <option value="20px">20px</option>
+                  <option value="24px">24px</option>
+                  <option value="28px">28px</option>
+                </select>
+              </label>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div id="userHeadOpen" class="option">USER</div>
+                <div id="userHeadClose" class="option hide">USER</div>
+                <div id="selectUser" class="menuData hide">
+                    <h5 class="ermsg">&nbsp;</h5>
+                    <label for="changeName">
+                <h5 class="inputTop">Update Display Name:</h5>
+                <input id="changeName" class="inputBottom" placeholder="Anonymous" type="text" required="">
+              </label>
+                    <label for="changeEmail">
+                <h5 class="inputTop">Update Email:</h5>
+                <input id="changeEmail" class="inputBottom" placeholder="you@gmail.com" type="email" required="">
+              </label>
+                    <form>
+                        <label for="changePassword">
+                  <h5 class="inputTop">Update Password:</h5>
+                  <input id="changePassword" class="inputBottom" placeholder="P••••0••" type="password" required="">
+                </label>
+                    </form>
+                    <label for="changeSession">
+                <h5 class="inputTop">Update Session ID:</h5>
+                <input id="changeSession" class="inputBottom" placeholder="SOLO" type="text" required="">
+              </label>
+                    <div id="updateSettings" class="submitLogin">
+                        <h4>UPDATE</h4>
+                    </div>
+                    <div id="signoutBTN" class="submitLogin">
+                        <h4>SIGN OUT</h4>
+                    </div>
+                    <button id="deleteUser">Delete This Account</button>
+                </div>
+            </div>
+            <a class="menuLink" href="https://www.paypal.com/paypalme/M4V3R1C8/">
+                <h5 style="display: inline-block;">Support <i class="icon-paypal" style="display: inline-block;"></i></h5>
+            </a>
+            <a class="menuLink" href="https://forms.gle/uiM5vDEGNQCR4KdT8">
+                <h5 style="display: inline-block;">Feedback and Education <i class="icon-educate" style="display: inline-block;"></i></h5>
+            </a>
+            <a class="menuLink" href="https://drive.google.com/uc?export=download&id=18CR7Q8heSC0AOz5Jz2Sc_2FCpkAcA1BZ">
+                <h5 style="display: inline-block; margin-bottom: -30px;">Callouts Evolved for PC <i class="icon-download" style="display: inline-block;"></i></h5><br/>(Microsoft Certification Coming Soon)</a>
+        </div>
+        <a id="menuFooter" href="#tac">COPYRIGHT ©2020 CALLOUTS EVOLVED<br />Terms and Conditions</a>
+        </div>
+    </header>
+    <main>
+        <div id="index" class="enc index">
+            <div style="width: 90vw; height: 100vh; display: grid; justify-content: center; align-items: center; margin: auto;">
+                <div style="text-align: center;">
+                    <h1 style="font-size: 12vh; color: var(--accent); font-weight: 400;">CALLOUTS</h1>
+                    <h1 style="font-size: 12vh; color: var(--accent); font-weight: 400;">EVOLVED</h1>
+                    <h1 style="font-size: 3.3vh;">Video game communication</h1>
+                    <h1 style="font-size: 3.3vh;">for the modern gamer</h1>
+                </div>
+                <div style="width: 90vw; margin: 40px auto; line-height: 1.7em; text-align: center; justify-content: center;">
+                    <div class="indexRow" style="text-align: center;">
+                        <div class="selectSignup selectBTN" style="color: var(--accent); justify-self: right;">SIGN UP</div>
+                        <div class="selectSignin selectBTN">LOG IN</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#index2" style="text-decoration: none; color: var(--whi);">
+                <h1 style="margin: -2.5rem auto 2rem; font-size: 2rem; text-align: center;"><i class="icon-down"></i></h1>
+            </a>
+            <div id="index2" style="width: 90vw; margin: 40px auto; line-height: 1.7em;">
+                <div style="display: grid; max-width: 41.25rem; margin: 40px auto; text-align: left; grid-gap: 0.625rem;">
+                    <p style='text-align: left;'>These days, everyone from 3 years old to 70 years young are picking up video games! Our current "mic required" culture does not provide the same opportunities to everyone. People who are deaf, mute, young, female, etc. often get kicked
+                        from groups or heckled while completing end game content.</p>
+                </div>
+                <div class="indexRow">
+                    <div class="indexGap">
+                        <div class="indexRing">
+                            <h3></h3>
+                        </div>
+                        <div>
+                            <h3>More Reliable:</h3>
+                            <p>No mic lag, talking over each other, feedback, echoing, or faulty connections</p>
+                        </div>
+                    </div>
+                    <div class="indexGap">
+                        <div class="indexRing">
+                            <h3></h3>
+                        </div>
+                        <div>
+                            <h3>More Focused:</h3>
+                            <p>16 customizable callouts allow you to prepare for all end game activities</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="indexRow">
+                    <div class="indexGap">
+                        <div class="indexRing">
+                            <h3></h3>
+                        </div>
+                        <div>
+                            <h3>More Inclusive:</h3>
+                            <p>Visual Callouts and Text to Speech provide accessible notifications for all players.</p>
+                        </div>
+                    </div>
+                    <div class="indexGap">
+                        <div class="indexRing">
+                            <h3></h3>
+                        </div>
+                        <div>
+                            <h3>More Synchronized:</h3>
+                            <p>Sessions will sync visial callouts immediately and play sounds right after eachother.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="indexRow">
+                    <div class="indexGap">
+                        <div class="indexRing">
+                            <h3></h3>
+                        </div>
+                        <div>
+                            <h3>More Efficient:</h3>
+                            <p>Trigger callouts and timers with your keyboard so that you can set and forget until the exact moment you launch an attack</p>
+                        </div>
+                    </div>
+                    <div class="indexGap">
+                        <div class="indexRing">
+                            <h3></h3>
+                        </div>
+                        <div>
+                            <h3>More Convenient:</h3>
+                            <p>Play without squeaky voices, heavy breathing, and background noise thanks to real time continous speech to text</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: grid; max-width: 41.25rem; margin: 40px auto; text-align: left; grid-gap: 0.625rem;">
+                    <p style='text-align: left;'>After years of trying everything from discord bots to soundboards, Callouts Evolved has grown into a capable, compatible, and inclusive web application helping 1000s of gamers communicate worldwide!</p>
+                </div>
+                <div class="indexRow" style="text-align: center;">
+                    <div class="indexFeature">
+                        <h3 style="grid-column: span 3;">FEATURED:</h3>
+                        <div style="height: 64px; width: 64px; background: var(--accent); grid-gap: 0.625rem;">
+                            <a href="https://www.pcgamer.com/meet-the-deaf-destiny-2-players-who-raid-using-a-custom-made-comms-app/"><img src="img/pcgamer.svg" style="height: 100%; width: 100%;" /></a>
+                        </div>
+                        <div style="height: 64px; width: 64px; background: var(--accent); grid-gap: 0.625rem;">
+                            <a href="https://gamerant.com/destiny-vault-of-glass-raid-sound/"><img src="img/gamerant.svg" style="height: 100%; width: 100%;" /></a>
+                        </div>
+                        <div style="height: 64px; width: 64px; background: var(--accent); grid-gap: 0.625rem;">
+                            <a href="http://blog.game084.com/archives/52230489.html"><img src="img/game084.jpg" style="height: 100%; width: 100%;" /></a>
+                        </div>
+                    </div>
+                    <div class="indexFeature">
+                        <h3 style="grid-column: span 4;">CONNECT:</h3>
+                        <div style="height: 64px; width: 64px; background: #fff; grid-gap: 0.625rem;">
+                            <a href="https://www.reddit.com/r/calloutsevolved/"><img src="img/Reddit.svg" style="height: 100%; width: 100%;" /></a>
+                        </div>
+                        <div style="height: 64px; width: 64px; background: #7289da; grid-gap: 0.625rem;">
+                            <a href="https://discord.gg/2mHtvnA"><img src="img/Discord.svg" style="height: 100%; width: 100%;" /></a>
+                        </div>
+                        <div style="height: 64px; width: 64px; background: #fff; grid-gap: 0.625rem;">
+                            <a href="https://www.youtube.com/channel/UCL-c4A49FCbSEZgkT4Psnnw"><img src="img/youtube.svg" style="height: 100%; width: 100%;" /></a>
+                        </div>
+                        <div style="height: 64px; width: 64px; background: #1da1f2; grid-gap: 0.625rem;">
+                            <a href="https://twitter.com/m4v3r1c8"><img src="img/twitter.svg" style="height: 100%; width: 100%;" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="coms" class="enc coms hide">
+            <div class="gridBTNs">
+                <div id="sttBoxes" class="hide">
+                    <div id="sttBox1" class="sttBox">
+                        <div class="outputContainer">
+                            <input id="output1" class="output" value="Output 1">
+                        </div>
+                        <div class="sttBoxView">
+                            <div class="showBTN" data-acquired="sttBox2">+</div>
+                            <div class="hideBTN" data-acquired="sttBoxes,sttBoxe2,sttBox3,sttBox4,sttBox5,sttBox6">x</div>
+                        </div>
+                    </div>
+                    <div id="sttBox2" class="sttBox hide">
+                        <div class="outputContainer">
+                            <input id="output2" class="output" value="Output 2">
+                        </div>
+                        <div class="sttBoxView">
+                            <div class="showBTN" data-acquired="sttBox3">+</div>
+                            <div class="hideBTN" data-acquired="sttBox2,sttBox3,sttBox4,sttBox5,sttBox6">-</div>
+                        </div>
+                    </div>
+                    <div id="sttBox3" class="sttBox hide">
+                        <div class="outputContainer">
+                            <input id="output3" class="output" value="Output 3">
+                        </div>
+                        <div class="sttBoxView">
+                            <div class="showBTN" data-acquired="sttBox4">+</div>
+                            <div class="hideBTN" data-acquired="sttBox3,sttBox4,sttBox5,sttBox6">-</div>
+                        </div>
+                    </div>
+                    <div id="sttBox4" class="sttBox hide">
+                        <div class="outputContainer">
+                            <input id="output4" class="output" value="Output 4">
+                        </div>
+                        <div class="sttBoxView">
+                            <div class="showBTN" data-acquired="sttBox5">+</div>
+                            <div class="hideBTN" data-acquired="sttBox4,sttBox5,sttBox6">-</div>
+                        </div>
+                    </div>
+                    <div id="sttBox5" class="sttBox hide">
+                        <div class="outputContainer">
+                            <input id="output5" class="output" value="Output 5">
+                        </div>
+                        <div class="sttBoxView">
+                            <div class="showBTN" data-acquired="sttBox6">+</div>
+                            <div class="hideBTN" data-acquired="sttBox5,sttBox6">-</div>
+                        </div>
+                    </div>
+                    <div id="sttBox6" class="sttBox hide">
+                        <div class="outputContainer">
+                            <input id="output6" class="output" value="Output 6">
+                        </div>
+                        <div class="sttBoxView">
+                            <div class="hideBTN" data-acquired="sttBoxes,sttBoxe2,sttBox3,sttBox4,sttBox5,sttBox6">x</div>
+                            <div class="hideBTN" data-acquired="sttBox6">-</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="syncBTNs">
+                    <h3 class="npText">Numberpad <span class="kbText">& Keyboard<span class="npkpColon">: </span></h3>
+                </div>
+                <div id="experimentBTNf" class="gridBTN back-col0" data-acquired="experimentBTNfText" data-cal="experimentinputfv" data-col="experimentinputfc" data-dur="experimentinputfd" data-tim="experimentinputft">
+                    <h3 class="npText">#/ <span class="kbText">& K7<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTNfText" class="gridBTNText" data-tar="experimentBTNf">Welcome to Callouts Evolved!</div>
+                </div>
+                <div id="experimentBTNp" class="gridBTN back-col0" data-acquired="experimentBTNpText" data-cal="experimentinputpv" data-col="experimentinputpc" data-dur="experimentinputpd" data-tim="experimentinputpt">
+                    <h3 class="npText">#* <span class="kbText">& K8<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTNpText" class="gridBTNText" data-tar="experimentBTNp">Let's take a second to look around.</div>
+                </div>
+                <div id="experimentBTNm" class="gridBTN back-col0" data-acquired="experimentBTNmText" data-cal="experimentinputmv" data-col="experimentinputmc" data-dur="experimentinputmd" data-tim="experimentinputmt">
+                    <h3 class="npText">#- <span class="kbText">& KO<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTNmText" class="gridBTNText" data-tar="experimentBTNm">You'll notice that your screen has 16 sections</div>
+                </div>
+                <div id="experimentBTN7" class="gridBTN back-col0" data-acquired="experimentBTN7Text" data-cal="experimentinput7v" data-col="experimentinput7c" data-dur="experimentinput7d" data-tim="experimentinput7t">
+                    <h3 class="npText">#7 <span class="kbText">& KY<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN7Text" class="gridBTNText" data-tar="experimentBTN7">Each of the sections is a customizable button!</div>
+                </div>
+                <div id="experimentBTN8" class="gridBTN back-col0" data-acquired="experimentBTN8Text" data-cal="experimentinput8v" data-col="experimentinput8c" data-dur="experimentinput8d" data-tim="experimentinput8t">
+                    <h3 class="npText">#8 <span class="kbText">& KU<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN8Text" class="gridBTNText" data-tar="experimentBTN8">Click Me!</div>
+                </div>
+                <div id="experimentBTN9" class="gridBTN back-col0" data-acquired="experimentBTN9Text" data-cal="experimentinput9v" data-col="experimentinput9c" data-dur="experimentinput9d" data-tim="experimentinput9t">
+                    <h3 class="npText">#9 <span class="kbText">& KI<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN9Text" class="gridBTNText" data-tar="experimentBTN9">Type the letter or number to the left!</div>
+                </div>
+                <div id="experimentBTNa" class="gridBTN back-col0" style="grid-row: span 2;" data-acquired="experimentBTNaText" data-cal="experimentinputav" data-col="experimentinputac" data-dur="experimentinputad" data-tim="experimentinputat">
+                    <h3 class="npText">#+ <span class="kbText">& KL<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTNaText" class="gridBTNText" data-tar="experimentBTNa">It has the same result as clicking the button!</div>
+                </div>
+                <div id="experimentBTN4" class="gridBTN back-col0" data-acquired="experimentBTN4Text" data-cal="experimentinput4v" data-col="experimentinput4c" data-dur="experimentinput4d" data-tim="experimentinput4t">
+                    <h3 class="npText">#4 <span class="kbText">& KH<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN4Text" class="gridBTNText" data-tar="experimentBTN4">Now that you know how to send callouts;</div>
+                </div>
+                <div id="experimentBTN5" class="gridBTN back-col0" data-acquired="experimentBTN5Text" data-cal="experimentinput5v" data-col="experimentinput5c" data-dur="experimentinput5d" data-tim="experimentinput5t">
+                    <h3 class="npText">#5 <span class="kbText">& KJ<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN5Text" class="gridBTNText" data-tar="experimentBTN5">Let's look at how to customize them!</div>
+                </div>
+                <div id="experimentBTN6" class="gridBTN back-col0" data-acquired="experimentBTN6Text" data-cal="experimentinput6v" data-col="experimentinput6c" data-dur="experimentinput6d" data-tim="experimentinput6t">
+                    <h3 class="npText">#6 <span class="kbText">& KK<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN6Text" class="gridBTNText" data-tar="experimentBTN6">Scroll down just a little bit and you'll see 3 dropdowns</div>
+                </div>
+                <div id="experimentBTN1" class="gridBTN back-col0" data-acquired="experimentBTN1Text" data-cal="experimentinput1v" data-col="experimentinput1c" data-dur="experimentinput1d" data-tim="experimentinput1t">
+                    <h3 class="npText">#1 <span class="kbText">& KN<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN1Text" class="gridBTNText" data-tar="experimentBTN1">For the "-Choose a Game-" pick tutorial</div>
+                </div>
+                <div id="experimentBTN2" class="gridBTN back-col0" data-acquired="experimentBTN2Text" data-cal="experimentinput2v" data-col="experimentinput2c" data-dur="experimentinput2d" data-tim="experimentinput2t">
+                    <h3 class="npText">#2 <span class="kbText">& KM<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN2Text" class="gridBTNText" data-tar="experimentBTN2">For the "-Choose an Activity-" pick Tutorials</div>
+                </div>
+                <div id="experimentBTN3" class="gridBTN back-col0" data-acquired="experimentBTN3Text" data-cal="experimentinput3v" data-col="experimentinput3c" data-dur="experimentinput3d" data-tim="experimentinput3t">
+                    <h3 class="npText">#3 <span class="kbText">& K&lt;<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN3Text" class="gridBTNText" data-tar="experimentBTN3">This third one is very important.</div>
+                </div>
+                <div id="experimentBTNe" class="gridBTN back-col0" style="grid-row: span 2;" data-acquired="experimentBTNeText" data-cal="experimentinputev" data-col="experimentinputec" data-dur="experimentinputed" data-tim="experimentinputet">
+                    <h3 class="npText">#Enter <span class="kbText">& K&gt;<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTNeText" class="gridBTNText" data-tar="experimentBTNe">For the "-Choose an Encounter-" pick "Callouts"</div>
+                </div>
+                <div id="experimentBTN0" class="gridBTN back-col0" style="grid-column: span 2;" data-acquired="experimentBTN0Text" data-cal="experimentinput0v" data-col="experimentinput0c" data-dur="experimentinput0d" data-tim="experimentinput0t">
+                    <h3 class="npText">#0 <span class="kbText">& Spacebar<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTN0Text" class="gridBTNText" data-tar="experimentBTN0">You'll see all of these buttons update to new values.</div>
+                </div>
+                <div id="experimentBTNd" class="gridBTN back-col0" data-acquired="experimentBTNdText" data-cal="experimentinputdv" data-col="experimentinputdc" data-dur="experimentinputdd" data-tim="experimentinputdt">
+                    <h3 class="npText">#. <span class="kbText">& RAlt<span class="npkpColon">: </span></h3>
+                    <div id="experimentBTNdText" class="gridBTNText" data-tar="experimentBTNd">Go ahead and give it a shot!</div>
+                </div>
+            </div>
+            <div id="lwicons" class="hide">
+                <div id="lwicon1" class="gridBTNToggle back-col0" data-cal="fish left" data-col="back-col1"><i class="icon-fishleft"></i></div>
+                <div id="lwicon2" class="gridBTNToggle back-col0" data-cal="fish curl" data-col="back-col1"><i class="icon-fishcurl"></i></div>
+                <div id="lwicon3" class="gridBTNToggle back-col0" data-cal="fish fish" data-col="back-col1"><i class="icon-fishfish"></i></div>
+                <div id="lwicon4" class="gridBTNToggle back-col0" data-cal="fish up" data-col="back-col1"><i class="icon-fishup"></i></div>
+                <div id="lwicon5" class="gridBTNToggle back-col0" data-cal="snake infinity" data-col="back-col2"><i class="icon-snakei"></i></div>
+                <div id="lwicon6" class="gridBTNToggle back-col0" data-cal="snake 8" data-col="back-col2"><i class="icon-snake8"></i></div>
+                <div id="lwicon7" class="gridBTNToggle back-col0" data-cal="snake split" data-col="back-col2"><i class="icon-snakes"></i></div>
+                <div id="lwicon8" class="gridBTNToggle back-col0" data-cal="snake cloud" data-col="back-col2"><i class="icon-snakew"></i></div>
+                <div id="lwicon9" class="gridBTNToggle back-col0" data-cal="fire left" data-col="back-col3"><i class="icon-fireleft"></i></div>
+                <div id="lwicon10" class="gridBTNToggle back-col0" data-cal="fire right" data-col="back-col3"><i class="icon-fireright"></i></div>
+                <div id="lwicon11" class="gridBTNToggle back-col0" data-cal="spear neck" data-col="back-col3"><i class="icon-spearneck"></i></div>
+                <div id="lwicon12" class="gridBTNToggle back-col0" data-cal="spear hands" data-col="back-col3"><i class="icon-spearhands"></i></div>
+                <div id="lwicon13" class="gridBTNToggle back-col0" data-cal="bird dive" data-col="back-col4"><i class="icon-birddive"></i></div>
+                <div id="lwicon14" class="gridBTNToggle back-col0" data-cal="bird branch" data-col="back-col4"><i class="icon-birdbranch"></i></div>
+                <div id="lwicon15" class="gridBTNToggle back-col0" data-cal="bird fly" data-col="back-col4"><i class="icon-birdfly"></i></div>
+                <div id="lwicon16" class="gridBTNToggle back-col0" data-cal="bird stand" data-col="back-col4"><i class="icon-birdstand"></i></div>
+            </div>
+            <div class="gridEdit">
+                <div class="gridInputRow">
+                    <label for="changeGame">
+                <h5 class="inputTop">Choose a Game:</h5>
+                <select id="changeGame" class="changeGame selectBottom">
+                  <option value="default">-Choose a Game-</option>
+                  <option value="tutorials">Tutorials</option>
+                  <option value="destiny">Destiny</option>
+                  <option value="destiny2">Destiny 2</option>
+                  <option value="discontinued">Discontinued</option>
+                </select>
+              </label>
+                    <label for="changeActivity">
+                <h5 class="inputTop">Choose an Activity:</h5>
+                <select id="changeActivity" class="changeActivity selectBottom">
+                  <option value="default" data-target="default">-Choose an Activity-</option>
+                  <option value="tutorials" data-target="tutorials" class="hide">Tutorials</option>
+                  <option value="vog" data-target="destiny" class="hide">Vault of Glass</option>
+                  <option value="ce" data-target="destiny" class="hide">Crota's End</option>
+                  <option value="kf" data-target="destiny" class="hide">King's Fall</option>
+                  <option value="wotm" data-target="destiny" class="hide">Wrath of the Machine</option>
+                  <option value="lw" data-target="destiny2" class="hide">Last Wish</option>
+                  <option value="gos" data-target="destiny2" class="hide">Garden of Salvation</option>
+                  <option value="d2pvp" data-target="destiny2" class="hide">Destiny 2 PvP</option>
+                  <option value="lev" data-target="discontinued" class="hide">Leviathan</option>
+                  <option value="eow" data-target="discontinued" class="hide">Eater of Worlds</option>
+                  <option value="sos" data-target="discontinued" class="hide">Spire of Stars</option>
+                  <option value="sotp" data-target="discontinued" class="hide">Scourge of the Past</option>
+                  <option value="cos" data-target="discontinued" class="hide">Crown of Sorrow</option>
+                </select>
+              </label>
+                    <label for="changeEncounter">
+                <h5 class="inputTop">Choose an Encounter:</h5>
+                <select id="changeEncounter" class="changeEncounter selectBottom">
+                  <option value="gen" data-target="default">-Choose an Encounter-</option>
+                  <option value="gen" data-target="gen">General</option>
+                  <option value="intro" data-target="tutorials" class="hide">Introduction</option>
+                  <option value="callouts" data-target="tutorials" class="hide">Callouts</option>
+                  <option value="avu" data-target="tutorials" class="hide">Audio, Video, User</option>
+                  <option value="tips" data-target="tutorials" class="hide">Additional Tips and Resources</option>
+                  <option value="spireandconfluxes" data-target="vog" class="hide">Spire and Confluxes</option>
+                  <option value="destroytheoracles" data-target="vog" class="hide">Destroy the Oracles</option>
+                  <option value="killthetemplar" data-target="vog" class="hide">Kill the Templar</option>
+                  <option value="thegorgonslabyrinth" data-target="vog" class="hide">The Gorgons' Labyrinth</option>
+                  <option value="awakentheglassthrone" data-target="vog" class="hide">Awaken the Glass Throne</option>
+                  <option value="destroyatheon" data-target="vog" class="hide">Destroy Atheon</option>
+                  <option value="thehellmouth" data-target="ce" class="hide">The Hellmouth</option>
+                  <option value="oversoulthrone" data-target="ce" class="hide">Oversoul Throne</option>
+                  <option value="entercrotasthrone" data-target="ce" class="hide">Enter Crota's Throne</option>
+                  <option value="defeatcrota" data-target="ce" class="hide">Defeat Crota</option>
+                  <option value="entertheascendentplane" data-target="kf" class="hide">Enter the Ascendent Plane</option>
+                  <option value="annihilatortotems" data-target="kf" class="hide">Annihilator Totems</option>
+                  <option value="defeatthewarpriest" data-target="kf" class="hide">Defeat the Warpriest</option>
+                  <option value="defeatgolgoroth" data-target="kf" class="hide">Defeat Golgoroth</option>
+                  <option value="daughtersoforyx" data-target="kf" class="hide">Daughters of Oryx</option>
+                  <option value="oyrxthetakenking" data-target="kf" class="hide">Oryx, The Taken King</option>
+                  <option value="outbreakprime" data-target="wotm" class="hide">Outbreak Prime</option>
+                  <option value="defeatvosik" data-target="wotm" class="hide">Defeat Vosik</option>
+                  <option value="aksis" data-target="wotm" class="hide">Aksis</option>
+                  <option value="castellum" data-target="lev" class="hide">Castellum</option>
+                  <option value="gauntlet" data-target="lev" class="hide">Gauntlet</option>
+                  <option value="pleasuregardens" data-target="lev" class="hide">Pleasure Gardens</option>
+                  <option value="royalpools" data-target="lev" class="hide">Royal Pools</option>
+                  <option value="throne" data-target="lev" class="hide">Throne</option>
+                  <option value="escapethereactor" data-target="eow" class="hide">Escape the Reactor</option>
+                  <option value="breakthebarrier" data-target="eow" class="hide">Break the Barrier</option>
+                  <option value="defeatargos" data-target="eow" class="hide">Defeat Argos</option>
+                  <option value="acceptcalussgift" data-target="sos" class="hide">Accept Calus's Gift</option>
+                  <option value="stopvalcauorsfleet" data-target="sos" class="hide">Stop Val Ca'uor's Fleet</option>
+                  <option value="neutralizevalcauor" data-target="sos" class="hide">Neutralize Val Ca'uor</option>
+                  <option value="berserkersotp" data-target="sotp" class="hide">Berserker</option>
+                  <option value="vaultaccess" data-target="sotp" class="hide">Vault Access</option>
+                  <option value="insurrectionprime" data-target="sotp" class="hide">Insurrection Prime</option>
+                  <option value="kaliandshurochi" data-target="lw" class="hide">Kali and Shuro Chi</option>
+                  <option value="morgeth" data-target="lw" class="hide">Morgeth</option>
+                  <option value="vault" data-target="lw" class="hide">Vault</option>
+                  <option value="symbols" data-target="lw" class="hide">Symbols</option>
+                  <option value="riven" data-target="lw" class="hide">Riven</option>
+                  <option value="queenswalk" data-target="lw" class="hide">Queens Walk</option>
+                  <option value="dispelhiveward" data-target="cos" class="hide">Dispel Hive Ward</option>
+                  <option value="reachthepinnacle" data-target="cos" class="hide">Reach the Pinnacle</option>
+                  <option value="defeatgahlransdeception" data-target="cos" class="hide">Defeat Gahlran's Deception</option>
+                  <option value="defeatgahlran" data-target="cos" class="hide">Defeat Gahlran</option>
+                  <option value="embrace" data-target="gos" class="hide">Embrace</option>
+                  <option value="undergrowth" data-target="gos" class="hide">Undergrowth</option>
+                  <option value="consecratedmind" data-target="gos" class="hide">Consecrated Mind</option>
+                  <option value="sanctifiedmind" data-target="gos" class="hide">Sanctified Mind</option>
+                  <option value="d2pvp" data-target="d2pvp" class="hide">Destiny 2 PvP</option>
+                </select>
+              </label>
+                    <div>
+                        <div class="syncBTN">Sync</div>
+                    </div>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">Numberpad <span class="kbText">& Keyboard Shortcuts: Assign each key a callout, duration, timer, and color<span class="npkpColon">: </span></h3>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#/ <span class="kbText">& K7<span class="npkpColon">: </span></h3>
+                    <label for="experimentinputfv">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinputfv" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTNfText">
+              </label>
+                    <label for="experimentinputfd">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinputfd" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinputft">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinputft" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinputfc">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinputfc" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#* <span class="kbText">& K8<span class="npkpColon">: </span></h3>
+                    <label for="experimentinputpv">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinputpv" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTNpText">
+              </label>
+                    <label for="experimentinputpd">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinputpd" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinputpt">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinputpt" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinputpc">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinputpc" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#- <span class="kbText">& KO<span class="npkpColon">: </span></h3>
+                    <label for="experimentinputmv">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinputmv" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTNmText">
+              </label>
+                    <label for="experimentinputmd">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinputmd" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinputmt">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinputmt" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinputmc">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinputmc" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#7 <span class="kbText">& KY<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput7v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput7v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN7Text">
+              </label>
+                    <label for="experimentinput7d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput7d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput7t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput7t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput7c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinput7c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#8 <span class="kbText">& KU<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput8v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput8v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN8Text">
+              </label>
+                    <label for="experimentinput8d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput8d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput8t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput8t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput8c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                </h5>
+                <select id="experimentinput8c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#9 <span class="kbText">& KI<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput9v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput9v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN9Text">
+              </label>
+                    <label for="experimentinput9d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput9d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput9t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput9t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput9c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinput9c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#+ <span class="kbText">& KL<span class="npkpColon">: </span></h3>
+                    <label for="experimentinputav">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinputav" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTNaText">
+              </label>
+                    <label for="experimentinputad">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinputad" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinputat">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinputat" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinputac">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinputac" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#4 <span class="kbText">& KH<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput4v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput4v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN4Text">
+              </label>
+                    <label for="experimentinput4d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput4d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput4t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput4t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput4c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinput4c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#5 <span class="kbText">& KJ<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput5v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput5v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN5Text">
+              </label>
+                    <label for="experimentinput5d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput5d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput5t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput5t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput5c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinput5c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#6 <span class="kbText">& KK<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput6v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput6v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN6Text">
+              </label>
+                    <label for="experimentinput6d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput6d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput6t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput6t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput6c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinput6c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#1 <span class="kbText">& KN<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput1v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput1v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN1Text">
+              </label>
+                    <label for="experimentinput1d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput1d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput1t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput1t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput1c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinput1c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#2 <span class="kbText">& KM<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput2v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput2v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN2Text">
+              </label>
+                    <label for="experimentinput2d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput2d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput2t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput2t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput2c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinput2c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#3 <span class="kbText">& K&lt;<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput3v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput3v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN3Text">
+              </label>
+                    <label for="experimentinput3d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput3d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput3t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput3t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput3c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinput3c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#Enter <span class="kbText">& K&gt;<span class="npkpColon">: </span></h3>
+                    <label for="experimentinputev">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinputev" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTNeText">
+              </label>
+                    <label for="experimentinputed">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinputed" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinputet">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinputet" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinputec">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinputec" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#0 <span class="kbText">& Spacebar<span class="npkpColon">: </span></h3>
+                    <label for="experimentinput0v">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinput0v" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTN0Text">
+              </label>
+                    <label for="experimentinput0d">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinput0d" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinput0t">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinput0t" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinput0c">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinput0c" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+                <div class="gridInputRow">
+                    <h3 class="npText">#. <span class="kbText">& RAlt<span class="npkpColon">: </span></h3>
+                    <label for="experimentinputdv">
+                <h5 class="inputTop">Callout (TTS):</h5>
+                <input id="experimentinputdv" class="gridInput inputBottom" placeholder="What shoudl the callout say?" type="text" data-tar="experimentBTNdText">
+              </label>
+                    <label for="experimentinputdd">
+                <h5 class="inputTop">Duration (S):</h5>
+                <input id="experimentinputdd" class="gridInput inputBottom" placeholder="How long is the callout active?" type="number">
+              </label>
+                    <label for="experimentinputdt">
+                <h5 class="inputTop">Countdown (S):</h5>
+                <input id="experimentinputdt" class="gridInput inputBottom" placeholder="Timers keep everything in sync" type="number">
+              </label>
+                    <label for="experimentinputdc">
+                <h5 class="inputTop">Color (RGB):</h5>
+                <select id="experimentinputdc" class="gridInput selectBottom">
+                  <option value="back-col0">What color should the callout be?</option>
+                  <option value="back-col1">Red</option>
+                  <option value="back-col2">Orange</option>
+                  <option value="back-col3">Yellow</option>
+                  <option value="back-col4">Green</option>
+                  <option value="back-col5">Blue</option>
+                  <option value="back-col6">Purple</option>
+                </select>
+              </label>
+                </div>
+            </div>
+        </div>
+        <div id="tac" class="hide">
+            <h1>Terms and Conditions</h1>
+            <br /><br />
+            <div>
+                <p>EFFECTIVE: September 1, 2020</p>
+                <p><u>IMPORTANT, READ CAREFULLY</u>. YOUR USE OF AND ACCESS TO THE WEBSITE AND PRODUCTS AND SERVICES AND ASSOCIATED SOFTWARE (COLLECTIVELY, THE "SERVICES") OF Callouts&nbsp;Evolved, INC. AND ITS AFFILIATES ("Callouts&nbsp;Evolved") IS CONDITIONED
+                    UPON YOUR COMPLIANCE WITH AND ACCEPTANCE OF THESE TERMS, WHICH INCLUDE YOUR AGREEMENT TO ARBITRATE CLAIMS. PLEASE REVIEW THOROUGHLY BEFORE ACCEPTING.</p>
+                <p>BY CLICKING THE "I AGREE" BUTTON, ACCESSING THE Callouts&nbsp;Evolved WEBSITE OR BY UTILIZING THE Callouts&nbsp;Evolved SERVICES YOU AGREE TO BE BOUND BY THESE TERMS AND CONDITIONS AND ALL EXHIBITS, ORDER FORMS, AND INCORPORATED POLICIES
+                    (THE “AGREEMENT”). THE Callouts&nbsp;Evolved SERVICES ARE NOT AVAILABLE TO PERSONS WHO ARE NOT LEGALLY ELIGIBLE TO BE BOUND BY THESE TERMS OF SERVICE.</p>
+                <p>Callouts&nbsp;Evolved will provide the Services, and you may access and use the Services, in accordance with this Agreement. If You decide to utilize our Tools (Various services including but not limited to our applications for Android,
+                    IOS, Xbox, PlayStation, and Stadia) they may contain additional terms and conditions and information regarding the Services you are using. Unless otherwise expressly set forth in any such additional terms and conditions applicable
+                    to the specific Service which You choose to use, those additional terms are hereby incorporated into this Agreement in relation to Your use of that Service.</p>
+                <p><u>System Requirements</u>. Use of the Services requires one or more compatible devices, Internet access (fees may apply), and certain software (fees may apply), and may require obtaining updates or upgrades from time to time. Because
+                    use of the Services involves hardware, software, and Internet access, Your ability to access and use the Services may be affected by the performance of these factors. High speed Internet access is recommended. You acknowledge and agree
+                    that such system requirements, which may be changed from time to time, are Your responsibility.</p>
+                <p>1. DEFINITIONS. The following definitions will apply in this Agreement, and any reference to the singular includes a reference to the plural and vice versa. Service specific definitions are found in Exhibit B.<br />“Affiliate” means, with
+                    respect to a Party, any entity that directly or indirectly controls, is controlled by or is under common control with that Party. For purposes of this Agreement, “control” means an economic or voting interest of at least fifty percent
+                    (50%) or, in the absence of such economic or voting interest, the power to direct or cause the direction of the management and set the policies of such entity.<br />“End User” means a Host or Participant (as defined in Exhibit B) who
+                    uses the Services.<br />"Initial Subscription Term" means the initial subscription term for a Service as specified after registration.<br />"Service Effective Date" means the date an Initial Subscription Term begins as specified after
+                    the registration page.<br />"Renewal Term" means the renewal subscription term for a Service commencing after the Initial Subscription Term or another Renewal Term as specified after the registration page.</p>
+                <p>2. SERVICES. Callouts&nbsp;Evolved will provide the following Services: Sessions, Audio Callouts, Keyboard Shortcuts, Instructions, and applications for Andriod, iOS, Xbox, and PlayStation. In addition Callouts&nbsp;Evolved will provide
+                    standard updates to the Services that are made generally available by Callouts&nbsp;Evolved during the term. Callouts&nbsp;Evolved may, in its sole discretion, discontinue the Services or modify the features of the Services from time
+                    to time without prior notice.</p>
+                <p>a. Beta Services. Callouts&nbsp;Evolved may, from time to time, offer access to services that are classified as Beta version. Access to and use of Beta versions may be subject to additional agreements. Callouts&nbsp;Evolved makes no representations
+                    that a Beta version will ever be made generally available and reserves the right to discontinue or modify a Beta version at any time without notice. Beta versions are provided AS IS, may contain bugs, errors or other defects, and Your
+                    use of a Beta version is at Your sole risk.</p>
+                <p>3. USE OF SERVICES AND YOUR RESPONSIBILITIES. You may only use the Services pursuant to the terms of this Agreement. You are solely responsible for Your use of the Services and shall abide by, and ensure compliance with, all Laws in connection
+                    with Your use of the Services, including but not limited to Laws related to recording, intellectual property, privacy and export control. Use of the Services is void where prohibited.</p>
+                <p>a. Registration Information. You may be required to provide information about Yourself in order to register for and/or use certain Services. You agree that any such information shall be accurate. You may also be asked to choose a user
+                    name and password. You are entirely responsible for maintaining the security of Your user name and password and agree not to disclose such to any third party. Callouts&nbsp;Evolved utilizes the foundation provided by Google Firebase
+                    Auth in order to keep track of Your information. Please be sure to read the <a href="https://firebase.google.com/support/privacy">Google Firebase Auth Privacy and Security</a> as well as <a href="https://firebase.google.com/terms">Google Firebase Terms and Conditions</a>                    as Callouts&nbsp;Evolved is not responsible for any data loss or privacy concerns.</p>
+                <p>b. Your Content. You agree that You are solely responsible for the explicit content ("Content") sent or transmitted by You or displayed or uploaded by You in using the Services and for compliance with all Laws pertaining to the Content,
+                    including, but not limited to, Laws requiring You to obtain the consent of a third party to use the Content and to provide appropriate notices of third party rights. You represent and warrant that You have the right to utilize the
+                    Services provided by Callouts&nbsp;Evolved and that such use does not violate or infringe on any rights of any third party. Under no circumstances will Callouts&nbsp;Evolved be liable in any way for any (a) Content that is transmitted
+                    or viewed while using the Services, (b) errors or omissions in the Content, or (c) any loss or damage of any kind incurred as a result of the use of, access to, or denial of access to Content. Although Callouts&nbsp;Evolved is not
+                    responsible for any Content, Callouts&nbsp;Evolved may delete any Content, at any time without notice to You. You retain copyright and any other rights You already hold in Content which You submit, post or display on or through, the
+                    Services.</p>
+                <p>c. Recordings. You are responsible for compliance will all recording laws. The host can choose to record Callouts&nbsp;Evolved meetings and Webinars. By using the Services, you are giving Callouts&nbsp;Evolved consent to store recordings
+                    for any or all Callouts&nbsp;Evolved meetings or webinars that you join, if such recordings are stored in our systems. You will receive a notification (visual or otherwise) when recording is enabled. If you do not consent to being
+                    recorded, you can choose to leave the meeting or webinar</p>
+                <p>d. Prohibited Use. You agree that You will not use the Services to: <br />(i) modify, disassemble, decompile, prepare derivative works of, reverse engineer or otherwise attempt to gain access to the source code of the Services; <br />(ii)
+                    knowingly or negligently use the Services in a way that abuses, interferes with, or disrupts Callouts&nbsp;Evolved’s networks, Your accounts, or the Services; <br />(iii) engage in activity that is illegal, fraudulent, false, or misleading,
+                    <br />(iv) transmit through the Services any material that may infringe the intellectual property or other rights of third parties; <br />(v) build or benchmark a competitive product or service, or copy any features, functions or graphics
+                    of the Services; or <br />(vi) use the Services to communicate any message or material that is harassing, libelous, threatening, obscene, indecent, would violate the intellectual property rights of any party or is otherwise unlawful,
+                    that would give rise to civil liability, or that constitutes or encourages conduct that could constitute a criminal offense, under any applicable law or regulation; <br />(vii) upload or transmit any software, Content or code that
+                    does or is intended to harm, disable, destroy or adversely affect performance of the Services in any way or which does or is intended to harm or extract information or data from other hardware, software or networks of Callouts&nbsp;Evolved
+                    or other users of Services; <br />(viii) engage in any activity or use the Services in any manner that could damage, disable, overburden, impair or otherwise interfere with or disrupt the Services, or any servers or networks connected
+                    to the Services or Callouts&nbsp;Evolved's security systems. <br />(ix) use the Services in violation of any Callouts&nbsp;Evolved policy or in a manner that violates applicable law, including but not limited to anti-spam, export control,
+                    privacy, and anti-terrorism laws and regulations and laws requiring the consent of subjects of audio and video recordings, and; <br />(x) You agree that You are solely responsible for compliance with all such laws and regulations.</p>
+                <p>e. Limitations on Use. You may not reproduce, resell, or distribute the Services (including but not limited to Instructions, Media created by Callouts&nbsp;Evolved, and any applications created by Callouts&nbsp;Evolved) or any reports
+                    or data generated by the Services for any purpose unless You have been specifically permitted to do so under a separate agreement with Callouts&nbsp;Evolved. You may not offer or enable any third parties to use the Services purchased
+                    by You, display on any website or otherwise publish the Services or any Content obtained from a Service (other than Content created by You) or otherwise generate income from the Services or use the Services for the development, production
+                    or marketing of a service or product substantially similar to the Services.</p>
+                <p>4. Callouts&nbsp;Evolved Obligations for Content. Callouts&nbsp;Evolved will not view or process Content except (a) as provided for in this Agreement and in Callouts&nbsp;Evolved’s Privacy Policy; (b) as authorized or instructed by You,
+                    (c) as required to perform its obligations under this Agreement; or (d) as required by Law. Callouts&nbsp;Evolved has no other obligations with respect to Content.</p>
+                <p>5. ELIGIBILITY. You affirm that You are of legal age and are otherwise fully able and competent to enter into the terms, conditions, obligations, affirmations, representations, and warranties set forth in this Agreement, and to abide by
+                    and comply with this Agreement. Although we cannot absolutely control whether minors gain unauthorized access to the Services, access may be terminated without warning if we believe that You are underage or otherwise ineligible.</p>
+                <p>6. CHARGES AND CANCELLATION. You agree that Callouts&nbsp;Evolved may charge to Your credit card or other payment mechanism selected by You and approved by Callouts&nbsp;Evolved ("Your Account") all amounts due and owing for the Services,
+                    including taxes and service fees, set up fees, subscription fees, or any other fee or charge associated with Your Account. Callouts&nbsp;Evolved may change prices at any time, including changing from a free service to a paid service
+                    and charging for Services that were previously offered free of charge; provided, however, that Callouts&nbsp;Evolved will provide you with prior notice and an opportunity to terminate Your Account if Callouts&nbsp;Evolved changes the
+                    price of a Service to which you are subscribed and will not charge you for a previously free Service unless you have been notified of the applicable fees and agreed to pay such fees. You agree that in the event Callouts&nbsp;Evolved
+                    is unable to collect the fees owed to Callouts&nbsp;Evolved for the Services through Your Account, Callouts&nbsp;Evolved may take any other steps it deems necessary to collect such fees from You and that You will be responsible for
+                    all costs and expenses incurred by Callouts&nbsp;Evolved in connection with such collection activity, including collection fees, court costs and attorneys' fees. You further agree that Callouts&nbsp;Evolved may collect interest at
+                    the lesser of 1.5% per month or the highest amount permitted by law on any amounts not paid when due. You may cancel your subscription at any time. If you cancel, you will not be billed for any additional terms of service, and your
+                    access to paid Services will be revoked immediately. If you cancel, you will not receive a refund for any service already paid for.</p>
+                <p>7. TERMINATION. The Callouts&nbsp;Evolved website contains information on how to terminate Your Account. If you have purchased a Service for a specific term, such termination will be effective immediately, regardless of the then-current
+                    term. Your payment process may provide that a Renewal Term will begin automatically unless either party provides notice of termination at least thirty (30) days prior to the commencement of the next Renewal Term. If You fail to comply
+                    with any provision of this Agreement, Callouts&nbsp;Evolved may terminate this Agreement immediately and retain any fees previously paid by You. Sections 1 and 3 through 19, inclusive, shall survive any termination of this Agreement.
+                    Upon any termination of this Agreement, You must cease any further use of the paid Services. If at any time You are not happy with the Services, Your sole remedy is to cease using the Services and follow this termination process.</p>
+                <p>8. PROPRIETARY RIGHTS. Callouts&nbsp;Evolved and/or its suppliers, as applicable, retain ownership of all proprietary rights in the Services and in all trade names, trademarks, service marks, logos, and domain names ("Callouts&nbsp;Evolved")
+                    associated or displayed with the Services. You may not frame or utilize framing techniques to enclose any Callouts&nbsp;Evolved Marks, or other proprietary information (including images, text, page layout, forms, or videos) of Callouts&nbsp;Evolved
+                    without express written consent. You may not use any meta tags or any other "hidden text" utilizing Callouts&nbsp;Evolved Marks without Callouts&nbsp;Evolved's express written consent.</p>
+                <p>9. COPYRIGHT. You may not post, modify, distribute, or reproduce in any way copyrighted material, trademarks, rights of publicity or other proprietary rights without obtaining the prior written consent of the owner of such proprietary
+                    rights. Callouts&nbsp;Evolved may deny access to the Services to any User who is alleged to infringe another party's copyright. Without limiting the foregoing, if You believe that Your copyright has been infringed, please contact Callouts&nbsp;Evolved
+                    at M4V3R1C8@gmail.com.</p>
+                <p>10. EXPORT RESTRICTIONS. You acknowledge that the Services, or portion thereof may be subject to the export control laws of the United States and other applicable country export control and trade sanctions laws (“Export Control and Sanctions
+                    Laws”). You may not access, use, export, re-export, divert, transfer or disclose any portion of the Services or any related technical information or materials, directly or indirectly, in violation of any applicable export control or
+                    trade sanctions law or regulation. You represent and warrant that <br />(i) You are not citizens of, or located within, a country or territory that is subject to U.S. trade sanctions or other significant trade restrictions (including
+                    without limitation Cuba, Iran, North Korea, Syria, and the Crimea) and that you will not access or use the Services, or export, re-export, divert, or transfer the Services, in or to such countries or territories; <br />(ii) You are
+                    not identified on any U.S. government restricted party lists (including without limitation the U.S. Treasury Department’s List of Specially Designated Nationals and Blocked Persons and Foreign Sanctions Evaders List, the U.S. Department
+                    of Commerce’s Denied Parties List, Entity List, and Unverified List, and the U.S. Department of State proliferation-related lists); and <br />(iii) that no Content created or submitted by You is subject to any restriction on disclosure,
+                    transfer, download, export or re-export under the Export Control Laws. You are solely responsible for complying with the Export Control Laws and monitoring them for any modifications.</p>
+                <p>11. INJUNCTIVE RELIEF. You acknowledge that any use of the Services contrary to this Agreement, or any transfer, sublicensing, copying or disclosure of technical information or materials related to the Services, may cause irreparable injury
+                    to Callouts&nbsp;Evolved, its Affiliates, suppliers and any other party authorized by Callouts&nbsp;Evolved to resell, distribute, or promote the Services ("Resellers"), and under such circumstances Callouts&nbsp;Evolved, its Affiliates,
+                    suppliers and Resellers will be entitled to equitable relief, without posting bond or other security, including, but not limited to, preliminary and permanent injunctive relief.</p>
+                <p>12. NO WARRANTIES. YOU UNDERSTAND AND AGREE THAT THE SERVICES ARE PROVIDED "AS IS" AND Callouts&nbsp;Evolved, ITS AFFILIATES, SUPPLIERS AND RESELLERS EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT
+                    LIMITATION ANY WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT. Callouts&nbsp;Evolved, ITS AFFILIATES, SUPPLIERS AND RESELLERS MAKE NO WARRANTY OR REPRESENTATION REGARDING THE RESULTS THAT MAY BE OBTAINED
+                    FROM THE USE OF THE SERVICES, REGARDING THE ACCURACY OR RELIABILITY OF ANY INFORMATION OBTAINED THROUGH THE SERVICES OR THAT THE SERVICES WILL MEET ANY USER'S REQUIREMENTS, OR BE UNINTERRUPTED, TIMELY, SECURE OR ERROR FREE. USE OF
+                    THE SERVICES IS AT YOUR SOLE RISK. ANY MATERIAL AND/OR DATA DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE SERVICES IS AT YOUR OWN DISCRETION AND RISK. YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOU RESULTING FROM THE
+                    USE OF THE SERVICES. THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE SERVICES REMAINS WITH YOU. Callouts&nbsp;Evolved DOES NOT ASSUME ANY RESPONSIBILITY FOR RETENTION OF ANY USER INFORMATION OR COMMUNICATIONS BETWEEN USERS.
+                    Callouts&nbsp;Evolved CANNOT GUARANTEE AND DOES NOT PROMISE ANY SPECIFIC RESULTS FROM USE OF THE SERVICES. USE IS AT YOUR OWN RISK.</p>
+                <p>13. INDEMNIFICATION. You agree to indemnify, defend and hold harmless Callouts&nbsp;Evolved, its affiliates, officers, directors, employees, consultants, agents, suppliers and Resellers from any and all third party claims, liability, damages
+                    and/or costs (including, but not limited to, attorneys' fees) arising from Your use of the Services, Your violation of this Agreement or the infringement or violation by You or any other user of Your account, of any intellectual property
+                    or other right of any person or entity or applicable law.</p>
+                <p>14. LIMITATION OF LIABILITY. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL Callouts&nbsp;Evolved OR ITS AFFILIATES, SUPPLIERS OR RESELLERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, EXEMPLARY OR CONSEQUENTIAL
+                    DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF INTERNET DEVICES, CALLUSES ON FINGERS OR OTHER DIGITS, LOSS OF VISION DUE TO POOR TIME MANAGEMENT, LOSS OF LIFE DUE TO ADICTION, OR ANY OTHER PECUNIARY LOSS OR
+                    DAMAGE) ARISING OUT OF THE USE OF OR INABILITY TO USE THE SERVICES OR THE PROVISION OF OR FAILURE TO PROVIDE TECHNICAL OR OTHER SUPPORT SERVICES, WHETHER ARISING IN TORT (INCLUDING NEGLIGENCE) CONTRACT OR ANY OTHER LEGAL THEORY, EVEN
+                    IF Callouts&nbsp;Evolved, ITS AFFILIATES, SUPPLIERS OR RESELLERS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN ANY CASE, Callouts&nbsp;Evolved'S, ITS AFFILIATES', SUPPLIERS' AND RESELLERS' MAXIMUM CUMULATIVE LIABILITY AND
+                    YOUR EXCLUSIVE REMEDY FOR ANY CLAIMS ARISING OUT OF OR RELATED TO THIS AGREEMENT WILL BE LIMITED TO THE AMOUNT ACTUALLY PAID BY YOU FOR THE SERVICES (IF ANY) IN THE TWELVE (12) MONTHS PRECEDING THE EVENT OR CIRCUMSTANCES GIVING RISE
+                    TO SUCH CLAIMS. Because some states and jurisdictions do not allow the exclusion or limitation of liability, the above limitation may not apply to You.</p>
+                <p>15. Agreement to Arbitrate; Waiver of Class Action. If You are located in the United States, You agree to resolve disputes only on an individual basis, through arbitration pursuant to the provisions of Exhibit A. The parties expressly
+                    waive any right to bring any action, lawsuit, or proceeding as a class or collective action, private attorney general action, or any other proceeding in which any party acts or proposes to act in a representative capacity.</p>
+                <p>16. PRIVACY POLICY. Use of the Services is also subject to <a href="https://firebase.google.com/support/privacy">Google Firebase Auth's Privacy Policy</a>. The Privacy Policy, and all policies noticed here are incorporated into this Agreement
+                    by this reference. Additionally, You understand and agree that Callouts&nbsp;Evolved may contact You via e-mail or otherwise with information relevant to Your use of the Services, regardless of whether You have opted out of receiving
+                    marketing communications or notices. This clause is intended to update users when substantial changes are made to the site that will directly impact Your experience, Your money, or Your options. Callouts&nbsp;Evolved as an entity does
+                    not store any user informaiton outside of what is required to log You into the site (email, password [password is stored by Google and Callouts&nbsp;Evolved does NOT have access to them]) as well as Your display name as required for
+                    site interaction.</p>
+                <p>17. COOKIES POLICY. At Callouts&nbsp;Evolved, we do not use cookies for anything other than displaying a single advertisement on the home page. This is managed by Google and you can find additional informaiton on <a href="https://policies.google.com/technologies/cookies?hl=en-US">Google's Privary and Terms Site</a></p>
+                <p>18. MISCELLANEOUS</p>
+                <p>18.1 Choice of Law and Forum. This Agreement shall be governed by and construed under the laws of the State of Florida, U.S.A., as applied to agreements entered into and to be performed in Florida by Florida residents. Except as provided
+                    in Exhibit A, the Parties consent to the exclusive jurisdiction and venue of the state courts located in and serving Lake County, Florida and the federal courts in the state of Florida.</p>
+                <p>18.2 Waiver and Severability. Failure by either Party to exercise any of its rights under, or to enforce any provision of, this Agreement will not be deemed a waiver or forfeiture of such rights or ability to enforce such provision. If
+                    any provision of this Agreement is held by a court of competent jurisdiction to be illegal, invalid or unenforceable, that provision will be amended to achieve as nearly as possible the same economic effect of the original provision
+                    and the remainder of this Agreement will remain in full force and effect.</p>
+                <p>18.3 General Provisions. This Agreement embodies the entire understanding and agreement between the Parties respecting the subject matter of this Agreement and supersedes any and all prior understandings and agreements between the Parties
+                    respecting such subject matter, except that if You have executed a separate written agreement or you have signed an order form referencing a separate agreement governing your use of the Services, then such agreement shall control to
+                    the extent that any provision of this Agreement conflicts with the terms of such agreement. Callouts&nbsp;Evolved may elect to change or supplement the terms of this Agreement from time to time at its sole discretion without notification
+                    and they will be binding on You. If You do not agree with the changes, You should discontinue using the Services. This version has been prepared in the English language and such version shall be controlling in all respects and any
+                    non-English version of this Agreement is solely for accommodation purposes.</p>
+                <p>19. REASONABLE USE AND RIGHT TO REVEIW. Callouts&nbsp;Evolved reserves the right to review any account with high usage to ensure that they are utilizing the Services provided for their intended purpose.</p>
+                <p>Exhibit A</p>
+                <p>Binding Arbitration</p>
+                <p>This Exhibit A to the Terms of Service (“TOS”) describes the further provisions which apply to the Binding Arbitration and Class Action Waiver.</p>
+                <p>A. <u>Disputes</u>. A dispute is any controversy between You and Callouts&nbsp;Evolved concerning the Services, any software related to the Services, the price of the Services, Your account, Callouts&nbsp;Evolved’s advertising, marketing,
+                    or communications, Your purchase transaction or billing, or any term of this Agreement, under any legal theory including contract, warranty, tort, statute, or regulation, except disputes relating to the enforcement or validity of Your
+                    or Callouts&nbsp;Evolved’s intellectual property rights. As part of the best efforts process to resolve disputes, and prior to initiating arbitration proceedings, each party agrees to provide notice of the dispute to the other party,
+                    including a description of the dispute, what efforts have been made to resolve it, and what the disputing party is requesting as resolution, to M4V3R1C8@gmail.com.</p>
+                <p>B. <u>Small Claims Court Available</u>. You may initiate an action in your local Small Claims Court if You meets the court’s requirements. However, if such a claim is transferred, removed or appealed to a different court, Callouts&nbsp;Evolved
+                    reserves the right to require arbitration.</p>
+                <p>C. <u>Arbitration Procedure</u>.Disputes not resolved pursuant to Section A or B shall be resolved through arbitration. The American Arbitration Association (“AAA”) will conduct any arbitration under its Commercial Arbitration Rules. For
+                    more information, see <a href="https://www.adr.org/" target="_blank">www.adr.org</a>. Arbitration hearings will take place in Your federal judicial district. A single arbitrator will be appointed. The arbitrator must: (a) follow all
+                    applicable substantive Law; (b) follow applicable statutes of limitations; (c) honor valid claims of privilege; (d) issue a written decision including the reasons for the award. The arbitrator may award damages, declaratory or injunctive
+                    relief, and costs (including reasonable attorneys’ fees). Any arbitration award may be enforced (such as through a judgment) in any court with jurisdiction. Under AAA Rules, the arbitrator rules on his or her own jurisdiction, including
+                    the arbitrability of any claim; however, a court has exclusive authority to enforce the prohibition on arbitration on a class-wide basis or in a representative capacity.</p>
+                <p>D. <u>Arbitration Fees</u>. If You are unable to afford the arbitration costs, Callouts&nbsp;Evolved will advance those costs to You, subject to the arbitrator’s determination if costs should be reimbursed to Callouts&nbsp;Evolved if Callouts&nbsp;Evolved
+                    prevails. For disputes involving more than $75,000, the AAA rules will govern payment of filing fees and the AAA’s and arbitrator’s fees and expenses.</p>
+                <p>E. <u>Conflict with AAA Rules</u>. This Agreement governs if there is a conflict with the AAA’s Commercial Arbitration Rules.</p>
+                <p>F. <u>Requirement to File Within One Year</u>. Notwithstanding any other statute of limitations, a claim or dispute under this Agreement must be filed in Small Claims Court or noticed for arbitration within one year of when it could first
+                    be filed, or such claim will be permanently barred.</p>
+                <p>G. <u>Severability</u>. If the class action waiver is found to be illegal or unenforceable as to all or some parts of a dispute, then those parts will not be arbitrated but will be resolved in court, with the balance resolved through arbitration.
+                    If any provision of this Exhibit A is found to be illegal or unenforceable, then that provision will be severed; however, the remaining provisions shall still apply and shall be interpreted to as nearly as possible achieve the original
+                    intent of this Exhibit, inclusive of the severed provision.</p>
+                <p>Exhibit B</p>
+                <p>Services Description</p>
+                <p>This Exhibit B to the Terms of Service (“TOS”) describes the Services that may be provided by Callouts&nbsp;Evolved, and sets forth further Service-specific terms and conditions that may apply to Callouts&nbsp;Evolved’s provision and Customer’s
+                    use of the Services.</p>
+                <p>A. <u>Terms</u>. For purposes of this Service Description, the following definitions will apply:<br />You: All forms indicating you and your account with Callouts&nbsp;Evolved. <br />Subscriptions may not be shared or used by anyone other
+                    than other than the individual who signed up and agreed to these Terms.<br /> “Session” means a Callouts&nbsp;Evolved session in which 2 or more people are able to interact with the Services provided. <br />“Callouts&nbsp;Evolved Documentation”
+                    means this Exhibit, the Callouts&nbsp;Evolved website (<a href="https://www.calloutsevolved.com/">https://www.calloutsevolved.com/</a>) and any additional description of the Services which may be incorporated into this Agreement.</p>
+                <p>B. <u>Callouts&nbsp;Evolved Meeting Services</u>. Callouts&nbsp;Evolved Meeting Services enable Hosts to schedule and start Meetings and to allow Participants to join Meetings for the purpose of collaborating using voice, video, and screensharing
+                    functionality. Every meeting will have one Host. Chat features allow for out-of-session one-on-one or group collaboration. Further features, functionality, and solutions are described at <a href="https://www.calloutsevolved.com/">https://www.calloutsevolved.com/</a>.</p>
+                <p>C. <u>Callouts</u>. The following sets forth the further terms and conditions that apply to the Callouts&nbsp;Evolved Callouts.</p>
+                <p>C.1 <u>Terms</u>. For purposes of the Callouts&nbsp;Evolved Callouts, the following definitions apply:</p>
+                <p>C.1.1 “Audio Callouts” means the voice options that were provided with either freeware or paid professionals and meant solely for performing verbal callouts through Callouts&nbsp;Evolved</p>
+                <p>C.1.2 “Shortcuts” means keyboard or numberpad shortcut options that were designed to improve the usability of Callouts&nbsp;Evolved by linking each key to a specific audio callout.</p>
+                <p>C.1.3 "Notification" refers to the text, pictographic, and color coordinated aspects of Callouts&nbsp;Evolved that were developed expressly to enable cross cultural communication.</p>
+                <p>C.2 <u>Conditions</u>. For the purposes of the Callouts&nbsp;Evolved Callouts, the following conditions apply:</p>
+                <p>C.2.1 You will not attempt to duplicate or reverse engineer any aspect of the Callouts presented above. Each part is essential to the foundation of Callouts&nbsp;Evolved and all rights are reserved.</p>
+                <p>D. <u>Audio Callouts</u>.The following sets forth the further terms and conditions that apply to the Callouts&nbsp;Evolved Audio Callouts.</p>
+                <p>D.1 <u>Terms</u>. For purposes of the Callouts&nbsp;Evolved Audio Callouts, the following definitions apply:</p>
+                <p>D.1.1 “Voice” means the male or female voice assignment set up within an account or by Callouts&nbsp;Evolved at Your direction or request.</p>
+                <p>D.1.2 “Audio” means the male, female, or mute sounds utilized to play each callout on Callouts&nbsp;Evolved.</p>
+                <p>D.2 <u>Conditions</u>. For the purposes of the Callouts&nbsp;Evolved Audio Callouts, the following conditions apply:</p>
+                <p>D.2.1 You will not attempt to utilize the same voice actors or freeware used in the production Audio Callouts. The calm conversational tone is essential to the foundation of Callouts&nbsp;Evolved and all rights are reserved.</p>
+                <p>E. <u>Shortcuts</u>. The following sets forth the further terms and conditions that apply to the Callouts&nbsp;Evolved Shortcuts.</p>
+                <p>E.1 <u>Terms</u>. For purposes of the Callouts&nbsp;Evolved Shortcuts, the following definitions apply:</p>
+                <p>E.1.1 “Keyboard Shortcuts” means the shortcut option that enables You to click different buttons on the website as they coorespond to the keys on Your keyboard.</p>
+                <p>E.1.2 “Numberpad Shortcuts” means the shortcut option that enables You to click different buttons on the website as they coorespond to the keys on Your numberpad.</p>
+                <p>E.2 <u>Conditions</u>. For the purposes of the Callouts&nbsp;Evolved Shortcuts, the following conditions apply:</p>
+                <p>E.2.1 You will not attempt to duplicate or reverse engineer any aspect of the Shortcuts presented above. The layout and accessibility is essential to the foundation of Callouts&nbsp;Evolved and all rights are reserved.</p>
+                <p>F. <u>Instructions</u>. The following sets forth the further terms and conditions that apply to the Callouts&nbsp;Evolved Instructions.</p>
+                <p>F.1 <u>Terms</u>. For purposes of the Callouts&nbsp;Evolved Instructions, the following definitions apply:</p>
+                <p>F.1.1 “Video” means the video guides provided either from the Fair Use clause or created for the sole purpose of explaining encounters to You on Callouts&nbsp;Evolved</p>
+                <p>F.1.2 "Image” means the graphics created for the sole purpose of communication or representation of in game elements to You on Callouts&nbsp;Evolved</p>
+                <p>F.1.3 "Short” means the instructions provided are as short as possible and meant to help You quickly determine how to use Callouts&nbsp;Evolved</p>
+                <p>F.1.4 "Verbose” means the instructions provided are as detailed as possible and meant to help You learn everything there is to know about an encounter</p>
+                <p>F.2 <u>Conditions</u>. For the purposes of the Callouts&nbsp;Evolved Instructions, the following conditions apply:</p>
+                <p>F.2.1 You will not attempt to copy or alter any aspect of the Instructions presented above. The layered composition for each encounter is essential to the foundation of Callouts&nbsp;Evolved and all rights are reserved.</p>
+                <p>G. <u>Encounter</u>. The following sets forth the further terms and conditions that apply to the Callouts&nbsp;Evolved Encounters.</p>
+                <p>G.1 <u>Terms</u>. For purposes of the Callouts&nbsp;Evolved Encounters, the following definitions apply:</p>
+                <p>G.1.1 “Encounters” means the user interface provided for each Game, Activity, and Encounter to help You communicate in game events.</p>
+                <p>G.2 <u>Conditions</u>. For the purposes of the Callouts&nbsp;Evolved Encounters, the following conditions apply:</p>
+                <p>G.2.1 You will not attempt to duplicate or reverse engineer any aspect of the Encounters presented above. The layout, theme, and method of communicaiton is essential to the foundation of Callouts&nbsp;Evolved and all rights are reserved.</p>
+                <p>H. <u>Equipment</u>. The following sets forth the further terms and conditions that apply to the Callouts&nbsp;Evolved Equipment.</p>
+                <p>H.1 <u>Terms</u>. For the purposed of the Callouts&nbsp;Evolved Equipment, the following definitions apply:</p>
+                <p>H.1.1 "Internet Devices" means any device used to access the Services provided by Callouts&nbsp;Evolved.</p>
+                <p>H.2 <u>Conditions</u>. For the purposes of the Callouts&nbsp;Evolved Equipment, the following conditions apply:</p>
+                <p id="finish">H.2.1 Callouts&nbsp;Evolved does not supply any Internet Devices or other equipment used in connection with Callouts&nbsp;Evolved and accordingly Callouts&nbsp;Evolved does not provide any guarantees as to the quality or operability of
+                    such Devices and equipment when used to access Callouts&nbsp;Evolved.</p>
+            </div>
+            <a id="tacrtt" href="#top" class="tacToggle"><i class="icon-close"></i></a>
+        </div>
+    </main>
+    <audio id="sadtrombone" src="audio/sad.mp3" type="audio/mpeg"></audio>
+</body>
+
+</html>

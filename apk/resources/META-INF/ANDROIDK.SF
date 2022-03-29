@@ -1,0 +1,344 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: X+cWFyD3gUX01OJyZftxyp/ySIg=
+SHA1-Digest-Manifest: S8I4MXtO/gUzN5R+UX/VF0Yc5I0=
+Created-By: 1.8.0_131 (Oracle Corporation)
+
+Name: assets/BombsLeft.wav
+SHA1-Digest: iU5Zy0ViLj0fvMv9wu/i/lw722M=
+
+Name: assets/TakeNumber5.wav
+SHA1-Digest: m+03addUDkZKVKmveNytpwA5D0s=
+
+Name: assets/4.wav
+SHA1-Digest: 7KQ66tmfebjs4nPV4UjQOrL6ba4=
+
+Name: assets/CoverLeftTower.wav
+SHA1-Digest: BsFdjBhn7/m1jisea1O/uNWP4Oo=
+
+Name: res/anim/fadein.xml
+SHA1-Digest: Q7XCqAr5pIXK4Ic0ZuHp7jVmS+M=
+
+Name: assets/CoverMiddleDetonatePlate4.wav
+SHA1-Digest: IjtBhggbevPACEHBk0rz64qC/nY=
+
+Name: assets/HaveRelicGetOffPlates.wav
+SHA1-Digest: 7hk0OIPu6GUpS3DhquaCv2vRJ20=
+
+Name: assets/Juggle2Cannons.wav
+SHA1-Digest: 8p8pv5SMq2k2sU5wgFuG8s3bVTg=
+
+Name: assets/Runner.wav
+SHA1-Digest: YFgp0DGwyJaBHJ10uQ33BHbKLq4=
+
+Name: assets/TheWizardIsDead.wav
+SHA1-Digest: mdj4Um/O9bIN39rWXNkuktYWU44=
+
+Name: assets/VoidRight.wav
+SHA1-Digest: wUHzWhtMi93eBi8xj3eNPk6rkSI=
+
+Name: assets/CoverMiddle.wav
+SHA1-Digest: sgYn46aGO+VBH4EJFdLEbp4241g=
+
+Name: assets/2HasGaze.wav
+SHA1-Digest: ZIqys1skjdRu2xr9fmvlieAkNr4=
+
+Name: res/anim/slide_exit_reverse.xml
+SHA1-Digest: 7STvRf9xvnzW/mhtPQrsvfFqEk4=
+
+Name: assets/First.wav
+SHA1-Digest: FEH/G3yfIgzj+1gb4n6NfaMvdok=
+
+Name: assets/KillLeftOgre.wav
+SHA1-Digest: Ob/zFh+L6F8XGTuB1UWzpr1vgWk=
+
+Name: assets/2.wav
+SHA1-Digest: 5fAPXrLDjGD5xi7SQxbSdHmlm5s=
+
+Name: assets/I_Will_Kill_Meksis.wav
+SHA1-Digest: HIo+pPKICTdZ9ukF84F9KuUY7HQ=
+
+Name: assets/BRB.wav
+SHA1-Digest: OF1fit1A/dIB4gAejB8704qsu+Q=
+
+Name: res/anim/slide_v_exit.xml
+SHA1-Digest: dOzTqtLsDr0+VrMpfOe4Dc0p3Fk=
+
+Name: assets/SolarMiddle.wav
+SHA1-Digest: YA+yFsfZAoOyGjTepd11BXzFc8k=
+
+Name: assets/BackBomb.wav
+SHA1-Digest: jTK93fCmkAB/34IC82Yei95DepY=
+
+Name: assets/2isOn.wav
+SHA1-Digest: Ft9p1NOUoAJ9LwhvPc0Dbi7P/OA=
+
+Name: assets/SoloVenusOnRight.wav
+SHA1-Digest: QvwwmCH5BTmtPUIrv9ozrFesiJ8=
+
+Name: assets/ImReady.wav
+SHA1-Digest: gJtLrcQzxM3YEcyZlihHsv99SD4=
+
+Name: assets/TheShriekerIsDead.wav
+SHA1-Digest: /00mBxI5ZrwjOZKOPBW/eqjOqiI=
+
+Name: assets/Introduction.wav
+SHA1-Digest: 8Viqy7Yhvez5Y8+zQhbR43UGnCo=
+
+Name: resources.arsc
+SHA1-Digest: 5mveQtkVG5wWIUtTmU+y1kAuchk=
+
+Name: assets/OgreIsDead.wav
+SHA1-Digest: gUYOeQUgpFrcdH5zY7dzpwms92c=
+
+Name: assets/Relic.wav
+SHA1-Digest: BFLHTrLebTvKGQVs3aP/a7FHztY=
+
+Name: assets/CoverLeftSide.wav
+SHA1-Digest: riT3sHWGhuDtI7yanOTxZV/Fa+8=
+
+Name: res/anim/hold.xml
+SHA1-Digest: +Chb3vg3wVLquPUhS8378m+4umg=
+
+Name: res/anim/slide_enter_reverse.xml
+SHA1-Digest: p3wuAOESyCI+nXrXn4vD813dP8M=
+
+Name: assets/CoverRightHallway.wav
+SHA1-Digest: 15wsO9+6n75BmIdNLgamBpZU3l8=
+
+Name: AndroidManifest.xml
+SHA1-Digest: 56Gyqu4KCDiuCM8V3vXpvH231iI=
+
+Name: assets/DownCrota.wav
+SHA1-Digest: NhecVQGbNGI1AFnZUVOX2ikqLQc=
+
+Name: assets/6HasGaze.wav
+SHA1-Digest: zoZU85Iehg4y3o+mZrUBBJO9r7E=
+
+Name: assets/Gaze.wav
+SHA1-Digest: i+G0AzkvnvGHOC/VyRIHem9mStE=
+
+Name: assets/RightBombChallenge.wav
+SHA1-Digest: MdWp3uaub+I4SPFDCXzYPCrvdqM=
+
+Name: assets/RunVoltageLeft.wav
+SHA1-Digest: Dl3ZZtpJkfSPoOlbmug6Px33QvM=
+
+Name: assets/3HasGaze.wav
+SHA1-Digest: eo4b+A3t7+F0CzD1ij7RNvm38G0=
+
+Name: assets/TakeNumber1.wav
+SHA1-Digest: iKMGT1BU429BIXIX+XAHu2Vmu64=
+
+Name: assets/StartMidCoverRight.wav
+SHA1-Digest: ts0wgGtG343lARcJpflYDbHJuGE=
+
+Name: assets/LastBomb.wav
+SHA1-Digest: 2QiEwbk3Il4sCR8tJEIySTNDfEk=
+
+Name: assets/SoloRightHallway.wav
+SHA1-Digest: fjcNEwhHC//vl0BzMRwA+hl1Z3c=
+
+Name: assets/ArcLeft.wav
+SHA1-Digest: E0l+PAxNTIHCZr5WSs53C/ytnCE=
+
+Name: assets/GG.wav
+SHA1-Digest: bg4+Snxv7O0fPlK9+69tPAa+cKM=
+
+Name: assets/MeksisDead.wav
+SHA1-Digest: Uz+SgVvRFWZ5F7lhb8wvVezx6NU=
+
+Name: assets/SoloMarsOnLeft.wav
+SHA1-Digest: 8N0hmXgPISWP1is03mxbyXRr4c4=
+
+Name: assets/Fourth.wav
+SHA1-Digest: 3zSPS1veeAEG0f6+/9ZkKwKxvfA=
+
+Name: res/anim/zoom_exit.xml
+SHA1-Digest: Pr9rKYxLrT0ThcQ3+N3MJpp/zaM=
+
+Name: assets/ArcRight.wav
+SHA1-Digest: cFs3ZTPvCunv6SdJM7uQiyKVCZU=
+
+Name: assets/1.wav
+SHA1-Digest: o0w1Zj0DQHUleQCq0W6e7A0JUDY=
+
+Name: assets/NeedCleanse.wav
+SHA1-Digest: KydJsVEyCe0JLDwj0VNxoT8vaa0=
+
+Name: res/anim/zoom_exit_reverse.xml
+SHA1-Digest: BO/x5lNuU3kUnZuKsHklVkHnbjE=
+
+Name: assets/CoverLeftHallway.wav
+SHA1-Digest: 4DdopdKI5WsY08i66hDWvLkpcuI=
+
+Name: assets/SoloLeftHallway.wav
+SHA1-Digest: 4Hi+9zdUDbypi/SmhWbCYpn/Bd8=
+
+Name: assets/Third.wav
+SHA1-Digest: 4/GiOlz6RIHYLt2T6Fb7frPHYkg=
+
+Name: assets/6.wav
+SHA1-Digest: Q7OKgVnH1/IRUc74eCGoXDKfVc4=
+
+Name: res/anim/slide_enter.xml
+SHA1-Digest: d5KU2ZODq8CtWyiiH33x+waOyII=
+
+Name: assets/5HasGaze.wav
+SHA1-Digest: TXXV3AwHF/7W594zq1bgOzZjtY8=
+
+Name: res/anim/fadeout.xml
+SHA1-Digest: qKZk6xwZr6sHvHySHbPEsRubRM8=
+
+Name: assets/TakeNumber3.wav
+SHA1-Digest: wJOnKmRU5CTVFsfLw93qvSEncOg=
+
+Name: assets/EmpoweredMiddle.wav
+SHA1-Digest: Do0UtmxeZFof/Y+l5IQcDrmVH6I=
+
+Name: assets/Last.wav
+SHA1-Digest: zDskIkPIzezxZeTubJ3uK8TuUu8=
+
+Name: assets/EmpoweredRight.wav
+SHA1-Digest: qDm9rNLyWNd8/9uK6sPFaHaoZUQ=
+
+Name: assets/ImTorn.wav
+SHA1-Digest: R1TBvbcwnEyOA/s6CGmkTszzfmc=
+
+Name: assets/EmpoweredLeft.wav
+SHA1-Digest: vLMmlbuCU3JU9ZC+yUZEFZhuCx0=
+
+Name: assets/1isOn.wav
+SHA1-Digest: smedxm6Vnpo9ULnPgK4xrHUUVy0=
+
+Name: assets/4HasGaze.wav
+SHA1-Digest: EZZb6dRtRXvEbTNDxEZdLd9XkwQ=
+
+Name: assets/CannonLeft.wav
+SHA1-Digest: H5ldzBFDGekplfScC82o8/DE6GE=
+
+Name: res/anim/slide_v_exit_reverse.xml
+SHA1-Digest: vpIn9MPGJuvmj8PgOnpfaLmmS8o=
+
+Name: assets/SorryMyMistake.wav
+SHA1-Digest: Pm3NX8zYFTV9oOQMiH/A0u5Fps4=
+
+Name: assets/TakeNumber4.wav
+SHA1-Digest: 7lC0eGtXxRo5QCURqxG742W+Jqg=
+
+Name: assets/CannonMiddle.wav
+SHA1-Digest: jju0dUpItJYNdhoNGDfUTzmUu88=
+
+Name: res/anim/slide_exit.xml
+SHA1-Digest: hKmrhN7PJ0Gz70zPaxyEX7K1sEA=
+
+Name: assets/VoidLeft.wav
+SHA1-Digest: na6uL0R4hBbL16ffDdxBMJPr8NA=
+
+Name: assets/5.wav
+SHA1-Digest: ZJu3J0X1fANwoqonsIT3DGctG+s=
+
+Name: assets/RunVoltageRight.wav
+SHA1-Digest: +6kB15pZncUbPsDKdkUXToLD0TI=
+
+Name: assets/BombsMiddle.wav
+SHA1-Digest: 8dlLBNWbXNDsxaOglVdRJ7ruwQg=
+
+Name: assets/I_Have_a_Friend_That_Will_Join_Us.wav
+SHA1-Digest: Fx7zQoX8+lB3BKvr2oHJrXe65RU=
+
+Name: assets/ShootTheBoss.wav
+SHA1-Digest: lTPP5qkuu79plqh0veSDi8amGI0=
+
+Name: res/anim/zoom_enter_reverse.xml
+SHA1-Digest: eWVbswuVWzmp8CYFp+GZPGf12G4=
+
+Name: assets/3.wav
+SHA1-Digest: DRcRuHPO4LwQ5lWhq2Iy56j2ukE=
+
+Name: assets/CoverRightTower.wav
+SHA1-Digest: 0TnLo1bsJjs8KDD9gGKiT/24yMQ=
+
+Name: assets/BombsRight.wav
+SHA1-Digest: zqzea6G2fE6wl8nOCttqFc8dK6k=
+
+Name: res/drawable/ya.png
+SHA1-Digest: cP9PQix3rHsv4w3Ea2dL2/eeCGA=
+
+Name: assets/Second.wav
+SHA1-Digest: xHZP6Gqrh1znlLcMu7yMZ5LUTRk=
+
+Name: assets/TakeNumber6.wav
+SHA1-Digest: a+HI4hnN6lSsb0I9c23z4JnAX8I=
+
+Name: assets/ArcMiddle.wav
+SHA1-Digest: OGbmelNeHqtAG2LQqvAjh60hwEw=
+
+Name: res/anim/slide_v_enter_reverse.xml
+SHA1-Digest: KGjl9372Wi4UEPKkQA55aw1JUww=
+
+Name: assets/TowerKnightsAreDead.wav
+SHA1-Digest: zZAHH2PyLce/i9zYTCAbt0whvl8=
+
+Name: assets/1_if_Teleported_4_if_not_Teleported.wav
+SHA1-Digest: 1MP40BphdlEZWVaQo561eOiQu3A=
+
+Name: assets/CannonRight.wav
+SHA1-Digest: 9GFMv/FvoDbOwzvy1V7/CdemRqQ=
+
+Name: assets/CoverRightSide.wav
+SHA1-Digest: mqA1kyCsHIWkhGdruf7ZKl8ybjc=
+
+Name: assets/StartMidCoverLeft.wav
+SHA1-Digest: arGpqN0KuFDGf0ZHTTGxn7EoWhk=
+
+Name: assets/Fifth.wav
+SHA1-Digest: MKJSC79eIm1F+885w0y4St6oowo=
+
+Name: assets/15SecondCountdown.wav
+SHA1-Digest: WlgLi3maqo1PI2EamjRKv40m29U=
+
+Name: assets/Knight4isDead.wav
+SHA1-Digest: UPRsHY6Yz5RXIubCDZfagCTGlWA=
+
+Name: assets/FrontBomb.wav
+SHA1-Digest: Ebjxms6Q8Ros2oKG3K8FNHSDuW8=
+
+Name: res/anim/zoom_enter.xml
+SHA1-Digest: TZI2W2mJTb97rOyqBcFiVb+N/Ps=
+
+Name: assets/SolarRight.wav
+SHA1-Digest: 7LHRcN8x9E3wH/HzxP6tqvoajv0=
+
+Name: res/anim/slide_v_enter.xml
+SHA1-Digest: vEUtBdE2WeYV9yHohjq10lY1qRc=
+
+Name: assets/KillRightOgre.wav
+SHA1-Digest: An1ONLcEDc1l+xS4IWMdhMKKT9w=
+
+Name: assets/SolarLeft.wav
+SHA1-Digest: Dkcmc3QMVHE/mlVYaXuBAVPyktk=
+
+Name: assets/10SecondCountdown.wav
+SHA1-Digest: FFYQ30NXMfLhOIZATlzzO6kT1HU=
+
+Name: assets/LeaveGroup.wav
+SHA1-Digest: Qf9MNBxNec2GtVPJF57QDLiDr+4=
+
+Name: assets/19SecondCountdown.wav
+SHA1-Digest: tKInn4eu+CKyQMVKiRYUe4/bHxQ=
+
+Name: assets/DoubleThrowBombs.wav
+SHA1-Digest: amtuzetQsMlX9hEowDZ3QD72/iQ=
+
+Name: assets/LeftBombChallenge.wav
+SHA1-Digest: WImvNM/PTCsGqm52mXzBHbrAumY=
+
+Name: assets/VoidMiddle.wav
+SHA1-Digest: vTi93QdZZbHlUX4YMCBUTxO58Mg=
+
+Name: classes.dex
+SHA1-Digest: 5M/i/j9XpzjzYXVNSmDnOxr6QXg=
+
+Name: assets/TakeNumber2.wav
+SHA1-Digest: Vowwx37X0+HeTVNZbyQRfd1v2aA=
+
