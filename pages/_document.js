@@ -31,7 +31,6 @@ class MyDocument extends Document {
           <link rel='apple-touch-icon' href='/apple-touch-icon.png'></link>
 
           <script async src='https://www.googletagmanager.com/gtag/js?id=G-81CHW652K4'></script>
-
           <script
             dangerouslySetInnerHTML={{
               __html: `

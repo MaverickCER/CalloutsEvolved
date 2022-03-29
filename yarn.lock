@@ -3051,10 +3051,10 @@
     "@types/lodash" "^4.14.104"
     "lodash" "^4.17.5"
 
-"firebase-functions@^3.18.1", "firebase-functions@>=2.0.0":
-  "integrity" "sha512-sPYZc9U/o0MjrpL3yz0pmoviJ1SkDoMV54X1rT/O2g0JTbV9eoQZsZuRoIUeaY3gmWFcMnN5TbJsPQUVh+omtw=="
-  "resolved" "https://registry.npmjs.org/firebase-functions/-/firebase-functions-3.18.1.tgz"
-  "version" "3.18.1"
+"firebase-functions@^3.19.0", "firebase-functions@>=2.0.0":
+  "integrity" "sha512-FG4jurD8ymQ3hMVRgYU7dPhNoMRONxYFF1NrHrKed6YWnEvlYFDNXwGHqXQq66wyCuhCTbhMa6Dwqyng4z5tZw=="
+  "resolved" "https://registry.npmjs.org/firebase-functions/-/firebase-functions-3.19.0.tgz"
+  "version" "3.19.0"
   dependencies:
     "@types/cors" "^2.8.5"
     "@types/express" "4.17.3"
