@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
+import { eventLog } from '../firebase/firebaseClient';
 import Layout from '../components/Layout';
 import { AuthProvider } from '../contexts/AuthContext';
-import { analytics } from '../firebase/firebaseClient';
 import { useRouter } from 'next/router';
 import '../styles/globals.css';
 
@@ -11,20 +11,15 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     hotjar.initialize(2873078, 6);
-    const logEvent = (url) => {
-      analytics().setCurrentScreen(url);
-      analytics().logEvent('screen_view', {
+    const routerEvent = (url) => {
+      eventLog('screen_view', {
         screen_name: url,
       });
     };
-
-    routers.events.on('routeChangeComplete', logEvent);
-    //For First Page
-    logEvent(window.location.pathname);
-
-    //Remvove Event Listener after un-mount
+    routerEvent(window.location.pathname);
+    routers.events.on('routeChangeComplete', routerEvent);
     return () => {
-      routers.events.off('routeChangeComplete', logEvent);
+      routers.events.off('routeChangeComplete', routerEvent);
     };
   }, []);
 
