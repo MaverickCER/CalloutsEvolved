@@ -10,7 +10,7 @@ import {
   updateProfile,
   linkWithCredential,
   EmailAuthProvider,
-} from "firebase/auth";
+} from 'firebase/auth';
 import {
   child,
   get,
@@ -22,11 +22,11 @@ import {
   onDisconnect,
   set,
   serverTimestamp,
-} from "firebase/database";
+} from 'firebase/database';
 
-import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
-import { auth, database, firestore } from "../firebase/firebaseClient";
+import { useRouter } from 'next/router';
+import React, { useContext, useEffect, useState } from 'react';
+import { auth, database, firestore } from '../firebase/firebaseClient';
 
 const AuthContext = React.createContext();
 
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (email, password, username, photoURL) => {
     if (currentUser && currentUser.isAnonymous) {
-      console.log("turning anonymous user into permanent");
+      console.log('turning anonymous user into permanent');
       const credential = EmailAuthProvider.credential(email, password);
 
       try {
@@ -55,28 +55,27 @@ export const AuthProvider = ({ children }) => {
             displayName: username,
             photoURL: photoURL,
           }).then(() => {
-            console.log("updated firebase profile");
+            console.log('updated firebase profile');
+            setLoader(loader + 1);
           });
 
           let userObject = {
-            [`userBios/` + user.user.uid]: "...",
+            [`userBios/` + user.user.uid]: '...',
             [`userData/` + user.user.uid]: {
-              color: "cbb",
+              color: 'cbb',
               displayName: username,
               userId: user.user.uid,
             },
             [`userStatus/` + user.user.uid]: {
-              status: "online",
+              status: 'online',
               timestamp: serverTimestamp(),
             },
           };
 
           update(ref(database), userObject).then(() => {
-            console.log(
-              "finished updating database for new user from anonymous"
-            );
+            console.log('finished updating database for new user from anonymous');
           });
-          console.log("anonymous user turned permanent");
+          console.log('anonymous user turned permanent');
           return await user;
         }
       } catch (error) {
@@ -85,37 +84,34 @@ export const AuthProvider = ({ children }) => {
       }
     } else {
       try {
-        const user = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
+        const user = await createUserWithEmailAndPassword(auth, email, password);
 
         if (user) {
           updateProfile(user.user, {
             displayName: username,
             photoURL: photoURL,
           }).then(() => {
-            console.log("updated firebase profile");
+            console.log('updated firebase profile');
+            setLoader(loader + 1);
           });
 
           let userObject = {
-            [`userBios/` + user.user.uid]: "...",
+            [`userBios/` + user.user.uid]: '...',
             [`userData/` + user.user.uid]: {
-              color: "cbb",
+              color: 'cbb',
               displayName: username,
               userId: user.user.uid,
             },
             [`userStatus/` + user.user.uid]: {
-              status: "online",
+              status: 'online',
               timestamp: serverTimestamp(),
             },
           };
 
           update(ref(database), userObject).then(() => {
-            console.log("finished updating database for new user");
+            console.log('finished updating database for new user');
           });
-          console.log("new user created");
+          console.log('new user created');
           return await user;
         }
       } catch (error) {
@@ -136,10 +132,10 @@ export const AuthProvider = ({ children }) => {
       // check if user is in whitelist
 
       try {
-        console.log("starting to remove from whitelist");
+        console.log('starting to remove from whitelist');
 
         update(ref(database), {
-          [`userStatus/${currentUser?.uid}/status`]: "offline",
+          [`userStatus/${currentUser?.uid}/status`]: 'offline',
         });
         update(ref(database), {
           [`userStatus/${currentUser?.uid}/timestamp`]: serverTimestamp(),
@@ -147,15 +143,13 @@ export const AuthProvider = ({ children }) => {
 
         //decreasing usercount
 
-        const sessionListData = await get(
-          child(ref(database), `userSessions/${playerId}`)
-        );
+        const sessionListData = await get(child(ref(database), `userSessions/${playerId}`));
 
         const sessionList = sessionListData.val();
-        console.log("sessionList");
+        console.log('sessionList');
 
         try {
-          console.log("removing user from all database");
+          console.log('removing user from all database');
 
           update(ref(database), {
             [`userSessions/${playerId}`]: null,
@@ -171,9 +165,9 @@ export const AuthProvider = ({ children }) => {
             [`userData/${playerId}`]: null,
           });
 
-          console.log("deleted in remove database");
+          console.log('deleted in remove database');
         } catch (error) {
-          console.log("removing user from database error");
+          console.log('removing user from database error');
           console.log(error.message);
         } finally {
           return (
@@ -186,14 +180,14 @@ export const AuthProvider = ({ children }) => {
               const decreaseUsersCount = async (id) => {
                 const db = database;
 
-                const postRef = ref(db, "/sessionData/" + id);
+                const postRef = ref(db, '/sessionData/' + id);
 
                 const res = await (id &&
                   runTransaction(postRef, (post) => {
                     if (post) {
                       post.usersCount--;
                     }
-                    console.log("post");
+                    console.log('post');
                     return post;
                   }));
                 if (res) {
@@ -206,7 +200,7 @@ export const AuthProvider = ({ children }) => {
           );
         }
       } catch (error) {
-        console.log("remove player error error");
+        console.log('remove player error error');
         console.log(error.message);
       } finally {
       }
@@ -237,16 +231,14 @@ export const AuthProvider = ({ children }) => {
       };
       if (res) {
         return update(ref(database), userObject).then(() => {
-          console.log("finished updating database for new user from anonymous");
+          console.log('finished updating database for new user from anonymous');
         });
       }
     } catch (error) {
       return error;
+    } finally {
+      setLoader(loader + 1);
     }
-
-    // console.log("dvb update/.,");
-
-    // setLoader(setLoader + 1);
   };
 
   const updateUserEmail = (email) => {
@@ -260,7 +252,7 @@ export const AuthProvider = ({ children }) => {
   const anonymousLogin = async (id) => {
     const user = await signInAnonymously(auth);
     const randomName = () => {
-      let name = "";
+      let name = '';
       for (let i = 0; i < 6; i++) {
         name += String.fromCharCode(97 + Math.floor(Math.random() * 26));
       }
@@ -271,25 +263,25 @@ export const AuthProvider = ({ children }) => {
     if (user) {
       updateProfile(user.user, {
         displayName: chosenName,
-        photoURL: "...",
+        photoURL: '...',
       }).then(() => {
-        console.log("updated firebase profile");
-
+        console.log('updated firebase profile');
+        setLoader(loader + 1);
         let userObject = {
-          [`userBios/` + user.user.uid]: "...",
+          [`userBios/` + user.user.uid]: '...',
           [`userData/` + user.user.uid]: {
-            color: "cbb",
+            color: 'cbb',
             displayName: chosenName,
             userId: user.user.uid,
           },
           [`userStatus/` + user.user.uid]: {
-            status: "online",
+            status: 'online',
             timestamp: serverTimestamp(),
           },
         };
 
         update(ref(database), userObject).then(() => {
-          console.log("finished updating database for anonymous user");
+          console.log('finished updating database for anonymous user');
           router.push(`/session/${id}`);
         });
       });
@@ -300,7 +292,7 @@ export const AuthProvider = ({ children }) => {
     if (currentUser) {
       console.log(currentUser);
     } else {
-      console.log("No user logged in");
+      console.log('No user logged in');
     }
   }, [currentUser]);
 
@@ -322,11 +314,11 @@ export const AuthProvider = ({ children }) => {
     const offlineRef = ref(database, `userStatus/${userId}/status`);
     const lastOnlineRef = ref(database, `userStatus/${userId}/timestamp`);
 
-    const connectedRef = ref(database, ".info/connected");
+    const connectedRef = ref(database, '.info/connected');
     onValue(connectedRef, (snap) => {
       if (snap.val() === true) {
         // We're connected (or reconnected)! Do anything here that should happen only if online (or on reconnect)
-        update(ref(database), { [`userStatus/${userId}/status`]: "onilne" });
+        update(ref(database), { [`userStatus/${userId}/status`]: 'onilne' });
         update(ref(database), {
           [`userStatus/${userId}/timestamp`]: serverTimestamp(),
         });
@@ -338,7 +330,7 @@ export const AuthProvider = ({ children }) => {
         // this value could contain info about the device or a timestamp too
 
         // When user disconnect, update the last time user was seen online
-        onDisconnect(offlineRef).set("offline");
+        onDisconnect(offlineRef).set('offline');
         onDisconnect(lastOnlineRef).set(serverTimestamp());
       }
     });
@@ -346,14 +338,14 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      if (!url.startsWith("/")) {
+      if (!url.startsWith('/')) {
         console.log(`App is changing to ${url} `);
         logout();
       }
     };
 
     router.beforePopState(({ as }) => {
-      if (!as.startsWith("/")) {
+      if (!as.startsWith('/')) {
         logout();
       }
 
@@ -361,7 +353,7 @@ export const AuthProvider = ({ children }) => {
     });
 
     if (process.browser) {
-      window.addEventListener("beforeunload", (e) => {
+      window.addEventListener('beforeunload', (e) => {
         logout();
       });
     }
@@ -383,9 +375,5 @@ export const AuthProvider = ({ children }) => {
     anonymousLogin,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
 };

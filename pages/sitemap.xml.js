@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import { getAllPosts } from '../lib/api';
 const Sitemap = () => {
   return null;
 };
@@ -6,9 +7,9 @@ const Sitemap = () => {
 export const getServerSideProps = async ({ res }) => {
   const BASE_URL = 'http://www.calloutsevolved.com';
 
-  const staticPaths = fs
+  const standardPaths = fs
     .readdirSync('pages')
-    .filter((staticPage) => {
+    .filter((standardPage) => {
       return ![
         'api',
         'blog',
@@ -18,15 +19,18 @@ export const getServerSideProps = async ({ res }) => {
         '_document.js',
         '404.js',
         'sitemap.xml.js',
-      ].includes(staticPage);
+        'updateProfile.js',
+      ].includes(standardPage);
     })
-    .map((staticPagePath) => {
-      return `${BASE_URL}/${staticPagePath}`;
+    .map((standardPagePath) => {
+      return `${BASE_URL}/${standardPagePath.slice(0, -3)}`;
     });
 
-  const dynamicPaths = [`${BASE_URL}/product/1`, `${BASE_URL}/product/2`];
+  const blogPaths = getAllPosts(['slug']).map((blogPagePath) => {
+    return `${BASE_URL}/blog/${blogPagePath.slug}`;
+  });
 
-  const allPaths = [...staticPaths, ...dynamicPaths];
+  const allPaths = [...standardPaths, ...blogPaths];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
