@@ -1,5 +1,4 @@
 import { initializeApp } from 'firebase/app';
-import { getAnalytics, logEvent } from 'firebase/analytics';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
@@ -17,10 +16,6 @@ const clientCredentials = {
 };
 
 export const app = initializeApp(clientCredentials);
-export const analytics = getAnalytics();
-export const eventLog = (event) => {
-  logEvent(analytics, event);
-};
 export const auth = getAuth(app);
 export const firestore = getFirestore(app);
 export const storage = getStorage(app);

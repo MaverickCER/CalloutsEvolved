@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
-import { eventLog } from '../firebase/firebaseClient';
+import { getAnalytics, logEvent, isSupported } from 'firebase/analytics';
 import Layout from '../components/Layout';
 import { AuthProvider } from '../contexts/AuthContext';
 import { useRouter } from 'next/router';
@@ -12,9 +12,12 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     hotjar.initialize(2873078, 6);
     const routerEvent = (url) => {
-      eventLog('screen_view', {
-        screen_name: url,
-      });
+      if (isSupported()) {
+        const analytics = getAnalytics();
+        logEvent(analytics, 'screen_view', {
+          screen_name: url,
+        });
+      }
     };
     routerEvent(window.location.pathname);
     routers.events.on('routeChangeComplete', routerEvent);
