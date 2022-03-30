@@ -1,22 +1,22 @@
-const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
+const withPWA = require('next-pwa');
+const runtimeCaching = require('next-pwa/cache');
 
 const headers = async () => {
   return [
     {
-      source: "/(.*)",
+      source: '/(.*)',
       headers: [
         {
-          key: "X-Content-Type-Options",
-          value: "nosniff",
+          key: 'X-Content-Type-Options',
+          value: 'nosniff',
         },
         {
-          key: "X-Frame-Options",
-          value: "SAMEORIGIN",
+          key: 'X-Frame-Options',
+          value: 'SAMEORIGIN',
         },
         {
-          key: "X-XSS-Protection",
-          value: "1; mode=block",
+          key: 'X-XSS-Protection',
+          value: '1; mode=block',
         },
       ],
     },
@@ -26,18 +26,19 @@ const headers = async () => {
 module.exports = withPWA({
   images: {
     domains: [
-      "console.firebase.google.com",
-      "firebasestorage.googleapis.com",
-      "miro.medium.com",
-      "files.stripe.com",
+      'console.firebase.google.com',
+      'firebasestorage.googleapis.com',
+      'miro.medium.com',
+      'files.stripe.com',
     ],
   },
   reactStrictMode: true,
+  productionBrowserSourceMaps: true,
   env: {
-    FIREBASE_PROJECT_ID: "calloutsevolved",
+    FIREBASE_PROJECT_ID: 'calloutsevolved',
   },
   pwa: {
-    dest: "public",
+    dest: 'public',
     runtimeCaching,
     buildExcludes: [/middleware-manifest.json$/],
   },
