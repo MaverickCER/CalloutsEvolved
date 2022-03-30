@@ -6,7 +6,7 @@
         "headers": [
           {
             "key": "Content-Security-Policy",
-            "value": "script-src 'self' http://*.hotjar.com https://*.hotjar.com https://www.googletagmanager.com https://apis.google.com"
+            "value": "script-src 'self' https://apis.google.com http://*.hotjar.com https://*.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com https://*.firebaseio.com https://cdn.firebase.com https://js.stripe.com"
           }
         ]
       }
