@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     hotjar.initialize(2873078, 6);
-    const routerEvent = (event) => {
+    const routerEvent = (url) => {
       if (isSupported()) {
         const analytics = getAnalytics();
         logEvent(analytics, 'screen_view', {
