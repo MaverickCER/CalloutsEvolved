@@ -10,7 +10,7 @@ const getCsp = (inlineScriptSource) => {
   csp.push(
     `connect-src 'self' https://firebaseinstallations.googleapis.com https://www.google-analytics.com https://firebase.googleapis.com/v1alpha/projects/-/apps/1:580878402383:web:e352bf5ae81444a58f3b3a/webConfig vitals.vercel-insights.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com wss://*.firebaseio.com   https://firestore.googleapis.com`
   );
-  csp.push(`default-src 'self'`);
+  csp.push(`default-src 'self' data:`);
   csp.push(`font-src 'self' data:`);
   csp.push(`form-action 'self'`);
   csp.push(`frame-src *`);
