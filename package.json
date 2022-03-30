@@ -11,28 +11,29 @@
     "start": "next start",
     "predeploy": "npm run clean && next build",
     "serve": "npm run build && cross-env NODE_ENV=production firebase emulators:start --only functions,hosting",
-    "deploy": "cross-env NODE_ENV=production firebase deploy --only functions,hosting"
+    "deploy": "cross-env NODE_ENV=production firebase deploy --only functions,hosting",
+    "unused": "next-unused",
+    "unimported": "npx unimported"
   },
   "dependencies": {
     "@stripe/stripe-js": "^1.23.0",
-    "cross-env": "^7.0.2",
-    "firebase": "^9.6.6",
-    "firebase-admin": "^10.0.2",
+    "firebase": "^9.6.10",
     "firebase-functions": "^3.19.0",
     "next": "12.0.10",
     "next-pwa": "^5.4.6",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-firebase-hooks": "^5.0.2",
-    "react-hotjar": "^5.0.0",
-    "swr": "^1.2.2"
+    "react-hotjar": "^5.0.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "eslint": "^8.11.0",
     "eslint-config-next": "12.1.0",
     "firebase-functions-test": "^0.2.2",
+    "next-unused": "^0.0.6",
     "rimraf": "^3.0.2",
-    "shelljs": "^0.8.5"
+    "shelljs": "^0.8.5",
+    "unimported": "^1.19.1"
   },
   "engines": {
     "node": "16"

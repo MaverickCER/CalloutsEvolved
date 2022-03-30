@@ -17,7 +17,7 @@ const getCsp = (inlineScriptSource) => {
   csp.push(`img-src * data: blob:`);
   csp.push(`media-src *`);
   csp.push(
-    `script-src 'self' 'unsafe-inline' 'unsafe-eval' http://*.hotjar.com https://*.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com https://*.firebaseio.com https://cdn.firebase.com https://js.stripe.com 'sha256-${hash.digest(
+    `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com http://*.hotjar.com https://*.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com https://*.firebaseio.com https://cdn.firebase.com https://js.stripe.com 'sha256-${hash.digest(
       'base64'
     )}'`
   );
