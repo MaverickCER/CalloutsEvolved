@@ -20,5 +20,3 @@ export const auth = getAuth(app);
 export const firestore = getFirestore(app);
 export const storage = getStorage(app);
 export const database = getDatabase(app);
-
-// Firebase Performance should be added at a later date, currently results in errors.

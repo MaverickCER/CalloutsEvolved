@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     hotjar.initialize(2873078, 6);
+
     const routerEvent = (url) => {
       if (isSupported()) {
         const analytics = getAnalytics();
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
       }
     };
     routerEvent(window.location.pathname);
+
     routers.events.on('routeChangeComplete', routerEvent);
     return () => {
       routers.events.off('routeChangeComplete', routerEvent);
