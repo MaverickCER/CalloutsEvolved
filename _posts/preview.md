@@ -1,13 +1,13 @@
 ---
 title: 'Preview'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
-coverImage: '/assets/blog/hello-world-cover.png'
+coverImage: '/blog/hello-world-cover.png'
 date: '2020-03-16T05:35:07.322Z'
 author:
   name: Tim Winston
-  picture: '/assets/blog/authors/tim.png'
+  picture: '/blog/authors/tim.png'
 ogImage:
-  url: '/assets/blog/hello-world-cover.png'
+  url: '/blog/hello-world-cover.png'
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
