@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  const routers = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     hotjar.initialize(2873078, 6);
@@ -22,9 +22,9 @@ function MyApp({ Component, pageProps }) {
     };
     routerEvent(window.location.pathname);
 
-    routers.events.on('routeChangeComplete', routerEvent);
+    router.events.on('routeChangeComplete', routerEvent);
     return () => {
-      routers.events.off('routeChangeComplete', routerEvent);
+      router.events.off('routeChangeComplete', routerEvent);
     };
   }, []);
 
