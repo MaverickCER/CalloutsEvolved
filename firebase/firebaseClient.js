@@ -17,7 +17,7 @@ const clientCredentials = {
 };
 
 export const app = initializeApp(clientCredentials);
-export const analytics = getAnalytics(app);
+export const analytics = getAnalytics();
 export const eventLog = (event) => {
   logEvent(analytics, event);
 };
