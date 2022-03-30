@@ -1,5 +1,11 @@
 {
   "hosting": {
+    "headers": [
+      {
+        "source": "**",
+        "headers": [{ "key": "Content-Security-Policy", "value": "script-src 'self'" }]
+      }
+    ],
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
