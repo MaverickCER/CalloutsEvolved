@@ -151,7 +151,7 @@
     },
     "d": {
       "color": null,
-      "text": "Start in",
+      "text": "Timer: Start in",
       "time": "5",
       "type": "timer",
       "dura": "5",
@@ -162,7 +162,7 @@
       "effects": null,
       "images": null,
       "temps": null,
-      "texts": "Detonate at 6, return at 0",
+      "texts": "Shift Timer: Detonate at 6, return at 0",
       "times": "10",
       "types": null
     },
@@ -202,7 +202,7 @@
     },
     "g": {
       "color": null,
-      "text": "Load LW Symbols",
+      "text": "Template: LW Symbols",
       "time": null,
       "type": "template",
       "dura": null,
@@ -213,7 +213,7 @@
       "effects": null,
       "images": null,
       "temps": "LW 5 Riven",
-      "texts": "Load LW 5 Riven",
+      "texts": "Shift Template: LW 5 Riven",
       "times": null,
       "types": null
     },
