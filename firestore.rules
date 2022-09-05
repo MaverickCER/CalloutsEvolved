@@ -7,7 +7,7 @@ service cloud.firestore {
     match /users/{uid} {
       allow read, write: if request.auth.uid == uid;
     }
-    match /blogs/{blog} {
+    match /blog/{blog} {
       allow read: if true;
       allow write: if false;
     }

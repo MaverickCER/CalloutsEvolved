@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import isUserPremium from "./isUserPremium";
+import { useEffect, useState } from 'react';
+
+import isUserPremium from './isUserPremium';
 
 const usePremiumStatus = (user) => {
   const [premiumStatus, setPremiumStatus] = useState(false);

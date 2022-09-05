@@ -1,0 +1,118 @@
+.labelText {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 100%;
+  padding: 0;
+  transition: all 0.5s linear;
+}
+
+.labelTextError {
+  display: block;
+  font-size: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  max-width: 100%;
+  transform: translate(0, -1rem);
+}
+
+.labelTextTip {
+  display: block;
+  font-size: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 100%;
+  padding: 0;
+  position: absolute;
+  transform: translate(0.55rem, -2.75rem);
+}
+
+.labelTextTipActive {
+  display: block;
+  font-size: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  max-width: 100%;
+  padding: 0;
+  position: absolute;
+  transform: translate(0, -1rem);
+}
+
+.selectWrapper {
+  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  min-width: 260px;
+}
+
+.selectWrapper .select {
+  background-color: transparent;
+  border: none !important;
+  color: inherit;
+  flex: 1;
+  font-size: 1rem;
+  height: 2rem;
+  outline: none !important;
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+.selectWrapper:focus-within {
+  outline-offset: -2px;
+  outline: 2px solid blue;
+}
+
+.selectWrapper:focus-within ~ .labelTextTip {
+  font-size: 0.75rem;
+  transform: translate(0, -1rem);
+}
+
+.selectWrapperNoFocus {
+  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  min-width: 260px;
+}
+
+.selectWrapperNoFocus .select {
+  background-color: transparent;
+  border: none !important;
+  flex: 1;
+  font-size: 1rem;
+  height: 2rem;
+  outline: none !important;
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+.selectWrapperNoFocus:focus-within ~ .labelTextTip {
+  font-size: 0.75rem;
+  transform: translate(0, -1rem);
+}
+
+.selectWrapper:active,
+.selectWrapperNoFocus:active {
+  outline: none;
+}
+
+.select:-webkit-autofill {
+  -webkit-background-clip: text;
+  animation-name: onAutoFillStart;
+  background-clip: text !important;
+  color: white !important;
+}
+
+.select:-webkit-autofill.inverted {
+  -webkit-background-clip: text;
+  animation-name: onAutoFillStart;
+  background-clip: text !important;
+  color: white !important;
+  filter: invert(1);
+}
+
+@keyframes onAutoFillStart {
+}

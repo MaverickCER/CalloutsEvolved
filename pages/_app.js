@@ -1,10 +1,20 @@
-import { useEffect } from 'react';
-import { hotjar } from 'react-hotjar';
-import { getAnalytics, logEvent, isSupported } from 'firebase/analytics';
-import Layout from '../components/Layout';
-import { AuthProvider } from '../contexts/AuthContext';
-import { useRouter } from 'next/router';
 import '../styles/globals.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { getAnalytics, isSupported, logEvent } from 'firebase/analytics';
+
+import { AuthProvider } from '../context/AuthContext';
+import Layout from '../components/Layout';
+import { SettingsProvider } from '../context/SettingsContext';
+import { hotjar } from 'react-hotjar';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
+// import PushNotificationsProvider from '../context/PushContext';
+
+
+
+
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -12,28 +22,34 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     hotjar.initialize(2873078, 6);
 
-    const routerEvent = (url) => {
+    const routerEvent = () => {
       if (isSupported()) {
         const analytics = getAnalytics();
         logEvent(analytics, 'screen_view', {
-          screen_name: url,
+          screen_name: router.pathname,
         });
       }
     };
-    routerEvent(window.location.pathname);
+    routerEvent();
 
     router.events.on('routeChangeComplete', routerEvent);
     return () => {
       router.events.off('routeChangeComplete', routerEvent);
     };
-  }, []);
+  }, [router.events]);
 
   return (
-    <AuthProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </AuthProvider>
+    <>
+    {/* <PushNotificationsProvider> */}
+      <AuthProvider>
+        <SettingsProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SettingsProvider>
+      </AuthProvider>
+    {/* </PushNotificationsProvider> */}
+    </>
   );
 }
 

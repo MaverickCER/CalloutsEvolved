@@ -1,112 +1,33 @@
-import { ref, get, child } from "firebase/database";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
-import { database } from "../firebase/firebaseClient";
-import { useAuth } from "../contexts/AuthContext";
+import React, { useState } from 'react';
+
+import CrossPlatformIcon from '../assets/CrossPlatformIcon';
+import Head from 'next/head';
+import Link from 'next/link';
+import NintendoIcon from '../assets/NintendoIcon';
+import OtherPlatformIcon from '../assets/OtherPlatformIcon';
+import PlayStationIcon from '../assets/PlayStationIcon';
+import SteamIcon from '../assets/SteamIcon';
+import XboxIcon from '../assets/XboxIcon';
+
+const preload = {
+  0: {
+    activity: "Activity: King's Fall",
+    description: 'Description: 10+ Clears | KWTD | Challenge | No mics needed!',
+    game: 'Game: Destiny 2',
+    isDeaf: false,
+    isOpen: false,
+    isPublic: true,
+    lang: 'lang',
+    platform: 'xbox',
+    sessionPhotoURL: 'https://static-cdn.jtvnw.net/ttv-boxart/497057-144x192.jpg',
+    timestamp: 1656859510732,
+    usersCount: 2,
+    usersMax: 6,
+  },
+};
 
 const Lfg = (props) => {
-  const [limitNum, setLimitNum] = useState(5);
-  let itemNum = 0;
-
-  const [dataObj, setDataObj] = useState(props?.data);
-  const [data, setData] = useState(props?.data);
-  const { currentUser } = useAuth();
-
-  // 3 dropdown menu to filter platform, game, activity, one text box to search description,
-
-  useEffect(() => {
-    console.log({ data: data });
-  }, [data]);
-
-  useEffect(() => {
-    if (limitNum !== 5) {
-      loadMore();
-    }
-  }, [limitNum]);
-
-  const loadMore = async () => {
-    const dbRef = ref(database);
-    get(child(dbRef, "sessionData"))
-      .then((snapShot) => {
-        if (snapShot.exists()) {
-          console.log(snapShot.val());
-
-          const obj = snapShot.val();
-          setDataObj(obj);
-          console.log(obj);
-        } else {
-          console.log("no Data in DB ");
-        }
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
-  };
-
-  const searchBoxRef = useRef();
-
-  // search box
-
-  const searchBoxSearch = (e) => {
-    e.preventDefault();
-    setLimitNum(5);
-    if (searchBoxRef.current.value === "") {
-      alert("not found");
-      setData(dataObj);
-    } else {
-      const filtered = Object.entries(dataObj).filter(([key, value]) => {
-        if (searchBoxRef.current.value !== "") {
-          return value.description.includes(searchBoxRef.current.value);
-        }
-      });
-      const newData = Object.fromEntries(filtered);
-      setData(newData);
-    }
-  };
-
-  // Filter by game, platform, activity
-  const [selectedQuery, setSelectedQuery] = useState({
-    game: "",
-    platform: "",
-    activity: "",
-  });
-
-  useEffect(() => {
-    console.log(selectedQuery);
-    setLimitNum(5);
-
-    if (
-      selectedQuery.game !== "" ||
-      selectedQuery.platform !== "" ||
-      selectedQuery.activity !== ""
-    ) {
-      const filtered = Object.entries(dataObj).filter(([key, value]) => {
-        if (selectedQuery.game !== "" && selectedQuery.game !== value.game) {
-          return false;
-        }
-        if (
-          selectedQuery.platform !== "" &&
-          selectedQuery.platform !== value.platform
-        ) {
-          return false;
-        }
-        if (
-          selectedQuery.activity !== "" &&
-          selectedQuery.activity !== value.activity
-        ) {
-          return false;
-        }
-
-        return true;
-      });
-      const newData = Object.fromEntries(filtered);
-      setData(newData);
-    } else {
-      setData(dataObj);
-    }
-  }, [selectedQuery]);
+  const [sessions, setSessions] = useState(props?.data);
 
   return (
     <div>
@@ -114,164 +35,109 @@ const Lfg = (props) => {
         <title>Callouts Evolved | LFG</title>
         <meta
           name="description"
-          content="Join groups focused on efficiently completing any video game activity."
+          content="Join guilds focused on efficiently completing any video game activity."
         />
       </Head>
-      <h1>LFG</h1>
-      {dataObj ? (
+      <div style={{ textAlign: 'center' }}>
+        <h1>Looking For Group</h1>
+        <p>
+          <Link href={'/sessions'} passHref>
+            <a>
+              <u>Sessions</u>{' '}
+            </a>
+          </Link>
+          are a core aspect of Callouts Evolved and provide a shared Augmentative and Alternative
+          Communication system that allows gamers to communicate in real time without relying on
+          mics!
+        </p>
+        <p>
+          This page will automatically show all active sessions that are not full so that users
+          don't have to manually indicate that they are looking for more players.
+        </p>
+        <h2>How does this help us reach our dream?</h2>
+        <p>
+          A accessibility focused lfg platform is paramount to our success. The reality is that even
+          though the platform will only require 3 clicks from the average gamer to unlock all of our
+          accessibility features, many gamers will not be willing to do so.
+        </p>
+        <p>
+          Until the site gains more notoriety, we need a system that will automatically fill
+          sessions based on what the user needs. In addition, other lfg platforms fail to ensure
+          that users are capable of completing the selected activity. To help mitigate this issue,
+          subscribers will be able to require a certain number of completions before the user can
+          even join the session!
+        </p>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '280px auto' }}>
         <div>
-          <div>
-            <form onSubmit={searchBoxSearch}>
-              <input type={"text"} ref={searchBoxRef} />
-              <button type="submit">search</button>
-            </form>
-            <h4>filter</h4>
-            <span>
-              <p>game:</p>
-              <ul>
-                {[
-                  ...new Set(
-                    Object.entries(dataObj).map(([key, data]) => data.game)
-                  ),
-                ].map((game) => (
-                  <li
-                    key={game}
-                    onClick={() => {
-                      setSelectedQuery({ ...selectedQuery, game: game });
-                    }}
-                  >
-                    {game}
-                  </li>
-                ))}
-              </ul>
-            </span>
-            <span>
-              <p>platform:</p>
-              <ul>
-                {[
-                  ...new Set(
-                    Object.entries(dataObj).map(([key, data]) => data.platform)
-                  ),
-                ].map((platform) => (
-                  <li
-                    key={platform}
-                    onClick={() => {
-                      setSelectedQuery({
-                        ...selectedQuery,
-                        platform: platform,
-                      });
-                    }}
-                  >
-                    {platform}
-                  </li>
-                ))}
-              </ul>
-            </span>
-            <span>
-              <p>activity:</p>
-              <ul>
-                {[
-                  ...new Set(
-                    Object.entries(dataObj).map(([key, data]) => data.activity)
-                  ),
-                ].map((activity) => (
-                  <li
-                    key={activity}
-                    onClick={() => {
-                      setSelectedQuery({
-                        ...selectedQuery,
-                        activity: activity,
-                      });
-                    }}
-                  >
-                    {activity}
-                  </li>
-                ))}
-              </ul>
-              <button
-                onClick={() =>
-                  setSelectedQuery({
-                    game: "",
-                    platform: "",
-                    activity: "",
-                  })
-                }
-              >
-                reset filter
-              </button>
-            </span>
-          </div>
-
-          <div>
-            <h4>lfgs</h4>
-
-            {Object.entries(data).map(([key, data]) => {
-              itemNum++;
-
-              if (itemNum <= limitNum) {
-                return (
-                  <Link href={`join/${key}`} key={key}>
-                    <a>
-                      <div
-                        style={{
-                          background: "rgba(0,0,0,0.1",
-                          marginTop: "5px",
-                        }}
-                      >
-                        {data.img && (
-                          <span>
-                            <Image
-                              src={data.img}
-                              alt={data.game}
-                              height={50}
-                              width={50}
-                            />
-                          </span>
-                        )}
-                        <div>
-                          {itemNum}
-                          <p>{`${key}:${data.description}`}</p>
-                        </div>
-                        <span>
-                          <div>
-                            <small>{`${data.platform}/${data.game}/${data.activity}/${data.usersCount}/${data.usersMax}`}</small>
-                          </div>
-                        </span>
-                      </div>
-                    </a>
-                  </Link>
-                );
-              }
-            })}
-
-            <button
-              onClick={(e) => {
-                setLimitNum(limitNum + 5);
-              }}
-            >
-              load more
-            </button>
-          </div>
+          <h4>Filter</h4>
+          <p>
+            Form to filter guilds based on name, description, or laungauge, and sort based on
+            repuation, or users
+          </p>
+          <p>
+            Form to filter groups based on game, platform, activity, language, and description.
+            Groups are automatically sorted so that the sessions with the most recent activity show
+            up first.
+          </p>
         </div>
-      ) : (
-        <h2>No Active session</h2>
-      )}
+
+        <div>
+          <h4>Groups</h4>
+          {Object.entries(sessions).map(([key, data]) => {
+            return (
+              <Link href={`/sessions`} key={key} passHref>
+                <a className={`sessionLink${sessions === { preload } ? ' sr-only' : ''}`}>
+                  {data.sessionPhotoURL && (
+                    <span className="guildImageWrapper">
+                      <img src={data.sessionPhotoURL} alt={data.game} height={192} width={144} />
+                    </span>
+                  )}
+                  <span>
+                    <small>{`(${data.lang.toUpperCase()}) ${data.activity}`}</small>
+                    <p>{`${data.description}`}</p>
+                    <small>
+                      {`${data.game}`}&nbsp;
+                      <span>
+                        {data.platform === 'all' ? (
+                          <CrossPlatformIcon width="1em" height="1em" />
+                        ) : data.platform === 'nintendo' ? (
+                          <NintendoIcon width="1em" height="1em" n />
+                        ) : data.platform === 'playstation' ? (
+                          <PlayStationIcon width="1em" height="1em" />
+                        ) : data.platform === 'steam' ? (
+                          <SteamIcon width="1em" height="1em" />
+                        ) : data.platform === 'xbox' ? (
+                          <XboxIcon width="1em" height="1em" />
+                        ) : (
+                          <OtherPlatformIcon width="1em" height="1em" />
+                        )}
+                      </span>
+                      &nbsp;
+                      {`${data.usersCount}/${data.usersMax}`}
+                    </small>
+                  </span>
+                </a>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
 
 export const getServerSideProps = async () => {
-  const dbRef = ref(database);
   try {
-    const res = await get(child(dbRef, "sessionData"));
-    const sessionData = await res.val();
     return {
-      props: { data: sessionData },
+      props: {
+        data: { ...preload },
+      },
     };
   } catch (error) {
     console.error(error.message);
     return {
-      props: { data: "error" },
+      props: { data: 'error' },
     };
   }
 };

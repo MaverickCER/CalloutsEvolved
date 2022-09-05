@@ -1,7 +1,8 @@
-import { addDoc, collection, onSnapshot } from "firebase/firestore";
-import { firestore } from "../firebase/firebaseClient";
-import { useAuth } from "../contexts/AuthContext";
-import getStripe from "./initializeStripe";
+import { addDoc, collection, onSnapshot } from 'firebase/firestore';
+
+import { firestore } from '../firebase/firebaseClient';
+import getStripe from './initializeStripe';
+import { useAuth } from '../context/AuthContext';
 
 export const createCheckoutSession = async (setIsLoading) => {
   const { currentUser } = useAuth();
@@ -11,24 +12,19 @@ export const createCheckoutSession = async (setIsLoading) => {
 
   if (!currentUser) {
     payDoc = Date.now();
-    payMode = "payment";
-    payPrice = "price_1KLfLvJUSFsRcf8hgKsEd6s0";
+    payMode = 'payment';
+    payPrice = 'price_1KLfLvJUSFsRcf8hgKsEd6s0';
   } else if (currentUser.isAnonymous) {
     payDoc = currentUser.uid;
-    payMode = "payment";
-    payPrice = "price_1KLfLvJUSFsRcf8hgKsEd6s0";
+    payMode = 'payment';
+    payPrice = 'price_1KLfLvJUSFsRcf8hgKsEd6s0';
   } else {
     payDoc = currentUser.uid;
-    payMode = "subscription";
-    payPrice = "price_1KLfFdJUSFsRcf8h6ynw426E";
+    payMode = 'subscription';
+    payPrice = 'price_1KLfFdJUSFsRcf8h6ynw426E';
   }
 
-  const collectionRef = collection(
-    firestore,
-    "stripe/data/customers",
-    payDoc,
-    "checkout_sessions"
-  );
+  const collectionRef = collection(firestore, 'stripe/data/customers', payDoc, 'checkout_sessions');
 
   try {
     const docRef = await addDoc(collectionRef, {
