@@ -14,6 +14,7 @@ const Grid = (props) => {
 
   React.useEffect(() => {
     const getBTNData = () => {
+      console.error(auth.currentUser.uid, props.socialSess)
       if (auth.currentUser) {
         if (
           props.socialSess.toLowerCase() === "solo" ||
@@ -29,6 +30,7 @@ const Grid = (props) => {
               setGridData(arr0);
             });
         } else {
+          console.error(auth.currentUser, props.socialSess)
           return firestore
             .collection(`sessions/${props.socialSess}/btnData`)
             .onSnapshot((docSnapshot) => {

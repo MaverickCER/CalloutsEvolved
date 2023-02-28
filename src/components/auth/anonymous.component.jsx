@@ -45,22 +45,33 @@ const Anonymous = () => {
   };
 
   const getLocalStream = () => {
-    navigator.permissions
-      .query({ name: "microphone" })
-      .then(function (permissionStatus) {
-        if (permissionStatus.state === "granted") {
+    if (window?.chrome) {
+      navigator.permissions
+        .query({ name: "microphone" })
+        .then(function (permissionStatus) {
+          if (permissionStatus.state === "granted") {
+            anonymousLogin();
+          } else {
+            navigator.mediaDevices
+              .getUserMedia({ audio: true })
+              .then(() => {
+                anonymousLogin();
+              })
+              .catch((err) => {
+                anonymousLogin();
+              });
+          }
+        });
+    } else {
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then(() => {
           anonymousLogin();
-        } else {
-          navigator.mediaDevices
-            .getUserMedia({ audio: true })
-            .then(() => {
-              anonymousLogin();
-            })
-            .catch((err) => {
-              anonymousLogin();
-            });
-        }
-      });
+        })
+        .catch((err) => {
+          anonymousLogin();
+        });
+    }
   };
 
   const { values, errors, handleChange, handleError, handleSubmit } = useForm(

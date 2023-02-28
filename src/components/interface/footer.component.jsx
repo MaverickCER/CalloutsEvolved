@@ -9,7 +9,7 @@ const Footer = () => {
     <footer>
       <div>
         <div>
-          <Link to="/">2021 © Copyright MaverickCER. All Rights Reserved</Link>
+          <Link to="/">2023 © Copyright MaverickCER. All Rights Reserved</Link>
         </div>
         <nav>
           <ul>

@@ -306,6 +306,7 @@ const Interface = (props) => {
       .then((res) => {
         if (res.empty) return joinSolo();
         if (res.data() === undefined) return joinSolo();
+        console.error(res.data());
         let sp = res.data().sesData.arr;
         if (sp === undefined) return joinSolo();
         if (sp.length >= res.data().sesData.spc) return joinSolo();
@@ -336,7 +337,7 @@ const Interface = (props) => {
           firestore.doc(`sessions/${params.id}/chaData/chat`).set(
             {
               cid: "[System Message]",
-              msg: `${auth.currentUser.displayName} Joined Sesssion ID ${params.id}`,
+              msg: `${auth.currentUser.displayName} Joined Session ID ${params.id}`,
               ucc: "accent",
               uid: "0"
             },
@@ -354,6 +355,7 @@ const Interface = (props) => {
               { merge: true }
             );
         } else {
+          props.setSocialSess(params.id);
           sp.push(`${auth.currentUser.uid}`);
           let unique = sp.filter((v, i, a) => a.indexOf(v) === i);
           firestore.doc(`sessions/${params.id}`).set(
@@ -367,7 +369,7 @@ const Interface = (props) => {
           firestore.doc(`sessions/${params.id}/chaData/chat`).set(
             {
               cid: "[System Message]",
-              msg: `${auth.currentUser.displayName} Joined Sesssion ID ${params.id}`,
+              msg: `${auth.currentUser.displayName} Joined Session ID ${params.id}`,
               ucc: "accent",
               uid: "0"
             },
