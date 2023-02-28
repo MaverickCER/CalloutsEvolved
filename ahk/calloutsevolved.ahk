@@ -520,10 +520,10 @@ if !(PageInst := ChromeInst.GetPage())
 else
 {
 	; --- Navigate to the desired URL ---
-	PageInst.Call("Page.navigate", {"url": "https://callouts-evolved.web.app"})
+	PageInst.Call("Page.navigate", {"url": "https://www.calloutsevolved.com"})
 	PageInst.WaitForLoad()
   global location = PageInst.Evaluate("window.location.href").value
-  while (location != "https://callouts-evolved.web.app/session") {
+  while (location != "https://www.calloutsevolved.com/session") {
     Sleep, 500
     location := PageInst.Evaluate("window.location.href").value
   }

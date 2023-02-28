@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "callouts-evolved",
+    "site": "testingcallouts2",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -13,6 +13,6 @@
     "indexes": "firestore.indexes.json"
   },
   "projects": {
-    "default": "callouts-evolved"
+    "default": "testingcallouts2"
   }
 }
