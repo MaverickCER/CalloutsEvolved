@@ -264,39 +264,6 @@ const Callouts = (props) => {
     return unsubscribe;
   }, [props.socialSess]);
 
-  const exportTemplate = () => {
-    const fileName = "my-file";
-    const json = JSON.stringify(btnData, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    const href = URL.createObjectURL(blob);
-  
-    // create "a" HTLM element with href to file
-    const link = document.createElement("a");
-    link.href = href;
-    link.download = fileName + ".json";
-    document.body.appendChild(link);
-    link.click();
-  
-    // clean up "a" element & remove ObjectURL
-    document.body.removeChild(link);
-    URL.revokeObjectURL(href);
-  }
-
-  const importTemplate = (event) => {
-    event.preventDefault();
-    let reader = new FileReader();
-    reader.onload = (e) => {
-      let str = e.target.result;
-      try {
-        let json = JSON.parse(str);
-        setBTNData([...json]);
-      } catch (error) {
-        console.error(error, str)
-      }
-    };
-    reader.readAsText(event.target.files[0]);
-  }
-
   const saveTemplate = async () => {
     if (template !== "Select") {
       if (
@@ -360,6 +327,53 @@ const Callouts = (props) => {
     }
   };
 
+  const exportTemplate = async () => {
+    if (template !== "Select") {
+      var arr = [];
+      var templateBTNData = await firestore
+        .collection(`customers/${auth.currentUser.uid}/saveData/saveData${template}/btnData`)
+        .get();
+      templateBTNData.forEach((btn) => {
+        arr.push(btn.data());
+      });
+
+      let link = document.createElement('a');
+      link.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(arr)));
+      link.setAttribute('download', `calloutsevolved-template-${template}.json`);
+      document.body.appendChild(link); // required for firefox
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+
+  const importTemplate = (event) => {
+    if (template !== "Select") {
+      event.preventDefault();
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        let arr;
+        try {
+          arr = JSON.parse(e.target.result);
+        } catch (error) {
+          console.error(error, str)
+        }
+        if (Array.isArray(arr) && arr.length === 17) {
+          setBTNData([arr]);
+          for (let i = 1; i < arr.length; i++) {
+            var alpha = (i + 10).toString(36).toUpperCase();
+            firestore
+              .doc(`customers/${auth.currentUser.uid}/btnData/btnData${alpha}`)
+              .set(arr[i], { merge: true });
+            firestore
+              .doc(`sessions/${props.socialSess}/btnData/btnData${alpha}`)
+              .set(arr[i], { merge: true });
+          }
+        }
+      };
+      reader.readAsText(event.target.files[0]);
+    }
+  }
+
   const saveTutorial = async () => {
     if (tutorial !== "Select") {
       if (
@@ -414,6 +428,55 @@ const Callouts = (props) => {
       setTutorial("Select");
     }
   };
+
+  const exportTutorial = async () => {
+    var arr = [];
+    if (tutorial !== "Select") {
+      var tutorialBTNData = await firestore
+        .collection(`tutorials/${tutorial}/btnData`)
+        .get();
+      tutorialBTNData.forEach((btn) => {
+        arr.push(btn.data());
+      });
+    } else {
+      arr = btnData
+    }
+
+    let link = document.createElement('a');
+    link.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(arr)));
+    link.setAttribute('download', `calloutsevolved-tutorial-${tutorial}.json`);
+    document.body.appendChild(link); // required for firefox
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  const importTutorial = (event) => {
+    if (tutorial !== "Select") {
+      event.preventDefault();
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        let arr;
+        try {
+          arr = JSON.parse(e.target.result);
+        } catch (error) {
+          console.error(error, str)
+        }
+        if (Array.isArray(arr) && arr.length === 17) {
+          setBTNData([arr]);
+          for (let i = 1; i < arr.length; i++) {
+            var alpha = (i + 10).toString(36).toUpperCase();
+            firestore
+              .doc(`tutorials/${tutorial}/btnData/btnData${alpha}`)
+              .set(arr[i], { merge: true });
+            firestore
+              .doc(`sessions/${props.socialSess}/btnData/btnData${alpha}`)
+              .set(arr[i], { merge: true });
+          }
+        }
+      };
+      reader.readAsText(event.target.files[0]);
+    }
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -623,14 +686,14 @@ const Callouts = (props) => {
         </Button>
         {auth.currentUser.uid === "WX0BLAgBQCWYgFp57CktQNxdPrR2" && (
           <>
+            <Button variant="accent" onClick={exportTemplate}>
+              Export
+            </Button>
             <Button variant="accent" style={{width: '100%', height: '100%', padding: 0}}>
               <label style={{width: '100%', height: '100%', alignItems: 'center', paddingTop: '5px', cursor: 'pointer'}}>
                 <input type="file" style={{display: 'none'}} accept="application/json" onChange={(e) => importTemplate(e)} />
                 Import
               </label>
-            </Button>
-            <Button variant="accent" onClick={exportTemplate}>
-              Export
             </Button>
           </>
         )}
@@ -685,6 +748,15 @@ const Callouts = (props) => {
             </Button>
             <Button variant="accent" onClick={() => loadTutorial()}>
               Load
+            </Button>
+            <Button variant="accent" onClick={exportTutorial}>
+              Export
+            </Button>
+            <Button variant="accent" style={{width: '100%', height: '100%', padding: 0}}>
+              <label style={{width: '100%', height: '100%', alignItems: 'center', paddingTop: '5px', cursor: 'pointer'}}>
+                <input type="file" style={{display: 'none'}} accept="application/json" onChange={(e) => importTutorial(e)} />
+                Import
+              </label>
             </Button>
           </div>
         ) : (
