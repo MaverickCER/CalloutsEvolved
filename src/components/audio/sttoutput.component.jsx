@@ -4,6 +4,7 @@ import { getSocialSess } from "../../redux/social/social.selectors";
 import { auth, firestore } from "../../utils/firebase.util";
 import Friend from "../social/friend.component";
 import Block from "../social/block.component";
+import Remove from "../social/remove.component";
 import STTInput from "./sttinput.component";
 
 const STTOutput = (props) => {
@@ -101,30 +102,7 @@ const STTOutput = (props) => {
       )}
       {array.map((doc) =>
         doc.uid ===
-        auth.currentUser.uid ? null : doc?.cid
-            .toLowerCase()
-            .includes("anonymous") ? (
-          <div
-            key={doc.key}
-            className={`borderLeft-${doc.ucc}`}
-            style={{
-              textAlign: "left",
-              paddingLeft: "3px",
-              paddingBottom: 0,
-              marginBottom: "1rem"
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr"
-              }}
-            >
-              <b style={{ margin: "0" }}>{doc.cid}:</b>
-              <p style={{ margin: "0" }}>{doc.msg}</p>
-            </div>
-          </div>
-        ) : (
+        auth.currentUser.uid ? null : (
           <details
             key={doc.key}
             className={`borderLeft-${doc.ucc}`}
@@ -152,12 +130,18 @@ const STTOutput = (props) => {
                 marginTop: ".5rem"
               }}
             >
-              <Friend playerID={doc.uid} />
-              <Block playerID={doc.uid} />
+              {!doc?.cid.toLowerCase().includes("anonymous") && (
+                <>
+                  <Friend playerID={doc.uid} />
+                  <Block playerID={doc.uid} />
+                </>
+              )}
+              {auth.currentUser.uid === "WX0BLAgBQCWYgFp57CktQNxdPrR2" && (
+                <Remove playerID={doc.uid} />
+              )}
             </div>
           </details>
-        )
-      )}
+      ))}
     </div>
   );
 };

@@ -264,6 +264,39 @@ const Callouts = (props) => {
     return unsubscribe;
   }, [props.socialSess]);
 
+  const exportTemplate = () => {
+    const fileName = "my-file";
+    const json = JSON.stringify(btnData, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const href = URL.createObjectURL(blob);
+  
+    // create "a" HTLM element with href to file
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = fileName + ".json";
+    document.body.appendChild(link);
+    link.click();
+  
+    // clean up "a" element & remove ObjectURL
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+  }
+
+  const importTemplate = (event) => {
+    event.preventDefault();
+    let reader = new FileReader();
+    reader.onload = (e) => {
+      let str = e.target.result;
+      try {
+        let json = JSON.parse(str);
+        setBTNData([...json]);
+      } catch (error) {
+        console.error(error, str)
+      }
+    };
+    reader.readAsText(event.target.files[0]);
+  }
+
   const saveTemplate = async () => {
     if (template !== "Select") {
       if (
@@ -475,7 +508,7 @@ const Callouts = (props) => {
             <Dropdown.Item onClick={() => setTemplate(1)}>
               Template 1
             </Dropdown.Item>
-            {props.optionsData.ppi && (
+            {props.optionsData.ppi || auth.currentUser.uid === "WX0BLAgBQCWYgFp57CktQNxdPrR2" && (
               <>
                 <Dropdown.Item onClick={() => setTemplate(2)}>
                   Template 2
@@ -503,6 +536,73 @@ const Callouts = (props) => {
                 </Dropdown.Item>
               </>
             )}
+            {auth.currentUser.uid === "WX0BLAgBQCWYgFp57CktQNxdPrR2" && (
+              <>
+                <Dropdown.Item onClick={() => setTemplate(10)}>
+                  Template 10
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(11)}>
+                  Template 11
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(12)}>
+                  Template 12
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(13)}>
+                  Template 13
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(14)}>
+                  Template 14
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(15)}>
+                  Template 15
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(16)}>
+                  Template 16
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(17)}>
+                  Template 17
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(18)}>
+                  Template 18
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(19)}>
+                  Template 19
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(20)}>
+                  Template 20
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(21)}>
+                  Template 21
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(22)}>
+                  Template 22
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(23)}>
+                  Template 23
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(24)}>
+                  Template 24
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(25)}>
+                  Template 25
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(26)}>
+                  Template 26
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(27)}>
+                  Template 27
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(28)}>
+                  Template 28
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(29)}>
+                  Template 29
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setTemplate(30)}>
+                  Template 30
+                </Dropdown.Item>
+              </>
+            )}
           </Dropdown.Menu>
         </Dropdown>
       </div>
@@ -515,15 +615,28 @@ const Callouts = (props) => {
           margin: "1rem 0"
         }}
       >
-        <Button variant="accent" onClick={() => saveTemplate()}>
+        <Button variant="accent" onClick={saveTemplate}>
           Save
         </Button>
-        <Button variant="accent" onClick={() => loadTemplate()}>
+        <Button variant="accent" onClick={loadTemplate}>
           Load
         </Button>
+        {auth.currentUser.uid === "WX0BLAgBQCWYgFp57CktQNxdPrR2" && (
+          <>
+            <Button variant="accent" style={{width: '100%', height: '100%', padding: 0}}>
+              <label style={{width: '100%', height: '100%', alignItems: 'center', paddingTop: '5px', cursor: 'pointer'}}>
+                <input type="file" style={{display: 'none'}} accept="application/json" onChange={(e) => importTemplate(e)} />
+                Import
+              </label>
+            </Button>
+            <Button variant="accent" onClick={exportTemplate}>
+              Export
+            </Button>
+          </>
+        )}
       </div>
       <div>
-        <span>Tutorials:</span>
+        <span>Tutorials and Foundations:</span>
         <Dropdown className="mt-1 mb-3">
           <Dropdown.Toggle
             variant="accent"
@@ -547,17 +660,17 @@ const Callouts = (props) => {
             <Dropdown.Item onClick={() => setTutorial("Communication")}>
               Communication
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTutorial("Customization")}>
-              Customization
+            <Dropdown.Item onClick={() => setTutorial("PvP")}>
+              PvP
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTutorial("Socialization")}>
-              Socialization
+            <Dropdown.Item onClick={() => setTutorial("Generic")}>
+              Generic
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>
       <div>
-        {auth.currentUser.uid === "YS56nucUkQVpvt6wo3KDRv8hIq72" ? (
+        {auth.currentUser.uid === "WX0BLAgBQCWYgFp57CktQNxdPrR2" ? (
           <div
             style={{
               display: "grid",
@@ -754,9 +867,9 @@ const Callouts = (props) => {
         <Form.Control
           type="text"
           name="cal"
-          value={btnData[key]?.cal}
+          value={btnData[key]?.cdt === 'effect' ? `https://.../${btnData[key]?.cal.replace(/\/$/, "").split('/').pop()}` : btnData[key]?.cal}
           onChange={handleChange}
-          placeholder="Callout length"
+          placeholder="Who What Where"
         />
       </Form.Group>
       <div
@@ -800,7 +913,7 @@ const Callouts = (props) => {
               <Dropdown.Item onClick={() => setType("timer")}>
                 Timer
               </Dropdown.Item>
-              {props.optionsData.ppi && (
+              {props.optionsData.ppi || auth.currentUser.uid === "WX0BLAgBQCWYgFp57CktQNxdPrR2" && (
                 <>
                   <Dropdown.Item onClick={() => setType("effect")}>
                     Effect
@@ -825,7 +938,7 @@ const Callouts = (props) => {
         }}
       >
         {btnData[key]?.col === "danger" ? (
-          <Button variant="danger" className="active"></Button>
+          <Button variant="danger" className="active">R</Button>
         ) : (
           <Button variant="danger" onClick={() => setCalloutColor("danger")}>
             R

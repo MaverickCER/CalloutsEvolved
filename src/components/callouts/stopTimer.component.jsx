@@ -23,13 +23,13 @@ const StopTimer = (props) => {
     if (first < 500) {
       setLoops(number);
       if (props.optionsData.tsg && props.optionsData.tsl !== "Disabled") {
-        speak(props.optionsData, props.btn.cal, 1.5);
+        speak(props.optionsData, props.btn.cal, 1.8);
       }
     } else {
       setLoops(number);
       if (number < 11) {
         if (props.optionsData.tsg && props.optionsData.tsl !== "Disabled") {
-          speak(props.optionsData, number, 1.1);
+          speak(props.optionsData, number, 1.8);
         }
       }
     }

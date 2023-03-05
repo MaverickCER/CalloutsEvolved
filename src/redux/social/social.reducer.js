@@ -2,9 +2,7 @@ import { SocialActionTypes } from "./social.types";
 
 const INITIAL_STATE = {
   socialFind: "",
-  socialHist: [
-    { col: "accent", cal: "No previous callouts!", udn: "[System]" }
-  ],
+  socialHist: [],
   socialSess: "Solo",
   socialView: "create"
 };

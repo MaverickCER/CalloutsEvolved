@@ -55,18 +55,8 @@ const Desktop = (props) => {
 
   return (
     <>
-      <h5 className="mb-1">Desktop App:</h5>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr",
-          alignItems: "center"
-        }}
-      >
-        <a href="https://drive.google.com/uc?export=download&id=1FmQfNm2xxTfGPBSY_hk5JWwjdxKWkrAA" target="_blank" rel="noreferrer" className="btn btn-accent">Download</a>
-      </div>
       <Form.Group controlId="dsmInput">
-        <Form.Label className="mt-3 mb-1">Send In-Game Messages:</Form.Label>
+        <Form.Label className="mb-1">Send In-Game Messages:</Form.Label>
         <Dropdown>
           <Dropdown.Toggle
             variant="accent"

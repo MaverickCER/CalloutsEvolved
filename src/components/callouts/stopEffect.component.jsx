@@ -27,7 +27,7 @@ const StopEffect = (props) => {
     }
     let socHist = JSON.parse(JSON.stringify(props.socialHist));
     var obj = JSON.parse(
-      `{"col":"${props.btn.col}","cal":"${props.btn.cal}","udn":"${props.btn.udn}"}`
+      `{"col":"${props.btn.col}","cal":"${props.btn.cal.replace(/\/$/, "").split('/').pop()}","udn":"${props.btn.udn}"}`
     );
     let socHist1 = socHist.push(obj);
     if (socHist.length > 12) {
@@ -101,7 +101,7 @@ const StopEffect = (props) => {
         <>
           <span className={props.btn.bid}
       data-cdt={`stop${props.btn.cdt}`}>Playing {props.btn.cal.replace(/\/$/, "").split('/').pop()}</span>
-          <Effect source={props.btn.cal} volume={props.optionsData.tsv} />
+          <Effect source={props.btn.cal} volume={props.optionsData.tsv * 100} />
         </>
       ) : (
         <span>Invalid URL... https://.../sound.mp3</span>

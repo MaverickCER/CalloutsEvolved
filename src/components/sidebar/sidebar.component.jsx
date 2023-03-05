@@ -223,22 +223,24 @@ const Sidebar = () => {
                       </Accordion.Collapse>
                     </div>
                   )}
-                  <div
-                    style={{
-                      marginBottom: "1rem",
-                      display: "grid",
-                      gridTemplateColumns: "1fr"
-                    }}
-                  >
-                    <ContextAwareToggle variant="accent" eventKey="12">
-                      Desktop
-                    </ContextAwareToggle>
-                    <Accordion.Collapse className="p-3" eventKey="12">
-                      <>
-                        <Desktop />
-                      </>
-                    </Accordion.Collapse>
-                  </div>
+                  {localStorage.getItem('ce') === 'true' && (
+                    <div
+                      style={{
+                        marginBottom: "1rem",
+                        display: "grid",
+                        gridTemplateColumns: "1fr"
+                      }}
+                    >
+                      <ContextAwareToggle variant="accent" eventKey="12">
+                        Desktop
+                      </ContextAwareToggle>
+                      <Accordion.Collapse className="p-3" eventKey="12">
+                        <>
+                          <Desktop />
+                        </>
+                      </Accordion.Collapse>
+                    </div>
+                  )}
                   <div
                     style={{
                       marginBottom: "1rem",

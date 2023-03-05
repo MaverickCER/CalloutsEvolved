@@ -521,6 +521,7 @@ else
 {
 	; --- Navigate to the desired URL ---
 	PageInst.Call("Page.navigate", {"url": "https://www.calloutsevolved.com"})
+  PageInst.Evaluate("localStorage.setItem('ce','true')")
 	PageInst.WaitForLoad()
   global location = PageInst.Evaluate("window.location.href").value
   while (location != "https://www.calloutsevolved.com/session") {

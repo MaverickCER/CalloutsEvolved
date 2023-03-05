@@ -15,6 +15,7 @@ import useKeydown from "../utils/usekeydown.util";
 
 const Interface = (props) => {
   const { width } = useWindowDimensions();
+  const [joined, setJoined] = React.useState(false);
   let params = useParams();
   const history = useHistory();
 
@@ -353,7 +354,10 @@ const Interface = (props) => {
                 uid: auth.currentUser.uid
               },
               { merge: true }
-            );
+            )
+            .then(() => {
+              setJoined(true);
+            });
         } else {
           props.setSocialSess(params.id);
           sp.push(`${auth.currentUser.uid}`);
@@ -385,7 +389,10 @@ const Interface = (props) => {
                 uid: auth.currentUser.uid
               },
               { merge: true }
-            );
+            )
+            .then(() => {
+              setJoined(true);
+            });
         }
       });
   };
@@ -504,7 +511,7 @@ const Interface = (props) => {
 
   React.useEffect(() => {
     leave().then(() => {
-      join();
+      join()
     });
     if (props.optionsData.ppi) {
       let token =
@@ -585,6 +592,36 @@ const Interface = (props) => {
       }
     }
   }, [params.id, props.optionsData.ppi]);
+
+  
+  React.useEffect(() => {
+    if (joined) {
+      const getData = () => {
+        if (
+          auth.currentUser &&
+          props.socialSess.toLowerCase() !== "solo" &&
+          props.socialSess !== auth.currentUser.uid
+        ) {
+          return firestore
+            .doc(`sessions/${props.socialSess}`)
+            .onSnapshot((docSnapshot) => {
+              if (!docSnapshot.empty) {
+                if (docSnapshot.data() !== undefined) {
+                  if (Array.isArray(docSnapshot.data().arr)) {
+                    let index = docSnapshot.data().arr.indexOf(auth.currentUser.uid);
+                    if (index === -1) {
+                      leave();
+                    }
+                  }
+                }
+              }
+            });
+        }
+      };
+      let unsubscribe = getData();
+      return unsubscribe;
+    }
+  }, [joined, props.socialSess]);
 
   return (
     <div className="gridwrapper">

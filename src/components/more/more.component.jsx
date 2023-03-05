@@ -14,6 +14,21 @@ import { getOptionsData } from "../../redux/options/options.selectors";
 const More = (props) => {
   return (
     <div>
+      {localStorage.getItem('ce') !== 'true' && (
+        <>
+          <h5 className="mb-1">Desktop App:</h5>
+          <div
+            className='mb-3'
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              alignItems: "center"
+            }}
+          >
+            <a href="https://drive.google.com/uc?export=download&id=1koAIS7BI9TaG9bGxB1oz9p_6-U_pmb2P" target="_blank" rel="noreferrer" className="btn-accent">Download</a>
+          </div>
+        </>
+      )}
       <h5 className="mb-1">Extensions:</h5>
       <div
         style={{

@@ -7,11 +7,11 @@ NOTE: This app only works with https://www.calloutsevolved.com and all other sit
 INSTALLATION:
 -------------
 1. Copy contents of calloutsevolved.zip to your desktop (or other location with easy access).
-2. Attempt to launch the .exe while ignoring errors due to a lack of a security certificate.
+2. Right click on the calloutsevolved.exe and then click "Run as administrator" (please ignore errors due to a lack of a security certificate).
 3. If https://www.calloutsevolved.com is showing in a new window, then you may skip to OPERATION, otherwise keep going.
 4. Download the Current Version of AHK from https://www.autohotkey.com/
 5. Install the new exe by agreeing to the prompts.
-6. Right click on the .ahk and then click "Run as administrator".
+6. Right click on the calloutsevolved.ahk and then click "Run as administrator".
 
 
 OPERATION:

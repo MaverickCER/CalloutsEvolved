@@ -44,7 +44,9 @@ const App = (props) => {
 
   return (
     <>
-      <Desklist/>
+      {localStorage.getItem('ce') === 'true' && (
+        <Desklist/>
+      )}
       <Router>
         <Switch>
           <Route exact path="/">

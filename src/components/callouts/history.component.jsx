@@ -4,8 +4,8 @@ import { getSocialHist } from "../../redux/social/social.selectors";
 
 const History = (props) => {
   return (
-    <div style={{ height: "100%", overflowY: "scroll" }}>
-      {props.socialHist.map((data, index) => (
+    <div style={{ height: "100%", overflowY: "scroll", width: '223px', overflowX: 'hidden' }}>
+      {props.socialHist?.length > 0 ? props.socialHist.map((data, index) => (
         <details
           key={index}
           style={{
@@ -24,7 +24,7 @@ const History = (props) => {
               gridTemplateColumns: "1fr"
             }}
           >
-            <b style={{ margin: "0" }}>{data.cal}</b>
+            <b style={{ margin: "0", whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>{data.cal}</b>
           </summary>
           <div
             style={{
@@ -35,7 +35,7 @@ const History = (props) => {
             <p style={{ margin: "0" }}>{data.udn}</p>
           </div>
         </details>
-      ))}
+      )) : 'No previous callouts!'}
     </div>
   );
 };
