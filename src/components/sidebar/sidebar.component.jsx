@@ -15,7 +15,6 @@ import Social from "../social/social.component";
 import More from "../more/more.component";
 import Desktop from "../desktop/desktop.component";
 import Grid from "../callouts/grid.component";
-import History from "../callouts/history.component";
 import Adsense from "../interface/adsense.component";
 import { auth } from "../../utils/firebase.util";
 
@@ -78,22 +77,6 @@ const Sidebar = () => {
                     <>
                       <STTOutput />
                     </>
-                  </Accordion.Collapse>
-                </div>
-              </Accordion>
-              <Accordion defaultActiveKey="4">
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr",
-                    marginBottom: "1rem"
-                  }}
-                >
-                  <ContextAwareToggle variant="accent" eventKey="4" size="sm">
-                    History
-                  </ContextAwareToggle>
-                  <Accordion.Collapse className="p-3 pb-0" eventKey="4">
-                    <History />
                   </Accordion.Collapse>
                 </div>
               </Accordion>

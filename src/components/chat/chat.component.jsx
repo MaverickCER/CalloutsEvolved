@@ -31,8 +31,9 @@ const Chat = (props) => {
         {
           cid: auth.currentUser.displayName,
           msg: msg,
+          src: 'chat',
           ucc: props.optionsData.ucc,
-          uid: auth.currentUser.uid
+          uid: auth.currentUser.uid,
         },
         { merge: true }
       );
@@ -41,6 +42,7 @@ const Chat = (props) => {
         {
           cid: auth.currentUser.displayName,
           msg: msg,
+          src: 'chat',
           ucc: props.optionsData.ucc,
           uid: auth.currentUser.uid
         },
@@ -76,7 +78,8 @@ const Chat = (props) => {
                     push(docSnap);
                     if (
                       props.optionsData.tsg &&
-                      props.optionsData.tsl !== "Disabled"
+                      props.optionsData.tsl !== "Disabled" &&
+                      docSnapshot.data().src === 'chat'
                     ) {
                       speak(
                         props.optionsData,
@@ -150,7 +153,7 @@ const Chat = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Form.Group style={{ height: "calc(50vh - 10rem)", minHeight: "5rem" }}>
+      <Form.Group style={{ height: "100%", minHeight: "5rem" }}>
         <Messages messages={array} />
         <InputGroup style={{ height: "2rem" }}>
           <Form.Control

@@ -66,74 +66,7 @@ const Interface = (props) => {
       case "week":
         break;
       default:
-        if (
-          props.socialSess.toLowerCase() === "solo" ||
-          props.socialSess === auth.currentUser.uid
-        ) {
-          firestore
-            .doc(`customers/${auth.currentUser.uid}/btnData/btnData${btn}`)
-            .get()
-            .then((data) => {
-              if (data.data().uid === "") {
-                firestore
-                  .doc(
-                    `customers/${auth.currentUser.uid}/btnData/btnData${btn}`
-                  )
-                  .set(
-                    {
-                      udn: auth.currentUser.displayName,
-                      uid: auth.currentUser.uid,
-                      utc: Date.now()
-                    },
-                    { merge: true }
-                  );
-              } else if (auth.currentUser.uid === data.data().uid) {
-                firestore
-                  .doc(
-                    `customers/${auth.currentUser.uid}/btnData/btnData${btn}`
-                  )
-                  .set(
-                    {
-                      col: "primary",
-                      udn: "",
-                      uid: "",
-                      utc: 0
-                    },
-                    { merge: true }
-                  );
-              }
-            });
-        } else {
-          firestore
-            .doc(`sessions/${props.socialSess}/btnData/btnData${btn}`)
-            .get()
-            .then((data) => {
-              if (data.data().uid === "") {
-                firestore
-                  .doc(`sessions/${props.socialSess}/btnData/btnData${btn}`)
-                  .set(
-                    {
-                      udn: auth.currentUser.displayName,
-                      uid: auth.currentUser.uid,
-                      utc: Date.now()
-                    },
-                    { merge: true }
-                  );
-              } else if (auth.currentUser.uid === data.data().uid) {
-                firestore
-                  .doc(`sessions/${props.socialSess}/btnData/btnData${btn}`)
-                  .set(
-                    {
-                      col: "primary",
-                      udn: "",
-                      uid: "",
-                      utc: 0
-                    },
-                    { merge: true }
-                  );
-              }
-            });
-        }
+        document.querySelectorAll(`.btnData${btn}`)[0].click()
         break;
     }
   };

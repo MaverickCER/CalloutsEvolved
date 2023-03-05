@@ -62,7 +62,8 @@ const STTOutput = (props) => {
   return (
     <div
       style={{
-        height: "100%",
+        height: "calc(50vh - 151px)",
+        minHeight: "5rem",
         overflowY: "auto"
       }}
     >

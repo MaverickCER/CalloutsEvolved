@@ -19,12 +19,32 @@ const SendBTN = (props) => {
         },
         { merge: true }
       );
+      firestore.doc(`customers/${auth.currentUser.uid}/chaData/chat`).set(
+        {
+          cid: auth.currentUser.displayName,
+          msg: btn.cal,
+          src: 'history',
+          ucc: props.optionsData.ucc,
+          uid: auth.currentUser.uid,
+        },
+        { merge: true }
+      );
     } else {
       firestore.doc(`sessions/${props.socialSess}/btnData/${btn.bid}`).set(
         {
           udn: auth.currentUser.displayName,
           uid: auth.currentUser.uid,
           utc: Date.now()
+        },
+        { merge: true }
+      );
+      firestore.doc(`sessions/${props.socialSess}/chaData/chat`).set(
+        {
+          cid: auth.currentUser.displayName,
+          msg: btn.cal,
+          src: 'history',
+          ucc: props.optionsData.ucc,
+          uid: auth.currentUser.uid
         },
         { merge: true }
       );

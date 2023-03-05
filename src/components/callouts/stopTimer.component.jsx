@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import {
-  getSocialHist,
-  getSocialSess
-} from "../../redux/social/social.selectors";
-import { setSocialHist } from "../../redux/social/social.actions";
+import { getSocialSess } from "../../redux/social/social.selectors";
 import { getOptionsData } from "../../redux/options/options.selectors";
 import { Button } from "react-bootstrap";
 import SendBTN from "./sendBTN.component";
@@ -34,17 +30,6 @@ const StopTimer = (props) => {
       }
     }
     setTimeout(() => loopTimer(props.btn), 900);
-    let socHist = JSON.parse(JSON.stringify(props.socialHist));
-    var obj = JSON.parse(
-      `{"col":"${props.btn.col}","cal":"${props.btn.cal}","udn":"${props.btn.udn}"}`
-    );
-    socHist.push(obj);
-    if (socHist.length > 12) {
-      let socHist2 = socHist.slice(socHist.length - 5);
-      props.setSocialHist(socHist2);
-    } else {
-      props.setSocialHist(socHist);
-    }
   }, [props.btn.col]);
 
   const loopTimer = async (btn) => {
@@ -272,12 +257,7 @@ const StopTimer = (props) => {
 
 const mapStateToProps = (state) => ({
   optionsData: getOptionsData(state),
-  socialHist: getSocialHist(state),
   socialSess: getSocialSess(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setSocialHist: (data) => dispatch(setSocialHist(data))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(StopTimer);
+export default connect(mapStateToProps, null)(StopTimer);

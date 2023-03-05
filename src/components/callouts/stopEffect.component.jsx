@@ -1,10 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  getSocialHist,
-  getSocialSess
-} from "../../redux/social/social.selectors";
-import { setSocialHist } from "../../redux/social/social.actions";
+import { getSocialSess } from "../../redux/social/social.selectors";
 import { getOptionsData } from "../../redux/options/options.selectors";
 import { Button } from "react-bootstrap";
 import Effect from "../audio/effect.component";
@@ -24,17 +20,6 @@ const StopEffect = (props) => {
       }
     } else {
       setIsValid(false);
-    }
-    let socHist = JSON.parse(JSON.stringify(props.socialHist));
-    var obj = JSON.parse(
-      `{"col":"${props.btn.col}","cal":"${props.btn.cal.replace(/\/$/, "").split('/').pop()}","udn":"${props.btn.udn}"}`
-    );
-    let socHist1 = socHist.push(obj);
-    if (socHist.length > 12) {
-      let socHist2 = socHist.slice(socHist.length - 5);
-      props.setSocialHist(socHist2);
-    } else {
-      props.setSocialHist(socHist);
     }
     var delta = props.btn.dur * 1000 + props.btn.utc - Date.now() + 1;
     setTimeout(() => stopEffect(props.btn), delta);
@@ -112,12 +97,7 @@ const StopEffect = (props) => {
 
 const mapStateToProps = (state) => ({
   optionsData: getOptionsData(state),
-  socialHist: getSocialHist(state),
   socialSess: getSocialSess(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setSocialHist: (data) => dispatch(setSocialHist(data))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(StopEffect);
+export default connect(mapStateToProps, null)(StopEffect);

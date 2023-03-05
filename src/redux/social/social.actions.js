@@ -5,11 +5,6 @@ export const setSocialFind = (option) => ({
   payload: option
 });
 
-export const setSocialHist = (option) => ({
-  type: SocialActionTypes.SET_SOCIAL_HIST,
-  payload: option
-});
-
 export const setSocialSess = (option) => ({
   type: SocialActionTypes.SET_SOCIAL_SESS,
   payload: option

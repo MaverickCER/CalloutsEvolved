@@ -15,7 +15,7 @@ const Messages = ({ messages }) => {
   useEffect(scrollToBottom, [messages]);
 
   return (
-    <div className="chatmsgs" style={{ height: "100%", overflowY: "scroll" }}>
+    <div className="chatmsgs" style={{ height: "100%", overflowY: "scroll", maxHeight: 'calc(50vh - 150px)' }}>
       {messages &&
         messages.map((data, index) => (
           <div key={index}>

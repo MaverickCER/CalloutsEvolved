@@ -1,10 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  getSocialHist,
-  getSocialSess
-} from "../../redux/social/social.selectors";
-import { setSocialHist } from "../../redux/social/social.actions";
+import { getSocialSess } from "../../redux/social/social.selectors";
 import { getOptionsData } from "../../redux/options/options.selectors";
 import { Button } from "react-bootstrap";
 import { auth, firestore } from "../../utils/firebase.util";
@@ -13,17 +9,6 @@ const run = true;
 
 const StopTemplate = (props) => {
   React.useEffect(() => {
-    let socHist = JSON.parse(JSON.stringify(props.socialHist));
-    var obj = JSON.parse(
-      `{"col":"${props.btn.col}","cal":"${props.btn.cal}","udn":"${props.btn.udn}"}`
-    );
-    let socHist1 = socHist.push(obj);
-    if (socHist.length > 12) {
-      let socHist2 = socHist.slice(socHist.length - 5);
-      props.setSocialHist(socHist2);
-    } else {
-      props.setSocialHist(socHist);
-    }
     firestore
       .collection(
         `customers/${props.btn.uid}/saveData/saveData${props.btn.dur}/btnData`
@@ -116,12 +101,7 @@ const StopTemplate = (props) => {
 
 const mapStateToProps = (state) => ({
   optionsData: getOptionsData(state),
-  socialHist: getSocialHist(state),
   socialSess: getSocialSess(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setSocialHist: (data) => dispatch(setSocialHist(data))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(StopTemplate);
+export default connect(mapStateToProps, null)(StopTemplate);
