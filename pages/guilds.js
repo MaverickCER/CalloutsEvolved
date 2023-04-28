@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ChevronIcon from '../assets/ChevronIcon';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSettings } from '../context/SettingsContext';
 
 const preload = {
@@ -92,7 +93,7 @@ const Guilds = (props) => {
                   <a className={`guildLink${guilds === { preload } ? ' sr-only' : ''}`}>
                     <div className="guildBadge">
                       <span className="guildImageWrapper">
-                        <img
+                        <Image
                           src={data.guildPhotoURL}
                           alt={data.displayName}
                           height={192}

@@ -52,6 +52,7 @@ export const AuthProvider = ({ children }) => {
     userId: '0',
     userPhotoURL: 'https://i.imgur.com/6X537cL.png',
   });
+  const userIsPremium = Date.parse(userData?.subscriptionData?.next_billing_time || 0) > Date.now();
   const [currentUser, setCurrentUser] = useState(null);
   const router = useRouter();
 
@@ -644,6 +645,7 @@ export const AuthProvider = ({ children }) => {
     updateUserPassword,
     updatePhotoURL,
     userData,
+    userIsPremium,
     setUserData,
   };
 

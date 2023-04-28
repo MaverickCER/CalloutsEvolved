@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { child, get, onValue, query, ref, update } from 'firebase/database';
 import { useForm, useWatch } from 'react-hook-form';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import CrossPlatformIcon from '../assets/CrossPlatformIcon';
 import FormCheckbox from './ui/formcheckbox';
@@ -11,9 +13,9 @@ import OtherPlatformIcon from '../assets/OtherPlatformIcon';
 import PlayStationIcon from '../assets/PlayStationIcon';
 import SteamIcon from '../assets/SteamIcon';
 import XboxIcon from '../assets/XboxIcon';
+import ManageSub from './ManageSub';
 import { database } from '../firebase/firebaseClient';
 import { useAuth } from '../context/AuthContext';
-import { useRouter } from 'next/router';
 import { useSettings } from '../context/SettingsContext';
 
 const GuildBadge = ({ guildId }) => {
@@ -369,6 +371,7 @@ const GuildBadge = ({ guildId }) => {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBlacklisted, path]);
 
   useEffect(() => {
@@ -383,6 +386,7 @@ const GuildBadge = ({ guildId }) => {
         unsubscribeGame();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -410,6 +414,7 @@ const GuildBadge = ({ guildId }) => {
         unsubscribeActivities();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editGame]);
 
   return (
@@ -418,7 +423,7 @@ const GuildBadge = ({ guildId }) => {
         <summary className="guildLink">
           <div className="guildBadge">
             <span className="guildImageWrapper">
-              <img src={photoURL} alt={description} height={192} width={144} />
+              <Image src={photoURL} alt={description} height={192} width={144} />
             </span>
             <span>
               {isBlacklisted !== false ? (
@@ -502,7 +507,7 @@ const GuildBadge = ({ guildId }) => {
                         you would like an interactive page, please check out the LFG page.
                       </p>
                       <p>
-                        This is the ideal page if you're looking to see what Callouts Evolved has to
+                        This is the ideal page if you&apos;re looking to see what Callouts Evolved has to
                         offer, test premium features, or import/export audio features. Mute gamers
                         often find it easier to use synthesized callouts to get into and stay in mic
                         required commuinities. They export the audio either by putting their mic
@@ -510,14 +515,14 @@ const GuildBadge = ({ guildId }) => {
                         <a
                           href="https://www.amazon.com/dp/B01GW69IQ2"
                           target="_blank"
-                          rel="noopenner">
+                          rel="noreferrer">
                           mic attenuator
                         </a>{' '}
                         from a speaker output to the mic input on a{' '}
                         <a
                           href="https://www.amazon.com/dp/B07114YZFC"
                           target="_blank"
-                          rel="noopenner">
+                          rel="noreferrer">
                           headset splitter
                         </a>{' '}
                         and connecting it to their controller. Deaf gamers reverse this

@@ -5,6 +5,7 @@ import ChevronIcon from '../../assets/ChevronIcon';
 import FormInput from '../../components/ui/formInput';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from '../../components/auth/authform.module.css';
 import { useRouter } from 'next/router';
 import { useSettings } from '../../context/SettingsContext';
@@ -54,7 +55,7 @@ const GuildId = (props) => {
               <div>
                 <div className="guildBadge">
                   <span className="guildImageWrapper">
-                    <img
+                    <Image
                       src="https://pbs.twimg.com/profile_images/1100553496124887040/0hf7Nd-g_400x400.jpg"
                       alt="Name"
                       height={192}
@@ -182,7 +183,7 @@ const GuildId = (props) => {
                 <span>
                   <div className="guildBadge">
                     <span className="guildImageWrapper">
-                      <img
+                      <Image
                         src="https://i.imgur.com/nUhgJXq.png"
                         alt="Guild Member's Name"
                         height={192}
@@ -191,7 +192,7 @@ const GuildId = (props) => {
                     </span>
                     <span>
                       <p className="guildName" style={{ margin: '0' }}>
-                        Guild Member's Name
+                        Guild Member&apos;s Name
                       </p>
                       <small className="guildReputation">Title timestamp</small>
                       <br />
@@ -223,13 +224,13 @@ const GuildId = (props) => {
                     </span>
                   </div>
                   <p style={{ overflowWrap: 'break-word', marginTop: '0' }}>
-                    Message sent by Guild Member's Name
+                    Message sent by Guild Member&apos;s Name
                   </p>
                 </span>
                 <span>
                   <div className="guildBadge">
                     <span className="guildImageWrapper">
-                      <img
+                      <Image
                         src="https://i.imgur.com/FPLubfR.png"
                         alt="Guild Member's Name"
                         height={192}
@@ -312,7 +313,7 @@ const GuildId = (props) => {
             <div>
               Members with events permissions will be able to create edit and delete any event from
               the calendar. Participants will be able to create, edit, and delete their own events,
-              and join any event that doesn't contain a blacklist player. Viewers will only be able
+              and join any event that doesn&apos;t contain a blacklist player. Viewers will only be able
               to attend events that do not contain a blacklist player. Blacklist players are players
               that have blocked you or that you have blocked. You cannot join sessions with players
               you cannot communicate with.
@@ -348,7 +349,7 @@ const GuildId = (props) => {
             <div>
               Only guild members with rule privelages will be able to edit this room. Just like the
               about room, this page is written with markdown and can be customized to better fit the
-              guild's needs. For author blog post guilds, this room will be uneditable and provide
+              guild&apos;s needs. For author blog post guilds, this room will be uneditable and provide
               guidelines for writing / reviewing new blog posts.
             </div>
           )}

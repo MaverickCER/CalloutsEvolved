@@ -46,6 +46,7 @@ const PayPalButton = (props) => {
     ) {
       props.onButtonReady();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const createOrder = (data, actions) => {

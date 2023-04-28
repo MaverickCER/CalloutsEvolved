@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import Input from '../../components/ui/input';
 import Link from 'next/link';
+import Image from 'next/image';
 import ManageSub from '../../components/ManageSub';
 import { RgbStringColorPicker } from 'react-colorful';
 import Select from '../../components/ui/select';
@@ -133,6 +134,7 @@ const Index = () => {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBlacklisted, id]);
 
   useEffect(() => {
@@ -160,6 +162,7 @@ const Index = () => {
     }
 
     getGuilds();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [guildsObj]);
 
   useEffect(() => {
@@ -189,6 +192,7 @@ const Index = () => {
     }
 
     getBlacklist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blacklistObj]);
 
   useEffect(() => {
@@ -218,6 +222,7 @@ const Index = () => {
     }
 
     getInfamylist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [infamylistObj]);
 
   useEffect(() => {
@@ -247,6 +252,7 @@ const Index = () => {
     }
 
     getWhitelist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [whitelistObj]);
 
   return (
@@ -254,7 +260,7 @@ const Index = () => {
       <span className="guildLink">
         <div className="guildBadge">
           <span className="guildImageWrapper">
-            <img src={userPhotoURL} alt={displayName} height={192} width={144} />
+            <Image src={userPhotoURL} alt={displayName} height={192} width={144} />
           </span>
           <span>
             <p className="guildName">{`${displayName}`}</p>
@@ -283,13 +289,13 @@ const Index = () => {
         !userIsPremium && (
           <>
             <p>
-              You don't need a premium plan to communicate effectively, but a premium plan price is
+              You don&apos;t need a premium plan to communicate effectively, but a premium plan price is
               based on the break even resource costs for our most active users.
               <br />
               The premium plan will enhance your experience, label you as an MVP, and allow you
               contribute to the community by adding games, activities, encounters, and templates.
               <br />
-              In addition to the social recognition, you'll be able to customize your text to speech
+              In addition to the social recognition, you&apos;ll be able to customize your text to speech
               experience to better fit your needs, create private guilds or sessions, send mp3 based
               callouts, and integrate with discord!
               <br />
@@ -713,7 +719,7 @@ const Index = () => {
                 <a className="guildLink">
                   <div className="guildBadge">
                     <span className="guildImageWrapper">
-                      <img
+                      <Image
                         src={data.guildPhotoURL}
                         alt={data.displayName}
                         height={192}
@@ -739,7 +745,7 @@ const Index = () => {
               <span key={key}>
                 <div className="guildBadge">
                   <span className="guildImageWrapper">
-                    <img src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
+                    <Image src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
                   </span>
                   <span>
                     <p className="guildName">{`${data.displayName}`}</p>
@@ -779,7 +785,7 @@ const Index = () => {
               <span key={key}>
                 <div className="guildBadge">
                   <span className="guildImageWrapper">
-                    <img src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
+                    <Image src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
                   </span>
                   <span>
                     <p className="guildName">{`${data.displayName}`}</p>
@@ -821,7 +827,7 @@ const Index = () => {
               <span key={key}>
                 <div className="guildBadge">
                   <span className="guildImageWrapper">
-                    <img src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
+                    <Image src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
                   </span>
                   <span>
                     <p className="guildName">{`${data.displayName}`}</p>

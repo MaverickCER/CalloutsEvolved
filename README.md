@@ -66,7 +66,6 @@ There are no plans for an online IDE for this project.
 
 * [Firebase](https://firebase.google.com/docs)
 * [NextJs](https://nextjs.org/)
-* [Stripe](https://firebase.google.com/products/extensions/stripe-firestore-stripe-payments)
 * [TriggerEmail](https://firebase.google.com/products/extensions/firebase-firestore-send-email)
 
 
@@ -114,5 +113,4 @@ Project Link: [https://github.com/MaverickCER/calloutsevolved](https://github.co
 ## Acknowledgements
 * [Firebase](https://firebase.google.com/docs)
 * [NextJs](https://nextjs.org/)
-* [Stripe](https://firebase.google.com/products/extensions/stripe-firestore-stripe-payments)
 * [TriggerEmail](https://firebase.google.com/products/extensions/firebase-firestore-send-email)

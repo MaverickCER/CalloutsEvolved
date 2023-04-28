@@ -28,7 +28,7 @@ export default function Home() {
           Deaf gamers will be able to send verbal callouts via speech synthesis with custom voices
         </p>
         <p>
-          Any gamer that doesn't want to use a mic, for any reason, can also use speech synthesis
+          Any gamer that doesn&apos;t want to use a mic, for any reason, can also use speech synthesis
         </p>
         <p>
           All gamers will be able to make callouts in other languages without any setup on their
@@ -56,15 +56,15 @@ export default function Home() {
           sign.
         </p>
 
-        <h2>What's the timeframe?</h2>
+        <h2>What&apos;s the timeframe?</h2>
         <p>
           05/31/2023 is our expected release date for the shared Augmentative and Alternative
           Communication interface. 01/01/2025 is the expected Open Source date that will allow
           everyone to submit PRs against the main github repository.
         </p>
 
-        <h2>What's the price?</h2>
-        <p>A free plan is guaranteed and won't require signing up</p>
+        <h2>What&apos;s the price?</h2>
+        <p>A free plan is guaranteed and won&apos;t require signing up</p>
         <p>For the first month after launch, all features will be free</p>
         <p>After that, we plan to charge $4.99 per month to unlock all features</p>
         <p>This is due to unthrottled real time communication features</p>
