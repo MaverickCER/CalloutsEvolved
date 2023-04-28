@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
-const PayPalButton = (props) => {
+export default function PayPalButton(props) {
   const [isSdkReady, setIsSdkReady] = useState(false);
+  const [PaypalButton, setButton] = useState();
 
   const addPaypalSdk = () => {
     const queryParams = [];
 
     let options = props.options;
-    options.clientId = options.clientId || process.env.NEXT_PRIVATE_PAYPAL_CLIENT_ID || "sb"
+    options.clientId = options.clientId || process.env.NEXT_PRIVATE_PAYPAL_CLIENT_ID || 'sb';
     Object.keys(options).forEach((k) => {
       const name = k
         .split(/(?=[A-Z])/)
@@ -41,13 +42,17 @@ const PayPalButton = (props) => {
     } else if (
       typeof window !== 'undefined' &&
       window !== undefined &&
-      window.paypal !== undefined &&
-      props.onButtonReady
+      window.paypal !== undefined
     ) {
-      props.onButtonReady();
+      setButton(
+        window.paypal.Buttons.driver('react', {
+          React,
+          ReactDOM,
+        })
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isSdkReady]);
 
   const createOrder = (data, actions) => {
     if (props.amount !== undefined) {
@@ -88,15 +93,10 @@ const PayPalButton = (props) => {
       return props.createOrder(data, actions);
     }
     return createOrder(data, actions);
-  }
+  };
 
-  const Button = window.paypal.Buttons.driver('react', {
-    React,
-    ReactDOM,
-  });
-
-  return !isSdkReady && (typeof window === 'undefined' || window.paypal === undefined) ? null : (
-    <Button
+  return !PaypalButton ? null : (
+    <PaypalButton
       {...props}
       createOrder={
         props.createSubscription || props.createBillingAgreement ? undefined : createOrderFn
@@ -108,14 +108,12 @@ const PayPalButton = (props) => {
           return onApprove(data, actions);
         }
         if (props.onApprove !== undefined) {
-          return props.onApprove(data, actions)
+          return props.onApprove(data, actions);
         }
       }}
     />
   );
-};
-
-export default PayPalButton;
+}
 
 /**
  * Example Single Time Purchase
