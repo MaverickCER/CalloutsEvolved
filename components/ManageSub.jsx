@@ -4,7 +4,7 @@ import { child, get, ref, update } from 'firebase/database';
 import { database, firestore } from '../firebase/firebaseClient';
 import { getFunctions, httpsCallable } from 'firebase/functions';
 
-import { PayPalButton } from './paypal';
+import PayPalButton from './paypal';
 import { useAuth } from '../context/AuthContext';
 import { useSettings } from '../context/SettingsContext';
 

@@ -85,6 +85,7 @@ const JoinSessionId = () => {
         return () => unsubscribe();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, router, currentUser, isReady]);
 
   return (

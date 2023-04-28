@@ -28,7 +28,6 @@ const Sessions = () => {
   const timer = useRef({});
   const { userData } = useAuth();
   const { audio, theme, ahk, speak, synth } = useSettings();
-  const [gridSize, setGridSize] = useState(0);
   const [history, setHistory] = useState([]);
   const [isShift, setIsShift] = useState(false);
   const [portrait, setPortrait] = useState();
@@ -445,27 +444,8 @@ const Sessions = () => {
     setHistory({ ...newObj });
   };
 
-  useEffect(() => {
-    function getGridSize() {
-      setPortrait(window.innerWidth < window.innerHeight);
-      setGridSize(Math.min(calloutGrid.current.clientHeight, calloutGrid.current.clientWidth));
-    }
-
-    if (typeof window !== 'undefined') {
-      let temps = JSON.parse(localStorage.getItem('ce-session-templates'));
-      if (temps) {
-        setSavedTemplates({ ...temps });
-      } else {
-        setSavedTemplates(JSON.parse(JSON.stringify(jsonData)));
-      }
-      getGridSize();
-      window.addEventListener('resize', getGridSize);
-      return () => window.removeEventListener('resize', getGridSize);
-    }
-  }, []);
-
   return (
-    <div>
+    <>
       <Head>
         <title>Callouts Evolved | Sessions</title>
         <meta
@@ -666,7 +646,7 @@ const Sessions = () => {
           <div className='session-grid' ref={calloutGrid}>
             <div
               className={`${ahk.macroMode}`}
-              style={{ height: `${gridSize}px`, width: `${gridSize}px` }}>
+              style={{ /* set width/height dynamically with css only */ }}>
               <button disabled className='session-btn-example'>
                 <span
                   style={{
@@ -864,7 +844,7 @@ const Sessions = () => {
         <input disabled id='macroMode' value={ahk.macroMode} type='text' />
         <input disabled id='macroToggle' value={ahk.macroToggle} type='text' />
       </form>
-    </div>
+    </>
   );
 };
 
