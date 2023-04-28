@@ -1,56 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
-declare global {
-  interface Window {
-    paypal: any;
-  }
-}
-
-export interface PayPalButtonProps {
-  amount?: number | string;
-  onSuccess?: Function;
-  catchError?: Function;
-  onError?: Function;
-  createOrder?: Function;
-  createSubscription?: Function;
-  createBillingAgreement?: Function;
-  onApprove?: Function;
-  style?: object;
-  options?: PaypalOptions;
-  onButtonReady?: Function;
-  onShippingChange?: Function;
-  onClick?: Function;
-  onCancel?: Function;
-}
-
-export interface PayPalButtonState {
-  isSdkReady: boolean;
-}
-
-export interface PaypalOptions {
-  clientId?: string;
-  merchantId?: string;
-  intent?: string;
-  commit?: boolean | string;
-  vault?: boolean | string;
-  component?: string;
-  disableFunding?: string;
-  disableCard?: string;
-  enableFunding?: string;
-  integrationDate?: string;
-  locale?: string;
-  buyerCountry?: string;
-  debug?: boolean | string;
-}
-
-const PayPalButton: React.FC<PayPalButtonProps> = (props: PayPalButtonProps) => {
+const PayPalButton = (props) => {
   const [isSdkReady, setIsSdkReady] = useState(false);
 
   const addPaypalSdk = () => {
-    const queryParams: string[] = [];
+    const queryParams = [];
 
-    let options = props.options as PaypalOptions;
+    let options = props.options;
     options.clientId = options.clientId || process.env.NEXT_PRIVATE_PAYPAL_CLIENT_ID || "sb"
     Object.keys(options).forEach((k) => {
       const name = k
