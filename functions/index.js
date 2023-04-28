@@ -1,37 +1,83 @@
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-admin.initializeApp();
+// saving as I may decide to utilize fcm in the future.
+// 'use strict';
 
-import {
-  getDatabase,
-  ref,
-  onValue,
-  push,
-  onDisconnect,
-  set,
-  serverTimestamp,
-} from "firebase/database";
+// const functions = require('firebase-functions');
+// const admin = require('firebase-admin');
+// admin.initializeApp();
 
-const db = getDatabase();
-const myConnectionsRef = ref(db, "users/joe/connections");
+// exports.sendMessageNotification = functions.database
+//   .ref('/guildMessages/{guildId}/{roomId}/{message}')
+//   .onWrite(async (change, context) => {
+//     const guildId = context.params.guildId;
+//     const roomId = context.params.roomId;
+//     const userId = context.params.message.userId;
 
-// stores the timestamp of my last disconnect (the last time I was seen online)
-const lastOnlineRef = ref(db, "users/joe/lastOnline");
+//     if (!change.after.val()) {
+//       return functions.logger.log(`Message deleted`);
+//     }
 
-const connectedRef = ref(db, ".info/connected");
-onValue(connectedRef, (snap) => {
-  if (snap.val() === true) {
-    // We're connected (or reconnected)! Do anything here that should happen only if online (or on reconnect)
-    const con = push(myConnectionsRef);
+//     // Get the list of device notification tokens.
+//     const getDeviceTokensPromise = admin
+//       .database()
+//       .ref(`/guildNotifications/${guildId}/${roomId}/`)
+//       .once('value');
 
-    // When I disconnect, remove this device
-    onDisconnect(con).remove();
+//     // Get the list of device notification tokens.
+//     const getGuildDataPromise = admin.database().ref(`/guildAliases/${guildId}`).once('value');
+//     const getUserpDataPromise = admin.database().ref(`/userData/${userId}`).once('value');
 
-    // Add this device to my connections list
-    // this value could contain info about the device or a timestamp too
-    set(con, true);
+//     // The snapshot to the user's tokens.
+//     let tokensSnapshot;
 
-    // When I disconnect, update the last time I was seen online
-    onDisconnect(lastOnlineRef).set(serverTimestamp());
-  }
-});
+//     // The array containing all the user's tokens.
+//     let tokens;
+
+//     const results = await Promise.all([
+//       getDeviceTokensPromise,
+//       getGuildDataPromise,
+//       getUserpDataPromise,
+//     ]);
+//     tokensSnapshot = results[0];
+//     const guild = results[1];
+//     const user = results[2];
+
+//     // Check if there are any device tokens.
+//     if (!tokensSnapshot.hasChildren()) {
+//       return functions.logger.log('There are no notification tokens to send to.');
+//     }
+
+//     // Notification details.
+//     const payload = {
+//       notification: {
+//         title: `${guild.displayName}`,
+//         body: `${user.displayName}: ${message.message}`,
+//         icon: guild.guildPhotoURL,
+//       },
+//       webpush: {
+//         fcm_options: {
+//           link: `https://www.calloutsevolved.com/${guildId}?room=${roomId}`,
+//         },
+//       },
+//     };
+
+//     // Listing all tokens as an array.
+//     tokens = Object.keys(tokensSnapshot.val());
+//     // Send notifications to all tokens.
+//     const response = await admin.messaging().sendToDevice(tokens, payload);
+//     // For each message check if there was an error.
+//     const tokensToRemove = [];
+//     response.results.forEach((result, index) => {
+//       const error = result.error;
+//       if (error) {
+//         functions.logger.error('Failure sending notification to', tokens[index], error);
+//         // Cleanup the tokens who are not registered anymore.
+//         if (
+//           error.code === 'messaging/invalid-registration-token' ||
+//           error.code === 'messaging/registration-token-not-registered'
+//         ) {
+//           tokensToRemove.push(tokensSnapshot.ref.child(tokens[index]).remove());
+//         }
+//       }
+//     });
+//     return Promise.all(tokensToRemove);
+//   });

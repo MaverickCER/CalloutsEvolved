@@ -7,7 +7,7 @@ service cloud.firestore {
     match /users/{uid} {
       allow read, write: if request.auth.uid == uid;
     }
-    match /blogs/{blog} {
+    match /blog/{blog} {
       allow read: if true;
       allow write: if false;
     }
@@ -17,31 +17,6 @@ service cloud.firestore {
 
       allow write: if false;
 
-    }
-     match /stripe/data/customers/{uid} {
-      allow read: if request.auth.uid == uid;
-
-      match /checkout_sessions/{id} {
-        allow read, write: if request.auth.uid == uid;
-      }
-      match /subscriptions/{id} {
-        allow read: if request.auth.uid == uid;
-      }
-      match /payments/{id} {
-        allow read: if request.auth.uid == uid;
-      }
-    }
-
-    match /stripe/data/products/{id} {
-      allow read: if true;
-
-      match /prices/{id} {
-        allow read: if true;
-      }
-
-      match /tax_rates/{id} {
-        allow read: if true;
-      }
     }
   }
 }

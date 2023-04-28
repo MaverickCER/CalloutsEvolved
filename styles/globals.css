@@ -2,15 +2,1071 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+html {
+  overflow-y: scroll;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 * {
   box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid blue;
+  outline-offset: -2px;
+}
+
+.checkbox {
+  border: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.625rem 0;
+  font-size: 1.25rem;
+}
+
+.checkbox:focus-visible {
+  padding: 0.625rem;
+}
+
+.checkbox {
+  margin-top: -0.625rem;
+}
+
+.radioWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: auto;
+}
+
+.radio {
+  border: 1px solid transparent;
+  padding: 0.625rem 1.25rem;
+  width: 100%;
+  background-color: transparent;
+  font-size: 1.25rem;
+  flex: 1 1;
+}
+
+.radioActive {
+  padding: 0.625rem 1.25rem;
+  width: 100%;
+  background-color: transparent;
+  font-size: 1.25rem;
+  flex: 1 1;
+  border: 1px solid;
+}
+
+.header__wrapper,
+.header__banner {
+  background-color: inherit;
+}
+
+.header__banner {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.header__logo {
+  display: none;
+}
+
+.sr-only,
+.visually-hidden {
+  position: absolute;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.header__logo-toggle {
+  font-size: clamp(0px, 8.57vw, 25px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.625rem;
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.header__logo-toggle span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: fit-content;
+}
+
+.header__logo svg,
+.header__logo-toggle svg {
+  width: clamp(0px, 8.57vw, 30px);
+  height: auto;
+}
+
+.header__nav {
+  padding: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 300ms linear;
+  background-color: inherit;
+  color: inherit;
+  max-height: 0;
+  z-index: 100000;
+}
+
+.header__nav.header__nav--open {
+  transition: max-height 300ms linear;
+  max-height: 38rem;
+}
+
+.header__nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.header__nav ul:nth-child(3) {
+  padding: 0 0 0.625rem 0;
+}
+
+.header__nav ul li a {
+  display: block;
+  padding: 0.625rem;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.header__nav ul li a:hover {
+  opacity: 0.8;
+}
+
+.header__nav ul li button {
+  border: none;
+  text-align: left;
+  width: 100%;
+  font-weight: 400;
+  font-size: inherit;
+  background-color: inherit;
+  color: inherit;
+  display: block;
+  padding: 0.625rem;
+  cursor: pointer;
+}
+
+.scroll__top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  white-space: nowrap;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transform: all 1 linear;
+  border: none;
+  background: inherit;
+  font-size: 1.25rem;
+  color: inherit;
+}
+.scroll__top:focus,
+.scroll__top:hover {
+  min-width: 100%;
+  min-height: 2.5rem;
+  max-height: 2.5rem;
+}
+
+.header__nav-end {
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+}
+
+.sessionLink {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.guildLink > p {
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+.guildBadge {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding: 0 0.5rem;
+}
+
+.sessionLink .guildImageWrapper,
+.guildBadge .guildImageWrapper {
+  width: 48px;
+  height: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.sessionLink .guildImageWrapper img,
+.guildBadge .guildImageWrapper img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+.sessionLink p,
+.guildLink p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.sessionLink small,
+.guildLink small {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.sessionLink small span,
+.guildLink small span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  font-size: inherit;
+}
+
+.guildFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+}
+
+.guildFooter button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.btn-like-wrapper button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 414px) {
+  .header__banner {
+    margin: auto;
+    padding: 0 1.25rem;
+  }
+  .header__logo-toggle {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .header__banner {
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    min-width: 842px;
+  }
+
+  .header__logo-toggle {
+    display: none;
+  }
+
+  .header__logo {
+    display: flex;
+    padding: 0.625rem;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+
+  .header__nav {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow: visible;
+    flex-grow: 1;
+    padding: 0;
+    max-height: fit-content;
+    z-index: unset;
+  }
+
+  .header__nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header__nav ul:nth-child(3) {
+    padding: 0;
+  }
+
+  .header__nav ul li a {
+    font-size: clamp(1rem, 2.43vw, 1.5rem);
+  }
+}
+
+.session-grid {
+  align-items: center;
+  aspect-ratio: 1;
+  display: grid;
+  height: fit-content;
+  justify-content: center;
+  margin-top: 1rem;
+  margin: auto;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  position: relative;
+  width: 100%;
+}
+
+/* Button Styles */
+.keyboard button,
+.numberpad button,
+.touch button,
+.list button {
+  background: transparent;
+  border: none;
+  padding: 4%;
+  display: grid;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  grid-column: span 5;
+  grid-row: span 5;
+}
+.keyboard button:hover,
+.numberpad button:hover,
+.touch button:hover,
+.list button:hover {
+  padding: 8%;
+}
+.keyboard button:hover span,
+.numberpad button:hover span,
+.touch button:hover span,
+.list button:hover span {
+  background: transparent;
+  color: #000;
+}
+.keyboard button:active span,
+.keyboard button.active span,
+.numberpad button:active span,
+.numberpad button.active span,
+.touch button:active span,
+.touch button.active span,
+.list button:active span,
+.list button.active span {
+  background: #6161ff;
+  color: #000;
+}
+.keyboard span,
+.numberpad span,
+.touch span,
+.list span {
+  position: relative;
+  text-align: left;
+  background-color: rgb(200, 200, 200);
+  color: black;
+  display: block;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(255, 255, 255, 0.3);
+}
+.keyboard span::-webkit-scrollbar,
+.numberpad span::-webkit-scrollbar,
+.touch span::-webkit-scrollbar,
+.list span::-webkit-scrollbar {
+  width: 0.1rem; /* 2px */
+  height: 0.1rem; /* 2px */
+}
+.keyboard span::-webkit-scrollbar-track,
+.numberpad span::-webkit-scrollbar-track,
+.touch span::-webkit-scrollbar-track,
+.list span::-webkit-scrollbar-track {
+  background: transparent;
+}
+.keyboard span::-webkit-scrollbar-thumb,
+.numberpad span::-webkit-scrollbar-thumb,
+.touch span::-webkit-scrollbar-thumb,
+.list span::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.keyboard section,
+.numberpad section,
+.touch section,
+.list section {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 8%;
+  min-height: fit-content;
+  background-color: rgb(200, 200, 200);
+  z-index: 1;
+}
+.keyboard small,
+.numberpad small,
+.touch small,
+.list small {
+  margin: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  position: relative;
+}
+.keyboard p,
+.numberpad p,
+.touch p,
+.list p {
+  margin: 0;
+  pointer-events: none;
+  position: relative;
+  font-size: 1rem;
+}
+.keyboard img,
+.numberpad img,
+.touch img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #003da5;
+  opacity: 50%;
+  z-index: 0;
+}
+.touch button:nth-child(1) img {
+  display: none;
+}
+.list img {
+  display: block;
+  height: 2.39rem;
+  width: auto;
+  background-color: #003da5;
+  position: absolute;
+  top: -0.39rem;
+  right: 0;
+}
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(25, 1fr);
+  grid-template-rows: repeat(25, 1fr);
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 5/5;
+  margin: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.keyboard button:nth-child(1):hover {
+  padding: 4%;
+  cursor: default;
+}
+.keyboard button:nth-child(1):hover span {
+  background: #efefef;
+  color: black;
+}
+.keyboard button:nth-child(3) {
+  grid-column-start: 11;
+  grid-column-end: 16;
+}
+.keyboard button:nth-child(5) {
+  grid-column-start: 3;
+  grid-column-end: 8;
+}
+.keyboard button:nth-child(4) {
+  grid-column-start: 18;
+  grid-column-end: 23;
+  grid-row-start: 6;
+  grid-row-end: 11;
+}
+.keyboard button:nth-child(8) {
+  grid-column-start: 19;
+  grid-column-end: 24;
+  grid-row-start: 11;
+  grid-row-end: 16;
+}
+.keyboard button:nth-child(9) {
+  grid-column-start: 4;
+  grid-column-end: 9;
+  grid-row-start: 11;
+  grid-row-end: 16;
+}
+.keyboard button:nth-child(12) {
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+.keyboard button:nth-child(16) {
+  grid-column-start: 1;
+  grid-column-end: 19;
+  padding: 1%;
+}
+.keyboard button:nth-child(16):hover {
+  padding: 2%;
+}
+.keyboard button:nth-child(16) section {
+  padding: 2.2%;
+}
+.keyboard button:nth-child(17) {
+  grid-column-start: 19;
+  grid-column-end: 24;
+}
+.numberpad {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(25, 1fr);
+  position: absolute;
+  width: 80%;
+  aspect-ratio: 4/5;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.numberpad button:nth-child(1):hover {
+  padding: 4%;
+  cursor: default;
+}
+.numberpad button:nth-child(1):hover span {
+  background: #efefef;
+  color: black;
+}
+.numberpad button:nth-child(8) {
+  grid-row: span 10;
+}
+.numberpad button:nth-child(15) {
+  grid-row: span 10;
+}
+.numberpad button:nth-child(16) {
+  grid-column: span 10;
+  padding: 2%;
+}
+.numberpad button:nth-child(16):hover {
+  padding: 4%;
+}
+.numberpad button:nth-child(16) section {
+  padding: 4%;
+}
+.touch {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(21, 1fr);
+  aspect-ratio: 20/21;
+  width: 95.238%;
+  margin: auto !important;
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.touch button:nth-child(1) {
+  padding: 1%;
+  grid-column: span 20;
+  grid-row: span 1;
+}
+.touch button:nth-child(1):hover {
+  padding: 1%;
+  cursor: default;
+}
+.touch button:nth-child(1) small:after {
+  content: ' - ';
+}
+.touch button:nth-child(1) section {
+  white-space: nowrap;
+  padding: 2%;
+  cursor: default;
+  background: #efefef;
+  color: black;
+}
+.touch button:nth-child(1):hover {
+  padding: 1%;
+}
+.touch button:nth-child(1):hover section {
+  padding: 2%;
+  background: #efefef;
+  color: black;
+}
+.touch button:nth-child(8) {
+  grid-row-start: 2;
+  grid-row-end: 7;
+  grid-column-start: 16;
+  grid-column-end: 21;
+}
+.touch button:nth-child(16) {
+  grid-row-start: 7;
+  grid-row-end: 12;
+  grid-column-start: 16;
+  grid-column-end: 21;
+}
+.touch button:nth-child(17) {
+  grid-row-start: 12;
+  grid-row-end: 17;
+  grid-column-start: 16;
+  grid-column-end: 21;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 5/5;
+  margin: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.list button {
+  padding: 0.5rem;
+}
+.list button section {
+  padding: 0.5rem;
+}
+.list button:hover {
+  padding: 0.75rem 0.75rem 0.25rem 0.75rem;
+}
+.list button:nth-child(1):hover {
+  padding: 0.5rem;
+  cursor: default;
+}
+.list button:nth-child(1):hover span {
+  background: #efefef;
+  color: black;
+}
+
+/* Button Styles */
+.keyboard label,
+.numberpad label,
+.touch label,
+.list label {
+  background: transparent;
+  border: none;
+  padding: 4%;
+  display: grid;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  grid-column: span 5;
+  grid-row: span 5;
+}
+.keyboard label:hover,
+.numberpad label:hover,
+.touch label:hover,
+.list label:hover {
+  padding: 8%;
+}
+.keyboard input[type='radio'],
+.numberpad input[type='radio'],
+.touch input[type='radio'],
+.list input[type='radio'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+.keyboard label,
+.numberpad label,
+.touch label,
+.list label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.keyboard label div,
+.numberpad label div,
+.touch label div,
+.list label div {
+  font-weight: 400;
+  text-align: center;
+}
+.keyboard label:hover span,
+.numberpad label:hover span,
+.touch label:hover span,
+.list label:hover span {
+  background: transparent;
+  color: #000;
+}
+.keyboard label:active span,
+.keyboard label.active span,
+.numberpad label:active span,
+.numberpad label.active span,
+.touch label:active span,
+.touch label.active span,
+.list label:active span,
+.list label.active span {
+  background: #6161ff;
+  color: #000;
+}
+.keyboard span,
+.numberpad span,
+.touch span,
+.list span {
+  position: relative;
+  text-align: left;
+  background-color: rgb(200, 200, 200);
+  color: black;
+  display: block;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(255, 255, 255, 0.3);
+}
+.keyboard span::-webkit-scrollbar,
+.numberpad span::-webkit-scrollbar,
+.touch span::-webkit-scrollbar,
+.list span::-webkit-scrollbar {
+  width: 0.1rem; /* 2px */
+  height: 0.1rem; /* 2px */
+}
+.keyboard span::-webkit-scrollbar-track,
+.numberpad span::-webkit-scrollbar-track,
+.touch span::-webkit-scrollbar-track,
+.list span::-webkit-scrollbar-track {
+  background: transparent;
+}
+.keyboard span::-webkit-scrollbar-thumb,
+.numberpad span::-webkit-scrollbar-thumb,
+.touch span::-webkit-scrollbar-thumb,
+.list span::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.keyboard section,
+.numberpad section,
+.touch section,
+.list section {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 8%;
+  min-height: fit-content;
+  background-color: rgb(200, 200, 200);
+  z-index: 1;
+}
+.keyboard small,
+.numberpad small,
+.touch small,
+.list small {
+  margin: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  position: relative;
+}
+.keyboard p,
+.numberpad p,
+.touch p,
+.list p {
+  margin: 0;
+  pointer-events: none;
+  position: relative;
+  font-size: 1rem;
+}
+.keyboard img,
+.numberpad img,
+.touch img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #003da5;
+  opacity: 50%;
+  z-index: 0;
+}
+.touch label:nth-child(1) img {
+  display: none;
+}
+.list img {
+  display: block;
+  height: 2.39rem;
+  width: auto;
+  background-color: #003da5;
+  position: absolute;
+  top: -0.39rem;
+  right: 0;
+}
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(25, 1fr);
+  grid-template-rows: repeat(25, 1fr);
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 5/5;
+  margin: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.keyboard label:nth-child(1):hover {
+  padding: 4%;
+  cursor: default;
+}
+.keyboard label:nth-child(1):hover span {
+  background: #efefef;
+  color: black;
+}
+.keyboard label:nth-child(3) {
+  grid-column-start: 11;
+  grid-column-end: 16;
+}
+.keyboard label:nth-child(5) {
+  grid-column-start: 3;
+  grid-column-end: 8;
+}
+.keyboard label:nth-child(4) {
+  grid-column-start: 18;
+  grid-column-end: 23;
+  grid-row-start: 6;
+  grid-row-end: 11;
+}
+.keyboard label:nth-child(8) {
+  grid-column-start: 19;
+  grid-column-end: 24;
+  grid-row-start: 11;
+  grid-row-end: 16;
+}
+.keyboard label:nth-child(9) {
+  grid-column-start: 4;
+  grid-column-end: 9;
+  grid-row-start: 11;
+  grid-row-end: 16;
+}
+.keyboard label:nth-child(12) {
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+.keyboard label:nth-child(16) {
+  grid-column-start: 1;
+  grid-column-end: 19;
+  padding: 1%;
+}
+.keyboard label:nth-child(16):hover {
+  padding: 2%;
+}
+.keyboard label:nth-child(16) section {
+  padding: 2.2%;
+}
+.keyboard label:nth-child(17) {
+  grid-column-start: 19;
+  grid-column-end: 24;
+}
+.numberpad {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(25, 1fr);
+  position: absolute;
+  width: 80%;
+  aspect-ratio: 4/5;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.numberpad label:nth-child(1):hover {
+  padding: 4%;
+  cursor: default;
+}
+.numberpad label:nth-child(1):hover span {
+  background: #efefef;
+  color: black;
+}
+.numberpad label:nth-child(8) {
+  grid-row: span 10;
+}
+.numberpad label:nth-child(15) {
+  grid-row: span 10;
+}
+.numberpad label:nth-child(16) {
+  grid-column: span 10;
+  padding: 2%;
+}
+.numberpad label:nth-child(16):hover {
+  padding: 4%;
+}
+.numberpad label:nth-child(16) section {
+  padding: 4%;
+}
+.touch {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(21, 1fr);
+  aspect-ratio: 20/21;
+  width: 95.238%;
+  margin: auto !important;
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.touch label:nth-child(1) {
+  padding: 1%;
+  grid-column: span 20;
+  grid-row: span 1;
+}
+.touch label:nth-child(1):hover {
+  padding: 1%;
+  cursor: default;
+}
+.touch label:nth-child(1) small:after {
+  content: ' - ';
+}
+.touch label:nth-child(1) section {
+  white-space: nowrap;
+  padding: 2%;
+  cursor: default;
+  background: #efefef;
+  color: black;
+}
+.touch label:nth-child(1):hover {
+  padding: 1%;
+}
+.touch label:nth-child(1):hover section {
+  padding: 2%;
+  background: #efefef;
+  color: black;
+}
+.touch label:nth-child(8) {
+  grid-row-start: 2;
+  grid-row-end: 7;
+  grid-column-start: 16;
+  grid-column-end: 21;
+}
+.touch label:nth-child(16) {
+  grid-row-start: 7;
+  grid-row-end: 12;
+  grid-column-start: 16;
+  grid-column-end: 21;
+}
+.touch label:nth-child(17) {
+  grid-row-start: 12;
+  grid-row-end: 17;
+  grid-column-start: 16;
+  grid-column-end: 21;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 5/5;
+  margin: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.list label {
+  padding: 0.5rem;
+}
+.list label section {
+  padding: 0.5rem;
+}
+.list label:hover {
+  padding: 0.75rem 0.75rem 0.25rem 0.75rem;
+}
+.list label:nth-child(1):hover {
+  padding: 0.5rem;
+  cursor: default;
+}
+.list label:nth-child(1):hover span {
+  background: #efefef;
+  color: black;
+}
+.session-btn-example,
+.session-btn-example section,
+.session-btn-example span {
+  background-color: transparent;
+}
+
+.paypal-buttons-context-iframe:nth-child(2) {
+  display: none !important;
+}
+
+.session-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.session-menu-wrapper {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  max-height: calc(100vh - 2rem);
+}
+
+.session-grid-wrapper {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.session-menu {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  position: relative;
+  aspect-ratio: 1;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+
+.session-grid {
+  align-items: center;
+  aspect-ratio: 1;
+  display: grid;
+  height: fit-content;
+  justify-content: center;
+  margin-top: 1rem;
+  margin: auto;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  position: relative;
+  width: 100%;
 }

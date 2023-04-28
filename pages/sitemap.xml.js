@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { getAllPosts } from '../lib/api';
+import { getAllPosts } from '../lib/getPosts';
 const Sitemap = () => {
   return null;
 };
