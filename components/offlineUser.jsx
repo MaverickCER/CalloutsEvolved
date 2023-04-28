@@ -4,6 +4,7 @@ import { onValue, update } from 'firebase/database';
 import { database } from '../firebase/firebaseClient';
 import { useAuth } from '../context/AuthContext';
 import { useSettings } from '../context/SettingsContext';
+import Image from 'next/image';
 
 const OfflineUser = ({ userId, title }) => {
   const { currentUser, userData } = useAuth();
@@ -42,6 +43,7 @@ const OfflineUser = ({ userId, title }) => {
     }
 
     getUserObj();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   return (
@@ -49,7 +51,7 @@ const OfflineUser = ({ userId, title }) => {
       <div key={key}>
         <div className="userBadge">
           <span className="userImageWrapper">
-            <img src={userObj.userPhotoURL} alt={userObj.displayName} height={192} width={144} />
+            <Image src={userObj.userPhotoURL} alt={userObj.displayName} height={192} width={144} />
           </span>
           <span>
             <p className="userName">{userObj.displayName}</p>

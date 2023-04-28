@@ -16,6 +16,7 @@ import FormCheckbox from '../../components/ui/formcheckbox';
 import FormInput from '../../components/ui/formInput';
 import FormSelect from '../../components/ui/formSelect';
 import Head from 'next/head';
+import Image from 'next/image';
 import ManageSub from '../../components/ManageSub';
 import NintendoIcon from '../../assets/NintendoIcon';
 import OfflineBtn from '../../components/offlineBtn';
@@ -511,6 +512,7 @@ const Session = () => {
         router.push(`/join/session/${id}`);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, currentUser]);
 
   useEffect(() => {
@@ -539,6 +541,7 @@ const Session = () => {
         unsubscribeActivities();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editGame, currentUser]);
 
   return (
@@ -560,7 +563,7 @@ const Session = () => {
                   <summary>
                     <div className="guildBadge">
                       <span className="guildImageWrapper">
-                        <img
+                        <Image
                           src={sessionData.sessionPhotoURL}
                           alt={sessionData.game}
                           height={192}

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import CrossPlatformIcon from '../assets/CrossPlatformIcon';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import NintendoIcon from '../assets/NintendoIcon';
 import OtherPlatformIcon from '../assets/OtherPlatformIcon';
 import PlayStationIcon from '../assets/PlayStationIcon';
@@ -52,7 +53,7 @@ const Lfg = (props) => {
         </p>
         <p>
           This page will automatically show all active sessions that are not full so that users
-          don't have to manually indicate that they are looking for more players.
+          don&apos;t have to manually indicate that they are looking for more players.
         </p>
         <h2>How does this help us reach our dream?</h2>
         <p>
@@ -90,7 +91,7 @@ const Lfg = (props) => {
                 <a className={`sessionLink${sessions === { preload } ? ' sr-only' : ''}`}>
                   {data.sessionPhotoURL && (
                     <span className="guildImageWrapper">
-                      <img src={data.sessionPhotoURL} alt={data.game} height={192} width={144} />
+                      <Image src={data.sessionPhotoURL} alt={data.game} height={192} width={144} />
                     </span>
                   )}
                   <span>

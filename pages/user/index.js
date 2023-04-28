@@ -12,6 +12,7 @@ const Index = () => {
     } else {
       router.push('/lfg');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   return <></>;

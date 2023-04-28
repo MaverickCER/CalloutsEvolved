@@ -11,10 +11,6 @@ import { useRouter } from 'next/router';
 
 // import PushNotificationsProvider from '../context/PushContext';
 
-
-
-
-
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
@@ -35,6 +31,7 @@ function MyApp({ Component, pageProps }) {
     return () => {
       router.events.off('routeChangeComplete', routerEvent);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.events]);
 
   return (

@@ -1,8 +1,7 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 
 import styles from './forminput.module.css';
 import { useSettings } from '../../context/SettingsContext';
-import { useState } from 'react';
 
 const FormInput = forwardRef((props, ref) => {
   const {
@@ -109,5 +108,7 @@ const FormInput = forwardRef((props, ref) => {
     </label>
   );
 });
+
+FormInput.displayName = "FormInput";
 
 export default FormInput;

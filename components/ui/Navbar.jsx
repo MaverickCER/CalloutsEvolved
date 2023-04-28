@@ -40,28 +40,28 @@ const Navbar = () => {
           <nav className={`header__nav${toggle ? ' header__nav--open' : ''}`} style={{backgroundColor: 'white'}}>
             <ul />
             <ul className="header__nav-menulist" role="tree">
-              <li className="header__nav-menuli" role="treeitem">
+              <li className="header__nav-menuli" role="treeitem" aria-selected="false">
                 <Link href="/" passHref>
                   <a className="header__nav-menulink" onClick={() => setToggle(false)}>
                     Home
                   </a>
                 </Link>
               </li>
-              <li className="header__nav-menuli" role="treeitem">
+              <li className="header__nav-menuli" role="treeitem" aria-selected="false">
                 <Link href="/blog" passHref>
                   <a className="header__nav-menulink" onClick={() => setToggle(false)}>
                     Blog
                   </a>
                 </Link>
               </li>
-              <li className="header__nav-menuli" role="treeitem">
+              <li className="header__nav-menuli" role="treeitem" aria-selected="false">
                 <Link href="/guilds" passHref>
                   <a className="header__nav-menulink" onClick={() => setToggle(false)}>
                     Guilds
                   </a>
                 </Link>
               </li>
-              <li className="header__nav-menuli" role="treeitem">
+              <li className="header__nav-menuli" role="treeitem" aria-selected="false">
                 <Link href="/lfg" passHref>
                   <a className="header__nav-menulink" onClick={() => setToggle(false)}>
                     LFG
@@ -72,7 +72,7 @@ const Navbar = () => {
             {currentUser ? (
               currentUser.isAnonymous ? (
                 <ul className="header__nav-menulist" role="tree">
-                  <li className="header__nav-menuli" role="treeitem">
+                  <li className="header__nav-menuli" role="treeitem" aria-selected="false">
                     <button className="header__nav-menubtn" onClick={signOut}>
                       Log&nbsp;Out
                     </button>
@@ -80,14 +80,14 @@ const Navbar = () => {
                 </ul>
               ) : (
                 <ul className="header__nav-menulist" role="tree">
-                  <li className="header__nav-menuli" role="treeitem">
+                  <li className="header__nav-menuli" role="treeitem" aria-selected="false">
                     <Link href={`/user/${currentUser.uid}`} passHref>
                       <a className="header__nav-menubtn" onClick={() => setToggle(false)}>
                         Account
                       </a>
                     </Link>
                   </li>
-                  <li className="header__nav-menuli" role="treeitem">
+                  <li className="header__nav-menuli" role="treeitem" aria-selected="false">
                     <button className="header__nav-menubtn" onClick={signOut}>
                       Log&nbsp;Out
                     </button>
@@ -96,7 +96,7 @@ const Navbar = () => {
               )
             ) : (
               <ul className="header__nav-menulist" role="tree">
-                <li className="header__nav-menuli" role="treeitem">
+                <li className="header__nav-menuli" role="treeitem" aria-selected="false">
                   <Link href="/sessions" passHref>
                     <a className="header__nav-menubtn" onClick={() => setToggle(false)}>
                       Sessions

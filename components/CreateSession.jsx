@@ -11,12 +11,14 @@ import { useForm, useWatch } from 'react-hook-form';
 
 import CrossPlatformIcon from '../assets/CrossPlatformIcon';
 import FormInput from './ui/formInput';
-import FormSelect from './ui/formselect';
+import FormSelect from './ui/formSelect';
+import FormCheckbox from './FormCheckbox';
 import ManageSub from './ManageSub';
 import NintendoIcon from '../assets/NintendoIcon';
 import OtherPlatformIcon from '../assets/OtherPlatformIcon';
 import PlayStationIcon from '../assets/PlayStationIcon';
 import XboxIcon from '../assets/XboxIcon';
+import SteamIcon from '../assets/SteamIcon';
 import { database } from '../firebase/firebaseClient';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
@@ -176,6 +178,7 @@ const CreateSession = () => {
         unsubscribeGame();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -205,6 +208,7 @@ const CreateSession = () => {
         };
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editGame]);
 
   return (

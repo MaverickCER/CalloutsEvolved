@@ -20,6 +20,7 @@ import { database } from '../firebase/firebaseClient';
 import styles from './auth/authform.module.css';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { useSettings } from '../context/SettingsContext';
 
 const OfflineChat = ({ isSolo }) => {
@@ -93,6 +94,7 @@ const OfflineChat = ({ isSolo }) => {
         unsubscribe();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, id]);
 
   useEffect(() => {
@@ -108,6 +110,7 @@ const OfflineChat = ({ isSolo }) => {
     }
 
     messageRef.current.addEventListener('scroll', scrollSpy);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messageRef]);
 
   useEffect(() => {
@@ -134,6 +137,7 @@ const OfflineChat = ({ isSolo }) => {
         );
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messagesLength, messages, isLive]);
 
   const onSubmit = async (data) => {
@@ -193,7 +197,7 @@ const OfflineChat = ({ isSolo }) => {
           <div key={key}>
             <div className="messageBadge">
               <span className="messageImageWrapper">
-                <img src={value.userPhotoURL} alt={value.displayName} height={192} width={144} />
+                <Image src={value.userPhotoURL} alt={value.displayName} height={192} width={144} />
               </span>
               <span>
                 <p className="messageName">{`${value.displayName}`}</p>

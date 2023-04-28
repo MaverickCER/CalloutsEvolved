@@ -6,6 +6,7 @@ import { child, get, onValue, ref, update } from 'firebase/database';
 
 import Input from './ui/input';
 import Link from 'next/link';
+import Image from 'next/image';
 import Select from './ui/select';
 import UserSocial from './UserSocial';
 import { database } from '../firebase/firebaseClient';
@@ -146,6 +147,7 @@ const UserBadge = ({
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBlacklisted, path]);
 
   useEffect(() => {
@@ -178,6 +180,7 @@ const UserBadge = ({
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDeaf, userId, userData, transcript, listening, path, id]);
 
   useEffect(() => {
@@ -190,6 +193,7 @@ const UserBadge = ({
 
       return () => unsubscribe();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDeaf, path, id]);
 
   useEffect(() => {
@@ -235,6 +239,7 @@ const UserBadge = ({
       }
       setCommands([...array]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData, sessionButtons, threshold]);
 
   return (
@@ -253,7 +258,7 @@ const UserBadge = ({
         }}>
         <summary className="guildBadge">
           <span className="guildImageWrapper">
-            <img src={userPhotoURL} alt={displayName} height={192} width={144} />
+            <Image src={userPhotoURL} alt={displayName} height={192} width={144} />
           </span>
           <span>
             {isBlacklisted !== false ? (

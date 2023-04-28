@@ -3,7 +3,6 @@ import { child, get, ref, set, update } from 'firebase/database';
 
 import { database } from '../firebase/firebaseClient';
 import { useAuth } from './AuthContext';
-import usePremiumStatus from '../stripe/usePremiumStatus';
 
 const SettingsContext = React.createContext();
 
@@ -265,8 +264,7 @@ export const SettingsProvider = ({ children }) => {
   // states that hold the data currently in use
   const synth = useRef(null);
   const utter = useRef(null);
-  const { currentUser, userData } = useAuth();
-  const userIsPremium = usePremiumStatus(currentUser);
+  const { currentUser, userData, userIsPremium } = useAuth();
   const [ahk, setAhk] = useState(originalAhkData);
   const [audio, setAudio] = useState(originalAudioData);
   const [theme, setTheme] = useState(originalThemeData);

@@ -4,7 +4,7 @@ import { useForm, useWatch } from 'react-hook-form';
 
 import FormCheckbox from './ui/formcheckbox';
 import FormInput from './ui/formInput';
-import { PayPalButton } from 'react-paypal-button-v2';
+import PayPalButton from './paypal';
 import { database } from '../firebase/firebaseClient';
 import defaultData from '../utils/default.json';
 import styles from './auth/authform.module.css';
@@ -52,6 +52,7 @@ const UpdateButton = ({ sessionButtons, setSessionButtons, savedTemplates, isSol
     }
     setTotal(num);
     getOptions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [btn, sessionButtons]);
 
   const submitForm = async (data) => {

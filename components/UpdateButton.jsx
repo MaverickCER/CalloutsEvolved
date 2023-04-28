@@ -4,7 +4,7 @@ import { useForm, useWatch } from 'react-hook-form';
 
 import FormCheckbox from './ui/formcheckbox';
 import FormInput from './ui/formInput';
-import FormSelect from './ui/formselect';
+import FormSelect from './ui/formSelect';
 import { database } from '../firebase/firebaseClient';
 import defaultData from '../utils/default.json';
 import styles from './auth/authform.module.css';
@@ -53,11 +53,13 @@ const UpdateButton = ({ sessionButtons, setSessionButtons, savedTemplates, isSol
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionButtons]);
 
   useEffect(() => {
     getBtnOptions();
     getShiftOptions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [btn, sessionButtons]);
 
   useEffect(() => {
@@ -106,6 +108,7 @@ const UpdateButton = ({ sessionButtons, setSessionButtons, savedTemplates, isSol
       setValue('text', null);
       setValue('texts', null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type]);
 
   const submitForm = async (data) => {

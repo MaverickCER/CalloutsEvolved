@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ChevronIcon from '../../assets/ChevronIcon';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllPosts } from '../../lib/getPosts';
 import { useSettings } from '../../context/SettingsContext';
 
@@ -18,6 +19,7 @@ const Blog = (props) => {
     } else {
       setFilteredBlogs([...Object.values(blog).filter((b) => b.language === lang)]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang])
 
   return (
@@ -32,7 +34,7 @@ const Blog = (props) => {
           All posts will be peer reviewed, and should focus on accessibility within video games.
         </p>
         <p>
-          Each blog post will have it's own author group to store all legal requirements, research,
+          Each blog post will have it&apos;s own author group to store all legal requirements, research,
           and collaboration tools.
         </p>
 
@@ -66,7 +68,7 @@ const Blog = (props) => {
                   <a className={`guildLink`}>
                     <div className="guildBadge">
                       <span className="guildImageWrapper">
-                        <img src={data.coverImage} height={192} width={144} />
+                        <Image src={data.coverImage} alt={data?.title} height={192} width={144} />
                       </span>
                       <span>
                         <p className="guildName">{`(${data?.language?.toUpperCase()}) ${

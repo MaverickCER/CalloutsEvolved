@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import CrossPlatformIcon from '../assets/CrossPlatformIcon';
 import Head from 'next/head';
+import Image from 'next/image';
 import Input from '../components/ui/input';
 import ManageSub from '../components/ManageSub';
 import NintendoIcon from '../assets/NintendoIcon';
@@ -211,7 +212,7 @@ const Sessions = () => {
     document.body.appendChild(downloadAnchorNode); // required for firefox
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
-  }
+  };
 
   const createTemplate = () => {
     if (templateName) {
@@ -235,7 +236,7 @@ const Sessions = () => {
     };
     localStorage.setItem('ce-session-templates', JSON.stringify(obj));
     setSavedTemplates({ ...obj });
-  }
+  };
 
   const deleteTemplate = () => {
     let obj = Object.fromEntries(
@@ -243,7 +244,7 @@ const Sessions = () => {
     );
     localStorage.setItem('ce-session-templates', JSON.stringify(obj));
     setSavedTemplates({ ...obj });
-  }
+  };
 
   const onReaderLoad = (event, fileName) => {
     let template = JSON.parse(event.target.result);
@@ -276,19 +277,20 @@ const Sessions = () => {
     };
     setSavedTemplates({ ...obj });
     localStorage.setItem('ce-session-templates', JSON.stringify(obj));
-  }
+  };
 
   const handleImport = (event) => {
-    let name = event.target.files[0].name.slice(0,-5);
+    let name = event.target.files[0].name.slice(0, -5);
     let reader = new FileReader();
     reader.onload = (e) => onReaderLoad(e, name);
     reader.readAsText(event.target.files[0]);
-  }
+  };
 
   const triggerAction = (btn, shift, auto) => {
     clearTimeout(timer.current[btn]);
     effect.current[btn]?.pause();
-    let duration, actionObj = sessionActions;
+    let duration,
+      actionObj = sessionActions;
     if (sessionButtons[btn].type === 'shift' && isShift === false) {
       setIsShift(true);
       let timer = setTimeout(() => {
@@ -318,10 +320,7 @@ const Sessions = () => {
               speak(sessionActions[btn]?.dura, 2.6, true);
             } else if (
               sessionActions[btn]?.dura ===
-              (shift
-                ? sessionButtons[btn]?.times
-                : sessionButtons[btn]?.time) /
-                2.6
+              (shift ? sessionButtons[btn]?.times : sessionButtons[btn]?.time) / 2.6
             ) {
               if (!synth.current.speaking) {
                 speak(sessionActions[btn]?.dura / 2, 2);
@@ -341,7 +340,7 @@ const Sessions = () => {
         actionObj[btn].timestamp = 0;
         actionObj[btn].userId = '';
       } else if (sessionActions[btn].displayName === '') {
-        addHistory(btn); 
+        addHistory(btn);
         if (sessionButtons[btn].type === 'template') {
           handleTemplate(shift ? sessionButtons[btn]?.temps : sessionButtons[btn]?.temp);
         } else if (sessionButtons[btn].type === 'timer') {
@@ -455,7 +454,7 @@ const Sessions = () => {
     if (typeof window !== 'undefined') {
       let temps = JSON.parse(localStorage.getItem('ce-session-templates'));
       if (temps) {
-        setSavedTemplates({...temps});
+        setSavedTemplates({ ...temps });
       } else {
         setSavedTemplates(JSON.parse(JSON.stringify(jsonData)));
       }
@@ -470,10 +469,10 @@ const Sessions = () => {
       <Head>
         <title>Callouts Evolved | Sessions</title>
         <meta
-          name="description"
-          content="Free online virtual microphone or augmentative and alternative communicateion (AAC) to improve call outs in video games."
+          name='description'
+          content='Free online virtual microphone or augmentative and alternative communicateion (AAC) to improve call outs in video games.'
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <div style={{ textAlign: 'center' }}>
         <h1>Sessions</h1>
@@ -493,7 +492,8 @@ const Sessions = () => {
           Sessions are the core component of Callouts Evolved and are what will make video game
           communication more accessible. There will be a video explaining how the sessions are used,
           the different callout types, and how the system can be used for any multiplayer game. For
-          now, please test to your heart's content and feel free to ask about specific scenarios.
+          now, please test to your heart&apos;s content and feel free to ask about specific
+          scenarios.
         </p>
         <p>
           If you would like to provide feedback, get in touch, or if you were previously using a
@@ -501,18 +501,18 @@ const Sessions = () => {
         </p>
       </div>
       <div
-        className="session-wrapper"
+        className='session-wrapper'
         style={{
           display: 'grid',
           gridTemplateColumns: portrait ? '1fr' : '280px auto',
         }}>
         {!portrait && (
-          <span className="session-menu-wrapper">
-            <div className="session-menu">
+          <span className='session-menu-wrapper'>
+            <div className='session-menu'>
               <div>
-                <div className="guildBadge">
-                  <span className="guildImageWrapper">
-                    <img
+                <div className='guildBadge'>
+                  <span className='guildImageWrapper'>
+                    <Image
                       src={sessionData.sessionPhotoURL}
                       alt={sessionData.game}
                       height={192}
@@ -520,38 +520,38 @@ const Sessions = () => {
                     />
                   </span>
                   <span>
-                    <p className="guildName" style={{ margin: '0' }}>
+                    <p className='guildName' style={{ margin: '0' }}>
                       {audio.sttDialect.split('-')[0] !== sessionData.lang && (
-                        <span title="Language">({sessionData.lang.toUpperCase()})&nbsp;</span>
+                        <span title='Language'>({sessionData.lang.toUpperCase()})&nbsp;</span>
                       )}
-                      <span title="Platform">
+                      <span title='Platform'>
                         {sessionData.platform === 'all' ? (
-                          <CrossPlatformIcon width="1em" height="1em" />
+                          <CrossPlatformIcon width='1em' height='1em' />
                         ) : sessionData.platform === 'nintendo' ? (
-                          <NintendoIcon width="1em" height="1em" n />
+                          <NintendoIcon width='1em' height='1em' n />
                         ) : sessionData.platform === 'playstation' ? (
-                          <PlayStationIcon width="1em" height="1em" />
+                          <PlayStationIcon width='1em' height='1em' />
                         ) : sessionData.platform === 'steam' ? (
-                          <SteamIcon width="1em" height="1em" />
+                          <SteamIcon width='1em' height='1em' />
                         ) : sessionData.platform === 'xbox' ? (
-                          <XboxIcon width="1em" height="1em" />
+                          <XboxIcon width='1em' height='1em' />
                         ) : sessionData.platform === 'other' ? (
-                          <OtherPlatformIcon width="1em" height="1em" />
+                          <OtherPlatformIcon width='1em' height='1em' />
                         ) : (
-                          <CrossPlatformIcon width="1em" height="1em" />
+                          <CrossPlatformIcon width='1em' height='1em' />
                         )}
                         &nbsp;
                       </span>
                       {sessionData.game}
                     </p>
-                    <small className="guildReputation">{sessionData.activity}</small>
+                    <small className='guildReputation'>{sessionData.activity}</small>
                     <br />
-                    <small className="guildUsers">
+                    <small className='guildUsers'>
                       Users: {sessionData.usersCount}/{sessionData.usersMax}
                     </small>
                   </span>
                 </div>
-                <p className="guildDescription">{sessionData.description}</p>
+                <p className='guildDescription'>{sessionData.description}</p>
               </div>
               <UserCaptions
                 triggerAction={triggerAction}
@@ -583,10 +583,10 @@ const Sessions = () => {
               <h3>Templates</h3>
               {savedTemplates && savedTemplates !== {} ? (
                 <Select
-                  autoComplete="off"
-                  name="template"
-                  placeholder="Select a Template"
-                  title="Select a Template"
+                  autoComplete='off'
+                  name='template'
+                  placeholder='Select a Template'
+                  title='Select a Template'
                   val={selectedTemplate}
                   change={(e) => {
                     handleTemplate(e.target.value);
@@ -606,9 +606,9 @@ const Sessions = () => {
                 <div>
                   <label style={{ background: 'red' }}>
                     <input
-                      value=""
-                      type="file"
-                      accept="application/json"
+                      value=''
+                      type='file'
+                      accept='application/json'
                       style={{ display: 'none' }}
                       onChange={(e) => handleImport(e)}
                     />
@@ -634,7 +634,7 @@ const Sessions = () => {
               <br />
               <div style={{ cursor: 'pointer', textAlign: 'center' }}>
                 <Input
-                  autoComplete="off"
+                  autoComplete='off'
                   btn={loading ? 'Loading...' : 'Create'}
                   btnAction={() => {
                     createTemplate();
@@ -642,11 +642,11 @@ const Sessions = () => {
                   change={(e) => {
                     setTemplateName(e.target.value);
                   }}
-                  error=""
-                  name="createTemplate"
-                  placeholder="Name of new template"
-                  title="Name of new template"
-                  type="text"
+                  error=''
+                  name='createTemplate'
+                  placeholder='Name of new template'
+                  title='Name of new template'
+                  type='text'
                   val={templateName}
                 />
               </div>
@@ -662,12 +662,12 @@ const Sessions = () => {
             </div>
           </span>
         )}
-        <span className="session-grid-wrapper">
-          <div className="session-grid" ref={calloutGrid}>
+        <span className='session-grid-wrapper'>
+          <div className='session-grid' ref={calloutGrid}>
             <div
               className={`${ahk.macroMode}`}
               style={{ height: `${gridSize}px`, width: `${gridSize}px` }}>
-              <button disabled className="session-btn-example">
+              <button disabled className='session-btn-example'>
                 <span
                   style={{
                     color: `rgb(${theme.mca})`,
@@ -698,12 +698,12 @@ const Sessions = () => {
           </div>
         </span>
         {portrait && (
-          <span className="session-menu-wrapper">
-            <div className="session-menu">
+          <span className='session-menu-wrapper'>
+            <div className='session-menu'>
               <div>
-                <div className="guildBadge">
-                  <span className="guildImageWrapper">
-                    <img
+                <div className='guildBadge'>
+                  <span className='guildImageWrapper'>
+                    <Image
                       src={sessionData.sessionPhotoURL}
                       alt={sessionData.game}
                       height={192}
@@ -711,38 +711,38 @@ const Sessions = () => {
                     />
                   </span>
                   <span>
-                    <p className="guildName" style={{ margin: '0' }}>
+                    <p className='guildName' style={{ margin: '0' }}>
                       {audio.sttDialect.split('-')[0] !== sessionData.lang && (
-                        <span title="Language">({sessionData.lang.toUpperCase()})&nbsp;</span>
+                        <span title='Language'>({sessionData.lang.toUpperCase()})&nbsp;</span>
                       )}
-                      <span title="Platform">
+                      <span title='Platform'>
                         {sessionData.platform === 'all' ? (
-                          <CrossPlatformIcon width="1em" height="1em" />
+                          <CrossPlatformIcon width='1em' height='1em' />
                         ) : sessionData.platform === 'nintendo' ? (
-                          <NintendoIcon width="1em" height="1em" n />
+                          <NintendoIcon width='1em' height='1em' n />
                         ) : sessionData.platform === 'playstation' ? (
-                          <PlayStationIcon width="1em" height="1em" />
+                          <PlayStationIcon width='1em' height='1em' />
                         ) : sessionData.platform === 'steam' ? (
-                          <SteamIcon width="1em" height="1em" />
+                          <SteamIcon width='1em' height='1em' />
                         ) : sessionData.platform === 'xbox' ? (
-                          <XboxIcon width="1em" height="1em" />
+                          <XboxIcon width='1em' height='1em' />
                         ) : sessionData.platform === 'other' ? (
-                          <OtherPlatformIcon width="1em" height="1em" />
+                          <OtherPlatformIcon width='1em' height='1em' />
                         ) : (
-                          <CrossPlatformIcon width="1em" height="1em" />
+                          <CrossPlatformIcon width='1em' height='1em' />
                         )}
                         &nbsp;
                       </span>
                       {sessionData.game}
                     </p>
-                    <small className="guildReputation">{sessionData.activity}</small>
+                    <small className='guildReputation'>{sessionData.activity}</small>
                     <br />
-                    <small className="guildUsers">
+                    <small className='guildUsers'>
                       Users: {sessionData.usersCount}/{sessionData.usersMax}
                     </small>
                   </span>
                 </div>
-                <p className="guildDescription">{sessionData.description}</p>
+                <p className='guildDescription'>{sessionData.description}</p>
               </div>
               <UserCaptions
                 triggerAction={triggerAction}
@@ -774,10 +774,10 @@ const Sessions = () => {
               <h3>Templates</h3>
               {savedTemplates && savedTemplates !== {} ? (
                 <Select
-                  autoComplete="off"
-                  name="template"
-                  placeholder="Select a Template"
-                  title="Select a Template"
+                  autoComplete='off'
+                  name='template'
+                  placeholder='Select a Template'
+                  title='Select a Template'
                   val={selectedTemplate}
                   change={(e) => {
                     setSelectedTemplate(e.target.value);
@@ -798,9 +798,9 @@ const Sessions = () => {
                 <div>
                   <label style={{ background: 'red' }}>
                     <input
-                      value=""
-                      type="file"
-                      accept="application/json"
+                      value=''
+                      type='file'
+                      accept='application/json'
                       style={{ display: 'none' }}
                       onChange={(e) => handleImport(e)}
                     />
@@ -826,7 +826,7 @@ const Sessions = () => {
               <br />
               <div style={{ cursor: 'pointer', textAlign: 'center' }}>
                 <Input
-                  autoComplete="off"
+                  autoComplete='off'
                   btn={loading ? 'Loading...' : 'Create'}
                   btnAction={() => {
                     createTemplate();
@@ -834,11 +834,11 @@ const Sessions = () => {
                   change={(e) => {
                     setTemplateName(e.target.value);
                   }}
-                  error=""
-                  name="createTemplate"
-                  placeholder="Name of new template"
-                  title="Name of new template"
-                  type="text"
+                  error=''
+                  name='createTemplate'
+                  placeholder='Name of new template'
+                  title='Name of new template'
+                  type='text'
                   val={templateName}
                 />
               </div>
@@ -856,135 +856,16 @@ const Sessions = () => {
         )}
       </div>
       <form style={{ display: 'none' }}>
-        <input disabled id="gameChatClose" value={ahk.gameChatClose} type="text" />
-        <input disabled id="gameChatDelay" value={ahk.gameChatDelay} type="number" />
-        <input disabled id="gameChatOpen" value={ahk.gameChatOpen} type="text" />
-        <input disabled id="gameChatSend" value={ahk.gameChatSend} type="text" />
-        <input disabled id="sendGameChat" value={ahk.sendGameChat} type="text" />
-        <input disabled id="macroMode" value={ahk.macroMode} type="text" />
-        <input disabled id="macroToggle" value={ahk.macroToggle} type="text" />
+        <input disabled id='gameChatClose' value={ahk.gameChatClose} type='text' />
+        <input disabled id='gameChatDelay' value={ahk.gameChatDelay} type='number' />
+        <input disabled id='gameChatOpen' value={ahk.gameChatOpen} type='text' />
+        <input disabled id='gameChatSend' value={ahk.gameChatSend} type='text' />
+        <input disabled id='sendGameChat' value={ahk.sendGameChat} type='text' />
+        <input disabled id='macroMode' value={ahk.macroMode} type='text' />
+        <input disabled id='macroToggle' value={ahk.macroToggle} type='text' />
       </form>
     </div>
   );
 };
 
 export default Sessions;
-
-
-async function getToken (userId, subscriptionId, reason) {
-  const tokenData = getDoc(doc(db,"paypal","process","env","token")); // store last auth response here
-  if (tokenData.exists()) {
-    // check if token is still valid
-    if (tokenData.data().timestamp > Date.now()) {
-      return tokenData.data();
-    }
-  }
-
-  fetch('https://api.sandbox.paypal.com/v1/oauth2/token', { 
-    method: 'POST',
-    headers: { 
-        'Accept': 'application/json', 
-        'Accept-Language': 'en_US',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + Buffer.from(`${process.env.CLIENTID}:${process.env.CLIENTSECRET}`).toString('base64')
-    },
-    body: 'grant_type=client_credentials'
-  }).then(response => response.json())
-    .then(async (data) => {
-      if (data.data.token_type === "Bearer" && data.data.token.expires_in) {
-        let token = data.data;
-        // set timestamp so we can generate new tokens as needed;
-        token.timestamp = Date.now() + token.expires_in - 250;
-        setDoc(doc(db,"paypal","process","env","token"), token);
-        return token;
-      }
-      // invalid data, send email via trigger email api (don't worry about these details)
-      const dataId = db.createId();
-      setDoc(doc(db,"email","data","deliver",dataId), {
-        to: ['maverickcer@gmail.com'],
-        message: {
-          subject: 'PayPal Token Error!',
-          text: `There was an error getting the PayPal token on CalloutsEvolved. The following req data was submitted. Please cancel the subscription if needed and then look into the error.\nuserId:${userId}\nsubscriptionId:${subscriptionId}\nreason:${reason}\ndata:${JSON.stringify(data)}`,
-        }
-      });
-      return undefined;
-  }).catch(function (error) {
-    console.log('Error:', error.message);
-    // invalid data, send email via trigger email api (don't worry about these details)
-    const errorId = db.createId();
-    setDoc(doc(db,"email","data","deliver",errorId), {
-      to: ['maverickcer@gmail.com'],
-      message: {
-        subject: 'PayPal Token Error!',
-        text: `There was an error getting the PayPal token on CalloutsEvolved. The following req data was submitted. Please cancel the subscription if needed and then look into the error.\nuserId:${userId}\nsubscriptionId:${subscriptionId}\nreason:${reason}\ndata:${JSON.stringify(data)}`,
-      }
-    });
-    return undefined;
-  });
-}
-
-// get url: `/subscription/:subscriptionId/user/:userId`
-async function getSubscription(req, res) {
-  const [userId, subscriptionId] = req.params;
-  const token = await getToken(userId, subscriptionId, "Error Getting Subscription");
-
-  if (token) {
-    fetch('https://api-m.sandbox.paypal.com/v1/billing/subscriptions/I-BW452GLLEP1G', {
-      headers: {
-        'X-PAYPAL-SECURITY-CONTEXT': '{"consumer":{"accountNumber":1181198218909172527,"merchantId":"5KW8F2FXKX5HA"},"merchant":{"accountNumber":1659371090107732880,"merchantId":"2J6QB8YJQSJRJ"},"apiCaller":{"clientId":"AdtlNBDhgmQWi2xk6edqJVKklPFyDWxtyKuXuyVT-OgdnnKpAVsbKHgvqHHP","appId":"APP-6DV794347V142302B","payerId":"2J6QB8YJQSJRJ","accountNumber":"1659371090107732880"},"scopes":["https://api-m.paypal.com/v1/subscription/.*","https://uri.paypal.com/services/subscription","openid"]}',
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    }).then(response => response.json())
-      .then(async (data) => {
-        if (data.status === 200) {
-          set(ref(database, `userData/${userId}/subscriptionData`), { ...data.data });
-        } else {
-          // send an email so this issue can be resolved
-          setDoc(doc(db,"email","data","deliver",errorId), {
-            to: ['maverickcer@gmail.com'],
-            message: {
-              subject: `PayPal Subscription Error! Status ${data.status}`,
-              text: `There was an error getting a PayPal subscription on CalloutsEvolved. The following req data was submitted. Please cancel the subscription if needed and then look into the error.\nuserId:${userId}\nsubscriptionId:${subscriptionId}\nreason:Error Getting Subscription\ndata:${JSON.stringify(data)}`,
-            }
-          });
-        }
-      }).catch(function (error) {
-        console.log('Error:', error.message);
-        // invalid data, send email via trigger email api (don't worry about these details)
-        const errorId = db.createId();
-        setDoc(doc(db,"email","data","deliver",errorId), {
-          to: ['maverickcer@gmail.com'],
-          message: {
-            subject: 'PayPal Subscription Error!',
-            text: `There was an error getting a PayPal subscription on CalloutsEvolved. The following req data was submitted. Please cancel the subscription if needed and then look into the error.\nuserId:${userId}\nsubscriptionId:${subscriptionId}\nreason:Error Getting Subscription\nerror:${error.message}`,
-          }
-        });
-        return undefined;
-      });
-  }
-}
-
-// delete url: `/subscription/:subscriptionId/user/:userId/reason/:reason`
-async function cancelSubscription(req, res) {
-  const [userId, subscriptionId, reason] = req.params;
-  const token = await getToken(userId, subscriptionId, reason);
-
-  if (token) {
-    let subscription = await fetch(`https://api-m.sandbox.paypal.com/v1/billing/subscriptions/${subscriptionId}/cancel`, {
-      method: 'POST',
-      headers: {
-        // let me know how I need to pull this header data as it does not appear to align with the token
-        'X-PAYPAL-SECURITY-CONTEXT': '{"consumer":{"accountNumber":1181198218909172527,"merchantId":"5KW8F2FXKX5HA"},"merchant":{"accountNumber":1659371090107732880,"merchantId":"2J6QB8YJQSJRJ"},"apiCaller":{"clientId":"AdtlNBDhgmQWi2xk6edqJVKklPFyDWxtyKuXuyVT-OgdnnKpAVsbKHgvqHHP","appId":"APP-6DV794347V142302B","payerId":"2J6QB8YJQSJRJ","accountNumber":"1659371090107732880"},"scopes":["https://api-m.paypal.com/v1/subscription/.*","https://uri.paypal.com/services/subscription","openid"]}',
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({ "reason": reason.toString() })
-    });
-    if (subscription.status === 200) {
-      // set real-time db
-      set(ref(database, `userData/${userId}/subscriptionData`), { ...subscription.data });
-    }
-    res.status(subscription.status).json(subscription.data);
-  }
-}

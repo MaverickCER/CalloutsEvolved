@@ -1,5 +1,8 @@
-const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  runtimeCaching
+});
 
 const headers = async () => {
   return [
@@ -24,22 +27,5 @@ const headers = async () => {
 };
 
 module.exports = withPWA({
-  images: {
-    domains: [
-      'console.firebase.google.com',
-      'firebasestorage.googleapis.com',
-      'miro.medium.com',
-      'files.stripe.com',
-    ],
-  },
-  reactStrictMode: true,
-  productionBrowserSourceMaps: true,
-  env: {
-    FIREBASE_PROJECT_ID: 'calloutsevolved',
-  },
-  pwa: {
-    dest: 'public',
-    runtimeCaching,
-  },
   headers,
 });

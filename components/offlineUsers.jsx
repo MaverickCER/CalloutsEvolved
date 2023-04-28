@@ -107,6 +107,7 @@ const OfflineUsers = ({ list = 'whitelist', data = { isDeaf: false } }) => {
     }
 
     getUsers(list);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, list]);
 
   return (
