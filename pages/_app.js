@@ -1,5 +1,4 @@
 import '../styles/globals.css';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { getAnalytics, isSupported, logEvent } from 'firebase/analytics';
 

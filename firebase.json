@@ -8,7 +8,7 @@
             "key": "Content-Security-Policy",
             "value": [
               "connect-src 'self' https://us-central1-calloutsevolved.cloudfunctions.net https://firebaseinstallations.googleapis.com http://static.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com https://firebase.googleapis.com vitals.vercel-insights.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com wss://*.firebaseio.com https://firestore.googleapis.com https://www.paypal.com https://c.paypal.com https://id.twitch.tv https://api.igdb.com",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com http://*.hotjar.com https://*.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com https://*.firebaseio.com https://cdn.firebase.com https://js.stripe.com https://www.paypal.com/ https://www.paypal.com/sdk https://c.paypal.com"
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com http://*.hotjar.com https://*.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com https://*.firebaseio.com https://cdn.firebase.com https://www.paypal.com/ https://www.paypal.com/sdk https://c.paypal.com"
             ]
           }
         ]

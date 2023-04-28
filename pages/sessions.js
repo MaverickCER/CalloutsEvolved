@@ -869,3 +869,122 @@ const Sessions = () => {
 };
 
 export default Sessions;
+
+
+async function getToken (userId, subscriptionId, reason) {
+  const tokenData = getDoc(doc(db,"paypal","process","env","token")); // store last auth response here
+  if (tokenData.exists()) {
+    // check if token is still valid
+    if (tokenData.data().timestamp > Date.now()) {
+      return tokenData.data();
+    }
+  }
+
+  fetch('https://api.sandbox.paypal.com/v1/oauth2/token', { 
+    method: 'POST',
+    headers: { 
+        'Accept': 'application/json', 
+        'Accept-Language': 'en_US',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + Buffer.from(`${process.env.CLIENTID}:${process.env.CLIENTSECRET}`).toString('base64')
+    },
+    body: 'grant_type=client_credentials'
+  }).then(response => response.json())
+    .then(async (data) => {
+      if (data.data.token_type === "Bearer" && data.data.token.expires_in) {
+        let token = data.data;
+        // set timestamp so we can generate new tokens as needed;
+        token.timestamp = Date.now() + token.expires_in - 250;
+        setDoc(doc(db,"paypal","process","env","token"), token);
+        return token;
+      }
+      // invalid data, send email via trigger email api (don't worry about these details)
+      const dataId = db.createId();
+      setDoc(doc(db,"email","data","deliver",dataId), {
+        to: ['maverickcer@gmail.com'],
+        message: {
+          subject: 'PayPal Token Error!',
+          text: `There was an error getting the PayPal token on CalloutsEvolved. The following req data was submitted. Please cancel the subscription if needed and then look into the error.\nuserId:${userId}\nsubscriptionId:${subscriptionId}\nreason:${reason}\ndata:${JSON.stringify(data)}`,
+        }
+      });
+      return undefined;
+  }).catch(function (error) {
+    console.log('Error:', error.message);
+    // invalid data, send email via trigger email api (don't worry about these details)
+    const errorId = db.createId();
+    setDoc(doc(db,"email","data","deliver",errorId), {
+      to: ['maverickcer@gmail.com'],
+      message: {
+        subject: 'PayPal Token Error!',
+        text: `There was an error getting the PayPal token on CalloutsEvolved. The following req data was submitted. Please cancel the subscription if needed and then look into the error.\nuserId:${userId}\nsubscriptionId:${subscriptionId}\nreason:${reason}\ndata:${JSON.stringify(data)}`,
+      }
+    });
+    return undefined;
+  });
+}
+
+// get url: `/subscription/:subscriptionId/user/:userId`
+async function getSubscription(req, res) {
+  const [userId, subscriptionId] = req.params;
+  const token = await getToken(userId, subscriptionId, "Error Getting Subscription");
+
+  if (token) {
+    fetch('https://api-m.sandbox.paypal.com/v1/billing/subscriptions/I-BW452GLLEP1G', {
+      headers: {
+        'X-PAYPAL-SECURITY-CONTEXT': '{"consumer":{"accountNumber":1181198218909172527,"merchantId":"5KW8F2FXKX5HA"},"merchant":{"accountNumber":1659371090107732880,"merchantId":"2J6QB8YJQSJRJ"},"apiCaller":{"clientId":"AdtlNBDhgmQWi2xk6edqJVKklPFyDWxtyKuXuyVT-OgdnnKpAVsbKHgvqHHP","appId":"APP-6DV794347V142302B","payerId":"2J6QB8YJQSJRJ","accountNumber":"1659371090107732880"},"scopes":["https://api-m.paypal.com/v1/subscription/.*","https://uri.paypal.com/services/subscription","openid"]}',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(response => response.json())
+      .then(async (data) => {
+        if (data.status === 200) {
+          set(ref(database, `userData/${userId}/subscriptionData`), { ...data.data });
+        } else {
+          // send an email so this issue can be resolved
+          setDoc(doc(db,"email","data","deliver",errorId), {
+            to: ['maverickcer@gmail.com'],
+            message: {
+              subject: `PayPal Subscription Error! Status ${data.status}`,
+              text: `There was an error getting a PayPal subscription on CalloutsEvolved. The following req data was submitted. Please cancel the subscription if needed and then look into the error.\nuserId:${userId}\nsubscriptionId:${subscriptionId}\nreason:Error Getting Subscription\ndata:${JSON.stringify(data)}`,
+            }
+          });
+        }
+      }).catch(function (error) {
+        console.log('Error:', error.message);
+        // invalid data, send email via trigger email api (don't worry about these details)
+        const errorId = db.createId();
+        setDoc(doc(db,"email","data","deliver",errorId), {
+          to: ['maverickcer@gmail.com'],
+          message: {
+            subject: 'PayPal Subscription Error!',
+            text: `There was an error getting a PayPal subscription on CalloutsEvolved. The following req data was submitted. Please cancel the subscription if needed and then look into the error.\nuserId:${userId}\nsubscriptionId:${subscriptionId}\nreason:Error Getting Subscription\nerror:${error.message}`,
+          }
+        });
+        return undefined;
+      });
+  }
+}
+
+// delete url: `/subscription/:subscriptionId/user/:userId/reason/:reason`
+async function cancelSubscription(req, res) {
+  const [userId, subscriptionId, reason] = req.params;
+  const token = await getToken(userId, subscriptionId, reason);
+
+  if (token) {
+    let subscription = await fetch(`https://api-m.sandbox.paypal.com/v1/billing/subscriptions/${subscriptionId}/cancel`, {
+      method: 'POST',
+      headers: {
+        // let me know how I need to pull this header data as it does not appear to align with the token
+        'X-PAYPAL-SECURITY-CONTEXT': '{"consumer":{"accountNumber":1181198218909172527,"merchantId":"5KW8F2FXKX5HA"},"merchant":{"accountNumber":1659371090107732880,"merchantId":"2J6QB8YJQSJRJ"},"apiCaller":{"clientId":"AdtlNBDhgmQWi2xk6edqJVKklPFyDWxtyKuXuyVT-OgdnnKpAVsbKHgvqHHP","appId":"APP-6DV794347V142302B","payerId":"2J6QB8YJQSJRJ","accountNumber":"1659371090107732880"},"scopes":["https://api-m.paypal.com/v1/subscription/.*","https://uri.paypal.com/services/subscription","openid"]}',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ "reason": reason.toString() })
+    });
+    if (subscription.status === 200) {
+      // set real-time db
+      set(ref(database, `userData/${userId}/subscriptionData`), { ...subscription.data });
+    }
+    res.status(subscription.status).json(subscription.data);
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { addDoc, collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import { child, get, ref, update } from 'firebase/database';
 import { database, firestore } from '../firebase/firebaseClient';
@@ -16,6 +16,8 @@ const ManageSub = () => {
   const [isSubscriptionLoading, setIsSubscriptionLoading] = useState(false);
   const [show, setShow] = React.useState(false);
   const [order, setOrder] = React.useState('');
+  const [showIframe, setShowIframe] = React.useState(false);
+  const iframeSrc = useRef('');
   const { currentUser } = useAuth();
   const { theme } = useSettings();
   let addData = [];
@@ -30,7 +32,8 @@ const ManageSub = () => {
       returnUrl: window.location.origin,
     });
     if (data.url) {
-      window.location.assign(data.url);
+      setShowIframe(true);
+      iframeSrc.current = data.url;
     }
     if (data.error) {
       alert(data.error.message);
@@ -81,9 +84,12 @@ const ManageSub = () => {
           }
 
           if (sessionId) {
+            console.error(sessionId)
             try {
-              const stripe = await getStripe();
-              stripe.redirectToCheckout({ sessionId });
+              setShowIframe(true);
+              iframeSrc.current = `https://www.stripe.com/checkout/${sessionId}`;
+              // const stripe = await getStripe();
+              // stripe.redirectToCheckout({ sessionId });
             } catch (error) {
               setIsLoading(false);
               alert(error.message);
@@ -241,6 +247,7 @@ const ManageSub = () => {
           )}
         </span>
       )}
+      {showIframe && <iframe src={iframeSrc.current} />}
     </>
   );
 };
