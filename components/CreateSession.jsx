@@ -11,7 +11,7 @@ import { useForm, useWatch } from 'react-hook-form';
 
 import CrossPlatformIcon from '../assets/CrossPlatformIcon';
 import FormInput from './ui/formInput';
-import FormSelect from './ui/formSelect';
+import FormSelect from './ui/formselect';
 import FormCheckbox from './FormCheckbox';
 import ManageSub from './ManageSub';
 import NintendoIcon from '../assets/NintendoIcon';
