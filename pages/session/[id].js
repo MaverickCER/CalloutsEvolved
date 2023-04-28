@@ -14,7 +14,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import CrossPlatformIcon from '../../assets/CrossPlatformIcon';
 import FormCheckbox from '../../components/ui/formcheckbox';
 import FormInput from '../../components/ui/formInput';
-import FormSelect from '../../components/ui/formSelect';
+import FormSelect from '../../components/ui/formselect';
 import Head from 'next/head';
 import Image from 'next/image';
 import ManageSub from '../../components/ManageSub';

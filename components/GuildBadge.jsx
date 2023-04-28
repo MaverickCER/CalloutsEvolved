@@ -7,7 +7,7 @@ import Image from 'next/image';
 import CrossPlatformIcon from '../assets/CrossPlatformIcon';
 import FormCheckbox from './ui/formcheckbox';
 import FormInput from './ui/formInput';
-import FormSelect from './ui/formSelect';
+import FormSelect from './ui/formselect';
 import NintendoIcon from '../assets/NintendoIcon';
 import OtherPlatformIcon from '../assets/OtherPlatformIcon';
 import PlayStationIcon from '../assets/PlayStationIcon';
