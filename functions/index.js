@@ -1,9 +1,116 @@
-// saving as I may decide to utilize fcm in the future.
-// 'use strict';
+'use strict';
 
-// const functions = require('firebase-functions');
-// const admin = require('firebase-admin');
-// admin.initializeApp();
+const axios = require('axios');
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+admin.initializeApp();
+
+const db = admin.database();
+const store = admin.firestore();
+const auth = {
+  username: process.env.CLIENT_ID,
+  password: process.env.CLIENT_SECRET,
+};
+
+const headers = {
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
+};
+
+async function sendEmail(userId, subscriptionId, reason, data) {
+  const isCanceling = reason !== 'Unable to get subscription';
+  await store
+    .collection('email/data/deliver')
+    .doc()
+    .create({
+      to: ['maverickcer@gmail.com'], // Email recipient(s)
+      message: {
+        subject: `URGENT: ${isCanceling && 'Cancellation '}Error on CalloutsEvolved PayPal!`, // Email subject line
+        text: `There was an issue with the PayPal Firebase Functions on the CalloutsEvolved project.
+             \n${
+               isCanceling
+                 ? 'Please resolve this error.'
+                 : 'Please cancel this subscription and then resolve this error.'
+             },
+             \nuserId:${userId}
+             \nsubscriptionId:${subscriptionId}
+             \nreason:${reason}
+             \nerror:${JSON.stringify(data)}`,
+      },
+    });
+}
+
+async function getSubscriptionData(subscriptionId) {
+  const response = await axios
+    .get(`https://api-m.paypal.com/v1/billing/subscriptions/${subscriptionId}`, {
+      auth,
+      headers,
+    })
+    .catch((error) => error.toJSON());
+
+  return response;
+}
+
+async function cancelSubscriptionData(subscriptionId, reason) {
+  const response = await axios
+    .post(
+      `https://api-m.paypal.com/v1/billing/subscriptions/${subscriptionId}/cancel`,
+      { reason },
+      {
+        auth,
+        headers,
+      }
+    )
+    .catch((error) => error.toJSON());
+
+  return response;
+}
+
+exports.getSubscription = functions.https.onCall(async (data, context) => {
+  let subscriptionId = data.subscriptionId;
+  let subscriptionData;
+
+  if (subscriptionId) {
+    subscriptionData = await getSubscriptionData(subscriptionId);
+    if (subscriptionData?.data?.id === subscriptionId) {
+      await db.ref(`/userData/${context.auth.uid}/subscriptionData`).set(subscriptionData.data);
+      return subscriptionData.data;
+    }
+  }
+
+  await sendEmail(
+    context.auth.uid,
+    subscriptionId,
+    'Unable to get subscription',
+    subscriptionData || 'Missing subscriptionId'
+  );
+  return undefined;
+});
+
+exports.cancelSubscription = functions.https.onCall(async (data, context) => {
+  let subscriptionId = data.subscriptionId;
+  let reason = data.reason || 'service no longer needed';
+  let cancellation, subscriptionData;
+
+  if (subscriptionId) {
+    cancellation = await cancelSubscriptionData(subscriptionId, reason);
+    if (cancellation?.status === 204 || cancellation?.status === 422) {
+      subscriptionData = await getSubscriptionData(subscriptionId);
+      if (subscriptionData?.data?.id === subscriptionId) {
+        await db.ref(`/userData/${context.auth.uid}/subscriptionData`).set(subscriptionData.data);
+        return subscriptionData?.data;
+      }
+    }
+  }
+
+  let error = { error: 'Missing subscriptionId' };
+  if (cancellation || subscriptionData) {
+    error = { cancellation, subscriptionData };
+  }
+
+  sendEmail(context.auth.uid, subscriptionId, reason, error);
+  return undefined;
+});
 
 // exports.sendMessageNotification = functions.database
 //   .ref('/guildMessages/{guildId}/{roomId}/{message}')
