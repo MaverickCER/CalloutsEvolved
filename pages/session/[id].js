@@ -16,7 +16,6 @@ import FormCheckbox from '../../components/ui/formcheckbox';
 import FormInput from '../../components/ui/formInput';
 import FormSelect from '../../components/ui/formselect';
 import Head from 'next/head';
-import Image from 'next/image';
 import ManageSub from '../../components/ManageSub';
 import NintendoIcon from '../../assets/NintendoIcon';
 import OfflineBtn from '../../components/offlineBtn';
@@ -563,7 +562,7 @@ const Session = () => {
                   <summary>
                     <div className="guildBadge">
                       <span className="guildImageWrapper">
-                        <Image
+                        <img
                           src={sessionData.sessionPhotoURL}
                           alt={sessionData.game}
                           height={192}

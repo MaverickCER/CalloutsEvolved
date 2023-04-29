@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import ChevronIcon from '../../assets/ChevronIcon';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
 import { getAllPosts } from '../../lib/getPosts';
 import { useSettings } from '../../context/SettingsContext';
 
@@ -68,7 +67,7 @@ const Blog = (props) => {
                   <a className={`guildLink`}>
                     <div className="guildBadge">
                       <span className="guildImageWrapper">
-                        <Image src={data.coverImage} alt={data?.title} height={192} width={144} />
+                        <img src={data.coverImage} alt={data?.title} height={192} width={144} />
                       </span>
                       <span>
                         <p className="guildName">{`(${data?.language?.toUpperCase()}) ${

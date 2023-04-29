@@ -1,11 +1,10 @@
 import DateFormatter from './date-formatter';
-import Image from 'next/image';
 
 export default function Avatar({ name, picture, date }) {
   return (
     <div style={{display: 'grid', gridTemplateColumns: 'auto 1fr', gridGap: '1rem', marginTop: '1rem'}}>
       <span style={{display: 'flex', alignItems: 'center'}}>
-        <Image
+        <img
           src={picture}
           width={48}
           height={48}

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { child, get, ref, update } from 'firebase/database';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { database } from '../../firebase/firebaseClient';
 import { useAuth } from '../../context/AuthContext';
 import ChevronIcon from '../assets/ChevronIcon';
@@ -125,7 +124,7 @@ const MessageBadge = ({
         }}>
         <summary className="guildBadge">
           <span className="guildImageWrapper">
-            <Image src={userPhotoURL} alt={displayName} height={192} width={144} />
+            <img src={userPhotoURL} alt={displayName} height={192} width={144} />
           </span>
           <span>
             {isBlacklisted || onBlacklist ? (

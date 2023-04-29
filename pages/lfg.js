@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import CrossPlatformIcon from '../assets/CrossPlatformIcon';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
 import NintendoIcon from '../assets/NintendoIcon';
 import OtherPlatformIcon from '../assets/OtherPlatformIcon';
 import PlayStationIcon from '../assets/PlayStationIcon';
@@ -91,7 +90,7 @@ const Lfg = (props) => {
                 <a className={`sessionLink${sessions === { preload } ? ' sr-only' : ''}`}>
                   {data.sessionPhotoURL && (
                     <span className="guildImageWrapper">
-                      <Image src={data.sessionPhotoURL} alt={data.game} height={192} width={144} />
+                      <img src={data.sessionPhotoURL} alt={data.game} height={192} width={144} />
                     </span>
                   )}
                   <span>

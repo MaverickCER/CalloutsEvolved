@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { child, get, onValue, query, ref, update } from 'firebase/database';
 import { useForm, useWatch } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
 import CrossPlatformIcon from '../assets/CrossPlatformIcon';
 import FormCheckbox from './ui/formcheckbox';
@@ -423,7 +422,7 @@ const GuildBadge = ({ guildId }) => {
         <summary className="guildLink">
           <div className="guildBadge">
             <span className="guildImageWrapper">
-              <Image src={photoURL} alt={description} height={192} width={144} />
+              <img src={photoURL} alt={description} height={192} width={144} />
             </span>
             <span>
               {isBlacklisted !== false ? (

@@ -6,7 +6,6 @@ import { child, get, onValue, ref, update } from 'firebase/database';
 
 import Input from './ui/input';
 import Link from 'next/link';
-import Image from 'next/image';
 import Select from './ui/select';
 import UserSocial from './UserSocial';
 import { database } from '../firebase/firebaseClient';
@@ -258,7 +257,7 @@ const UserBadge = ({
         }}>
         <summary className="guildBadge">
           <span className="guildImageWrapper">
-            <Image src={userPhotoURL} alt={displayName} height={192} width={144} />
+            <img src={userPhotoURL} alt={displayName} height={192} width={144} />
           </span>
           <span>
             {isBlacklisted !== false ? (
