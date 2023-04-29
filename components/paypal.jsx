@@ -13,7 +13,7 @@ export default function PayPalButton(props) {
   return (
     <PayPalScriptProvider
       options={{
-        'client-id': process.env.NEXT_PRIVATE_PAYPAL_CLIENT_ID || 'sb',
+        'client-id': 'AZzZJns5CjnuIgWxB6ExeKo73EzpDQgTtskAfUBJMgYq5e242WlxvloneLUvGOi6LBTbGzP1RBnvBBWg',
         components: 'buttons',
         'data-namespace': !props.plan_id ? 'paypalOrder' : undefined,
         intent: props.plan_id ? 'subscription' : undefined,
