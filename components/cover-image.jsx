@@ -7,7 +7,6 @@ export default function CoverImage({ title, src, slug, height, width }) {
       src={src}
       alt={`Cover Image for ${title}`}
       className='hover:shadow-md transition-shadow duration-200'
-      layout='responsive'
       width={width}
       height={height}
     />
