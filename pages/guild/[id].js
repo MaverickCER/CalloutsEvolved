@@ -5,7 +5,6 @@ import ChevronIcon from '../../assets/ChevronIcon';
 import FormInput from '../../components/ui/formInput';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from '../../components/auth/authform.module.css';
 import { useRouter } from 'next/router';
 import { useSettings } from '../../context/SettingsContext';
@@ -55,7 +54,7 @@ const GuildId = (props) => {
               <div>
                 <div className="guildBadge">
                   <span className="guildImageWrapper">
-                    <Image
+                    <img
                       src="https://pbs.twimg.com/profile_images/1100553496124887040/0hf7Nd-g_400x400.jpg"
                       alt="Name"
                       height={192}
@@ -183,7 +182,7 @@ const GuildId = (props) => {
                 <span>
                   <div className="guildBadge">
                     <span className="guildImageWrapper">
-                      <Image
+                      <img
                         src="https://i.imgur.com/nUhgJXq.png"
                         alt="Guild Member's Name"
                         height={192}
@@ -230,7 +229,7 @@ const GuildId = (props) => {
                 <span>
                   <div className="guildBadge">
                     <span className="guildImageWrapper">
-                      <Image
+                      <img
                         src="https://i.imgur.com/FPLubfR.png"
                         alt="Guild Member's Name"
                         height={192}

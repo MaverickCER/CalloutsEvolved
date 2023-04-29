@@ -27,5 +27,8 @@ const headers = async () => {
 };
 
 module.exports = withPWA({
+  images: {
+    unoptimized: true
+  },
   headers,
 });

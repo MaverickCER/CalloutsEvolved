@@ -3,6 +3,7 @@
 import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 import { getFirestore } from 'firebase/firestore';
+import { getFunctions } from 'firebase/functions';
 import { getStorage } from 'firebase/storage';
 import { initializeApp } from 'firebase/app';
 
@@ -20,6 +21,7 @@ const clientCredentials = {
 export const app = initializeApp(clientCredentials);
 export const auth = getAuth(app);
 export const firestore = getFirestore(app);
+export const functions = getFunctions(app);
 export const storage = getStorage(app);
 export const database = getDatabase(app);
 // export const messaging = getMessaging(app);

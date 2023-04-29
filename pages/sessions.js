@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import CrossPlatformIcon from '../assets/CrossPlatformIcon';
 import Head from 'next/head';
-import Image from 'next/image';
 import Input from '../components/ui/input';
 import ManageSub from '../components/ManageSub';
 import NintendoIcon from '../assets/NintendoIcon';
@@ -492,7 +491,7 @@ const Sessions = () => {
               <div>
                 <div className='guildBadge'>
                   <span className='guildImageWrapper'>
-                    <Image
+                    <img
                       src={sessionData.sessionPhotoURL}
                       alt={sessionData.game}
                       height={192}
@@ -683,7 +682,7 @@ const Sessions = () => {
               <div>
                 <div className='guildBadge'>
                   <span className='guildImageWrapper'>
-                    <Image
+                    <img
                       src={sessionData.sessionPhotoURL}
                       alt={sessionData.game}
                       height={192}

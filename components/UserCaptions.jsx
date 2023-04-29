@@ -9,7 +9,6 @@ import Select from './ui/select';
 import { database } from '../firebase/firebaseClient';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import { useSettings } from '../context/SettingsContext';
 
 const UserCaptions = ({ isDeaf, triggerAction, sessionButtons }) => {
@@ -104,7 +103,7 @@ const UserCaptions = ({ isDeaf, triggerAction, sessionButtons }) => {
       <details className="guildLink">
         <summary className="guildBadge">
           <span className="guildImageWrapper">
-            <Image src={userData.userPhotoURL} alt={userData.displayName} height={192} width={144} />
+            <img src={userData.userPhotoURL} alt={userData.displayName} height={192} width={144} />
           </span>
           <span>
             <p className="guildName">{`(${userData.color.toUpperCase()}) ${

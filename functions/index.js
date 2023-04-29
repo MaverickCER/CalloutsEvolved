@@ -66,7 +66,7 @@ async function cancelSubscriptionData(subscriptionId, reason) {
   return response;
 }
 
-exports.getSubscription = functions.https.onCall(async (data, context) => {
+exports.updateSubscription = functions.https.onCall(async (data, context) => {
   let subscriptionId = data.subscriptionId;
   let subscriptionData;
 
@@ -84,7 +84,7 @@ exports.getSubscription = functions.https.onCall(async (data, context) => {
     'Unable to get subscription',
     subscriptionData || 'Missing subscriptionId'
   );
-  return undefined;
+  return subscriptionData;
 });
 
 exports.cancelSubscription = functions.https.onCall(async (data, context) => {
@@ -109,7 +109,7 @@ exports.cancelSubscription = functions.https.onCall(async (data, context) => {
   }
 
   sendEmail(context.auth.uid, subscriptionId, reason, error);
-  return undefined;
+  return error;
 });
 
 // exports.sendMessageNotification = functions.database

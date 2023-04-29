@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 import Input from '../../components/ui/input';
 import Link from 'next/link';
-import Image from 'next/image';
 import ManageSub from '../../components/ManageSub';
 import { RgbStringColorPicker } from 'react-colorful';
 import Select from '../../components/ui/select';
@@ -260,7 +259,7 @@ const Index = () => {
       <span className="guildLink">
         <div className="guildBadge">
           <span className="guildImageWrapper">
-            <Image src={userPhotoURL} alt={displayName} height={192} width={144} />
+            <img src={userPhotoURL} alt={displayName} height={192} width={144} />
           </span>
           <span>
             <p className="guildName">{`${displayName}`}</p>
@@ -719,7 +718,7 @@ const Index = () => {
                 <a className="guildLink">
                   <div className="guildBadge">
                     <span className="guildImageWrapper">
-                      <Image
+                      <img
                         src={data.guildPhotoURL}
                         alt={data.displayName}
                         height={192}
@@ -745,7 +744,7 @@ const Index = () => {
               <span key={key}>
                 <div className="guildBadge">
                   <span className="guildImageWrapper">
-                    <Image src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
+                    <img src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
                   </span>
                   <span>
                     <p className="guildName">{`${data.displayName}`}</p>
@@ -785,7 +784,7 @@ const Index = () => {
               <span key={key}>
                 <div className="guildBadge">
                   <span className="guildImageWrapper">
-                    <Image src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
+                    <img src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
                   </span>
                   <span>
                     <p className="guildName">{`${data.displayName}`}</p>
@@ -827,7 +826,7 @@ const Index = () => {
               <span key={key}>
                 <div className="guildBadge">
                   <span className="guildImageWrapper">
-                    <Image src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
+                    <img src={data.userPhotoURL} alt={data.displayName} height={192} width={144} />
                   </span>
                   <span>
                     <p className="guildName">{`${data.displayName}`}</p>
