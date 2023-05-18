@@ -3,7 +3,7 @@ import { increment, onValue, ref, update } from 'firebase/database';
 
 import SignIn from '../../../components/auth/signin';
 import SignUp from '../../../components/auth/signup';
-import { database } from '../../../firebase/firebaseClient';
+import { database } from '../../../lib/firebase';
 import { useAuth } from '../../../context/AuthContext';
 import { useRouter } from 'next/router';
 

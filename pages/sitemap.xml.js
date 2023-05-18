@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import { getAllPosts } from '../lib/getPosts';
 const Sitemap = () => {
   return null;
 };
@@ -26,8 +25,8 @@ export const getServerSideProps = async ({ res }) => {
       return `${BASE_URL}/${standardPagePath.slice(0, -3)}`;
     });
 
-  const blogPaths = getAllPosts(['slug']).map((blogPagePath) => {
-    return `${BASE_URL}/blog/${blogPagePath.slug}`;
+  const blogPaths = (await axios({url: `${process.env.NEXT_PUBLIC_FIREBASE_DATABASEURL}/slugs`})).map((slug) => {
+    return `${BASE_URL}/blog/${slug}`;
   });
 
   const allPaths = [...standardPaths, ...blogPaths];

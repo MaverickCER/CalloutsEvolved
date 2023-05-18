@@ -21,27 +21,23 @@ const ForgotPassword = () => {
       <Head>
         <title>Callouts Evolved | Login</title>
         <meta
-          name="description"
-          content="Sign in to gain full access to communication tools from Callouts Evolved."
+          name='description'
+          content='Sign in to gain full access to communication tools from Callouts Evolved.'
         />
       </Head>
       <h1>Reset Password</h1>
       <ResetPassword />
       <small>
         Have an account?{' '}
-        <Link href="/signin" passHref>
-          <a>
-            <u>Sign In</u>
-          </a>
+        <Link href='/signin'>
+          <u>Sign In</u>
         </Link>
       </small>
       <br />
       <small>
         Need an account?{' '}
-        <Link href="/register" passHref>
-          <a>
-            <u>Register</u>
-          </a>
+        <Link href='/register'>
+          <u>Register</u>
         </Link>
       </small>
     </div>

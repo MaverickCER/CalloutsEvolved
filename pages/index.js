@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import Head from 'next/head';
-
+import MarkdownEditor from '../components/MarkdownEditor';
 export default function Home() {
   return (
     <>
@@ -12,6 +12,7 @@ export default function Home() {
       </Head>
 
       <div className="container" style={{ textAlign: 'center' }}>
+        <MarkdownEditor />
         <p>Callouts Evolved is undergoing a massive update! Please stay tuned.</p>
         <p>Feel free to explore this skeleton site to see all the new features.</p>
 

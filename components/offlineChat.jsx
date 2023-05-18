@@ -16,7 +16,7 @@ import { useForm, useWatch } from 'react-hook-form';
 
 import ChevronIcon from '../assets/ChevronIcon';
 import FormInput from './ui/formInput';
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import styles from './auth/authform.module.css';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
@@ -175,7 +175,7 @@ const OfflineChat = ({ isSolo }) => {
       update(ref(database), updates).then(() => {
         let rep = messages[key].reputation + delta;
         let messageObj = { ...messages };
-        messageObj[key].reputation = rep;
+        messageObj[key].reputation = rep;d
         setMessages(messageObj);
       });
     }

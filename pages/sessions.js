@@ -17,7 +17,7 @@ import XboxIcon from '../assets/XboxIcon';
 import defaultData from '../utils/default.json';
 import jsonData from '../utils/templateData.json';
 import { useAuth } from '../context/AuthContext';
-import useKeydown from '../utils/useKeypress';
+import useKeydown from '../hooks/useKeypress';
 import { useSettings } from '../context/SettingsContext';
 
 const Sessions = () => {

@@ -42,8 +42,8 @@ const Guilds = (props) => {
       <Head>
         <title>Callouts Evolved | Guilds</title>
         <meta
-          name="description"
-          content="Join guilds focused on efficiently completing any video game activity."
+          name='description'
+          content='Join guilds focused on efficiently completing any video game activity.'
         />
       </Head>
 
@@ -88,50 +88,49 @@ const Guilds = (props) => {
             .slice(0, 20)
             .map(([key, data]) => (
               <span key={key}>
-                <Link href={`/guild/${key}?room=${data.defaultRoom}`} key={key} passHref>
-                  <a className={`guildLink${guilds === { preload } ? ' sr-only' : ''}`}>
-                    <div className="guildBadge">
-                      <span className="guildImageWrapper">
-                        <img
-                          src={data.guildPhotoURL}
-                          alt={data.displayName}
-                          height={192}
-                          width={144}
-                        />
-                      </span>
-                      <span>
-                        <p className="guildName">{`(${data.lang.toUpperCase()}) ${
-                          data.displayName
-                        }`}</p>
-                        <small className="guildReputation">{`Reputation ${data.reputation}`}</small>
-                        <small className="guildUsers">{`Users ${data.users}`}</small>
-                      </span>
-                    </div>
-                    <p className="guildDescription">{`${data.description}`}</p>
-                  </a>
+                <Link
+                  href={`/guild/${key}?room=${data.defaultRoom}`}
+                  key={key}
+                  className={`guildLink${guilds === { preload } ? ' sr-only' : ''}`}>
+                  <div className='guildBadge'>
+                    <span className='guildImageWrapper'>
+                      <img
+                        src={data.guildPhotoURL}
+                        alt={data.displayName}
+                        height={192}
+                        width={144}
+                      />
+                    </span>
+                    <span>
+                      <p className='guildName'>{`(${data.lang.toUpperCase()}) ${
+                        data.displayName
+                      }`}</p>
+                      <small className='guildReputation'>{`Reputation ${data.reputation}`}</small>
+                      <small className='guildUsers'>{`Users ${data.users}`}</small>
+                    </span>
+                  </div>
+                  <p className='guildDescription'>{`${data.description}`}</p>
                 </Link>
-                <div className="guildFooter">
+                <div className='guildFooter'>
                   <span>
-                    <Link href={`/guild/${key}?room=${data.defaultRoom}`} key={key} passHref>
-                      Join Guild
-                    </Link>
+                    <Link href={`/guild/${key}?room=${data.defaultRoom}`}>Join Guild</Link>
                   </span>
-                  <span className="btn-like-wrapper">
+                  <span className='btn-like-wrapper'>
                     <button>
                       <ChevronIcon
-                        width="1em"
-                        height="1em"
+                        width='1em'
+                        height='1em'
                         style={{ width: '1rem', height: '1rem' }}
-                        title="Dislike Icon"
+                        title='Dislike Icon'
                         fill={data.like === false ? `rgb(${theme.bbc})` : `rgb(${theme.mca})`}
                       />
                     </button>
                     <button>
                       <ChevronIcon
-                        height="1em"
+                        height='1em'
                         style={{ transform: 'rotate(180deg)', width: '1rem', height: '1rem' }}
-                        title="Like Icon"
-                        width="1em"
+                        title='Like Icon'
+                        width='1em'
                         fill={data.like ? `rgb(${theme.bbc})` : `rgb(${theme.mca})`}
                       />
                     </button>

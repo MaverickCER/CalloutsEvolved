@@ -3,7 +3,7 @@ import { child, get, ref, update } from 'firebase/database';
 import { httpsCallable } from 'firebase/functions';
 import { useState } from 'react';
 
-import { database, functions } from '../firebase/firebaseClient';
+import { database, functions } from '../lib/firebase';
 import { useSettings } from '../context/SettingsContext';
 
 export default function PayPalButton(props) {

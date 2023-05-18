@@ -21,7 +21,8 @@ function MyApp({ Component, pageProps }) {
       if (isSupported()) {
         const analytics = getAnalytics();
         logEvent(analytics, 'screen_view', {
-          screen_name: router.pathname,
+          screen_location: router.pathname,
+          screen_title: document.title,
         });
       }
     };

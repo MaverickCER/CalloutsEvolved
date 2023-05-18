@@ -21,27 +21,23 @@ const Signin = () => {
       <Head>
         <title>Callouts Evolved | Login</title>
         <meta
-          name="description"
-          content="Sign in to gain full access to communication tools from Callouts Evolved."
+          name='description'
+          content='Sign in to gain full access to communication tools from Callouts Evolved.'
         />
       </Head>
       <h1>Sign In</h1>
       <SignIn />
       <small>
         Need an account?{' '}
-        <Link href="/register" passHref>
-          <a>
-            <u>Register</u>
-          </a>
+        <Link href='/register'>
+          <u>Register</u>
         </Link>
       </small>
       <br />
       <small>
         Forgot Password?{' '}
-        <Link href="/forgot-password" passHref>
-          <a>
-            <u>Reset</u>
-          </a>
+        <Link href='/forgot-password'>
+          <u>Reset</u>
         </Link>
       </small>
     </div>

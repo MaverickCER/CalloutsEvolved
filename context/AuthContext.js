@@ -13,7 +13,7 @@ import {
   updatePassword,
 } from 'firebase/auth';
 import React, { useContext, useEffect, useState } from 'react';
-import { auth, database, messaging } from '../firebase/firebaseClient';
+import { auth, database, messaging } from '../lib/firebase';
 import {
   child,
   get,

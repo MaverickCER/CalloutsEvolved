@@ -1,7 +1,7 @@
 import { ref, update } from 'firebase/database';
 
 import React from 'react';
-import { database } from '../../firebase/firebaseClient';
+import { database } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
 import { useSettings } from '../../context/SettingsContext';
 

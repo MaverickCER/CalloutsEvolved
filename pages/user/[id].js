@@ -12,7 +12,7 @@ import UpdateDisplayName from '../../components/auth/updatedisplayname';
 import UpdateEmail from '../../components/auth/updateemail';
 import UpdatePassword from '../../components/auth/updatepassword';
 import UserSocial from '../../components/UserSocial';
-import { database } from '../../firebase/firebaseClient';
+import { database } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
 import { useRouter } from 'next/router';
 import { useSettings } from '../../context/SettingsContext';
@@ -714,27 +714,25 @@ const Index = () => {
           Guilds:
           {Object.entries(guilds).map(([key, data]) => (
             <span key={key}>
-              <Link href={`/join/guild/${key}`} passHref>
-                <a className="guildLink">
-                  <div className="guildBadge">
-                    <span className="guildImageWrapper">
-                      <img
-                        src={data.guildPhotoURL}
-                        alt={data.displayName}
-                        height={192}
-                        width={144}
-                      />
-                    </span>
-                    <span>
-                      <p className="guildName">{`(${data.lang.toUpperCase()}) ${
-                        data.displayName
-                      }`}</p>
-                      <small className="guildReputation">{`Reputation ${data.reputation}`}</small>
-                      <small className="guildUsers">{`Users ${data.users}`}</small>
-                    </span>
-                  </div>
-                  <p className="guildDescription">{`${data.description}`}</p>
-                </a>
+              <Link href={`/join/guild/${key}`} className="guildLink">
+                <div className="guildBadge">
+                  <span className="guildImageWrapper">
+                    <img
+                      src={data.guildPhotoURL}
+                      alt={data.displayName}
+                      height={192}
+                      width={144}
+                    />
+                  </span>
+                  <span>
+                    <p className="guildName">{`(${data.lang.toUpperCase()}) ${
+                      data.displayName
+                    }`}</p>
+                    <small className="guildReputation">{`Reputation ${data.reputation}`}</small>
+                    <small className="guildUsers">{`Users ${data.users}`}</small>
+                  </span>
+                </div>
+                <p className="guildDescription">{`${data.description}`}</p>
               </Link>
             </span>
           ))}
@@ -768,8 +766,8 @@ const Index = () => {
                     )}
                     <div className="guildFooter">
                       <span>
-                        <Link href={`user/${key}`} passHref>
-                          <a>View</a>
+                        <Link href={`user/${key}`}>
+                          View
                         </Link>
                       </span>
                     </div>
@@ -810,8 +808,8 @@ const Index = () => {
                     )}
                     <div className="guildFooter">
                       <span>
-                        <Link href={`/user/${key}`} passHref>
-                          <a>View</a>
+                        <Link href={`/user/${key}`}>
+                          View
                         </Link>
                       </span>
                     </div>

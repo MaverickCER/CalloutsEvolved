@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { child, get, onValue, ref, serverTimestamp, update } from 'firebase/database';
 
 import UserBadge from './UserBadge';
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
 

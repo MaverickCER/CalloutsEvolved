@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { onValue, update } from 'firebase/database';
 
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import { useAuth } from '../context/AuthContext';
 import { useSettings } from '../context/SettingsContext';
 

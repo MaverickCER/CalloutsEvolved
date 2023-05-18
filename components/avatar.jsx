@@ -1,4 +1,4 @@
-import DateFormatter from './date-formatter';
+import DateFormatter from './DateFormatter';
 
 export default function Avatar({ name, picture, date }) {
   return (
@@ -14,7 +14,7 @@ export default function Avatar({ name, picture, date }) {
       </span>
       <span>
         <div className="text-xl font-bold">{name}</div>
-        <DateFormatter dateString={date} />
+        <DateFormatter dateNumber={date} />
       </span>
     </div>
   );

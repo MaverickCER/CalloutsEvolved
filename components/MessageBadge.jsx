@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { child, get, ref, update } from 'firebase/database';
 
 import Link from 'next/link';
-import { database } from '../../firebase/firebaseClient';
+import { database } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
 import ChevronIcon from '../assets/ChevronIcon';
 
@@ -113,7 +113,7 @@ const MessageBadge = ({
   return (
     <>
       <details
-        className="guildLink"
+        className='guildLink'
         style={{
           borderLeft: !isCurrentUser
             ? `1px solid rgb(${theme['cb' + color]})`
@@ -122,30 +122,30 @@ const MessageBadge = ({
             ? `1px solid rgb(${theme['cb' + color]})`
             : `1px solid transparent`,
         }}>
-        <summary className="guildBadge">
-          <span className="guildImageWrapper">
+        <summary className='guildBadge'>
+          <span className='guildImageWrapper'>
             <img src={userPhotoURL} alt={displayName} height={192} width={144} />
           </span>
           <span>
             {isBlacklisted || onBlacklist ? (
               <>
-                <p className="guildName">(A) Unknown</p>
-                <small className="guildReputation">Blacklisted - Honor: 0 - Infamy: 0</small>
-                <small className="guildUsers">Status: Unknown</small>
+                <p className='guildName'>(A) Unknown</p>
+                <small className='guildReputation'>Blacklisted - Honor: 0 - Infamy: 0</small>
+                <small className='guildUsers'>Status: Unknown</small>
               </>
             ) : (
               <>
-                <p className="guildName">{`(${color}) ${displayName}`}</p>
-                <small className="guildReputation">
+                <p className='guildName'>{`(${color}) ${displayName}`}</p>
+                <small className='guildReputation'>
                   {`${title}${isMVP && ' ★'} - Honor: ${adjHonor} - Infamy: ${infamy}`}
                 </small>
-                <small className="guildUsers">
+                <small className='guildUsers'>
                   {`${getDate(timestamp) + 1}/${getMonth(timestamp)}/${getFullYear(timestamp).slice(
                     2,
                     4
                   )} ${Date(timestamp).toString().split(' ').slice(4, 5).join(' ')}`}
                   {currentUser && (
-                    <span className="btn-like-wrapper">
+                    <span className='btn-like-wrapper'>
                       {' - '}
                       <button
                         onClick={() => {
@@ -155,10 +155,10 @@ const MessageBadge = ({
                           );
                         }}>
                         <ChevronIcon
-                          width="1em"
-                          height="1em"
+                          width='1em'
+                          height='1em'
                           style={{ width: '1rem', height: '1rem' }}
-                          title="Dislike Icon"
+                          title='Dislike Icon'
                           fill={adjLike === false ? `rgb(${theme.bbc})` : `rgb(${theme.mca})`}
                         />
                       </button>
@@ -170,10 +170,10 @@ const MessageBadge = ({
                           );
                         }}>
                         <ChevronIcon
-                          height="1em"
+                          height='1em'
                           style={{ transform: 'rotate(180deg)', width: '1rem', height: '1rem' }}
-                          title="Like Icon"
-                          width="1em"
+                          title='Like Icon'
+                          width='1em'
                           fill={
                             adjLike || userId === currentUser.uid
                               ? `rgb(${theme.bbc})`
@@ -201,8 +201,8 @@ const MessageBadge = ({
             </>
           ) : (
             !isBlacklisted && (
-              <Link href={`user/${userId}`} passHref>
-                <a>View Profile</a>
+              <Link href={`user/${userId}`}>
+                View Profile
               </Link>
             )
           )}

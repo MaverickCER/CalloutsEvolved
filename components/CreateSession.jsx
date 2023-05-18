@@ -19,7 +19,7 @@ import OtherPlatformIcon from '../assets/OtherPlatformIcon';
 import PlayStationIcon from '../assets/PlayStationIcon';
 import XboxIcon from '../assets/XboxIcon';
 import SteamIcon from '../assets/SteamIcon';
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
 import { useSettings } from '../context/SettingsContext';

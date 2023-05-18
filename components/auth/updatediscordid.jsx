@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 
 import FormInput from '../ui/formInput';
-import { database } from '../../firebase/firebaseClient';
+import { database } from '../../lib/firebase';
 import styles from './authform.module.css';
 import { update } from 'firebase/database';
 import { useAuth } from '../../context/AuthContext';

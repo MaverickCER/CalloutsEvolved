@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { child, get, ref, set, update } from 'firebase/database';
 
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import { useAuth } from './AuthContext';
 
 const SettingsContext = React.createContext();
@@ -221,7 +221,7 @@ export const SettingsProvider = ({ children }) => {
   };
 
   const originalAudioData = {
-    lang: 'EN',
+    lang: 'en',
     sttDialect: 'en-US',
     threshold: 70,
     ttsVoice: 'Microsoft David - English (United States)',

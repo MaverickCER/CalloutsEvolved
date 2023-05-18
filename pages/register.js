@@ -21,18 +21,16 @@ const Register = () => {
       <Head>
         <title>Callouts Evolved | Register</title>
         <meta
-          name="description"
-          content="Sign up to gain full access to communication tools from Callouts Evolved."
+          name='description'
+          content='Sign up to gain full access to communication tools from Callouts Evolved.'
         />
       </Head>
       <h1>Register</h1>
       <SignUp />
       <small>
         Have an account?{' '}
-        <Link href="/signin" passHref>
-          <a>
-            <u>Sign In</u>
-          </a>
+        <Link href='/signin'>
+          <u>Sign In</u>
         </Link>
       </small>
     </div>

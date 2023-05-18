@@ -164,7 +164,7 @@ const UpdateProfile = () => {
       </form>
       <div>
         <Link href="/session">
-          <a>cancel</a>
+          cancel
         </Link>
       </div>
     </div>

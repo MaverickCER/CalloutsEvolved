@@ -5,7 +5,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import FormCheckbox from './ui/formcheckbox';
 import FormInput from './ui/formInput';
 import PayPalButton from './paypal';
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import defaultData from '../utils/default.json';
 import styles from './auth/authform.module.css';
 import { useRouter } from 'next/router';

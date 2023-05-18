@@ -13,7 +13,7 @@ import PlayStationIcon from '../assets/PlayStationIcon';
 import SteamIcon from '../assets/SteamIcon';
 import XboxIcon from '../assets/XboxIcon';
 import ManageSub from './ManageSub';
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import { useAuth } from '../context/AuthContext';
 import { useSettings } from '../context/SettingsContext';
 

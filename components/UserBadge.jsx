@@ -8,7 +8,7 @@ import Input from './ui/input';
 import Link from 'next/link';
 import Select from './ui/select';
 import UserSocial from './UserSocial';
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
 import { useSettings } from '../context/SettingsContext';
@@ -383,8 +383,8 @@ const UserBadge = ({
                 <>
                   <UserSocial userId={userId} />
                   {!router.pathname.includes(`/user/${userId}`) && (
-                    <Link href={`/user/${userId}`} passHref>
-                      <a>View Profile</a>
+                    <Link href={`/user/${userId}`}>
+                      View Profile
                     </Link>
                   )}
                 </>

@@ -73,46 +73,46 @@ const GuildId = (props) => {
                 <p className="guildDescription">Short and sweet description</p>
               </div>
               <div>
-                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=about`} passHref>
-                  <a className="guildLink">About</a>
+                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=about`} className="guildLink">
+                  About
                 </Link>
                 <br />
-                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=announcements`} passHref>
-                  <a className="guildLink">Announcements</a>
+                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=announcements`} className="guildLink">
+                  Announcements
                 </Link>
                 <br />
-                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=chat`} passHref>
-                  <a className="guildLink">Chat</a>
+                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=chat`} className="guildLink">
+                  Chat
                 </Link>
                 <br />
-                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=discord`} passHref>
-                  <a className="guildLink">Discord</a>
+                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=discord`} className="guildLink">
+                  Discord
                 </Link>
                 <br />
-                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=events`} passHref>
-                  <a className="guildLink">Events</a>
+                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=events`} className="guildLink">
+                  Events
                 </Link>
                 <br />
-                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=faq`} passHref>
-                  <a className="guildLink">FAQ</a>
+                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=faq`} className="guildLink">
+                  FAQ
                 </Link>
                 <br />
-                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=rules`} passHref>
-                  <a className="guildLink">Rules</a>
+                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=rules`} className="guildLink">
+                  Rules
                 </Link>
                 <br />
-                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=support`} passHref>
-                  <a className="guildLink">Support</a>
+                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=support`} className="guildLink">
+                  Support
                 </Link>
               </div>
             </div>
             <div style={{ marginBottom: '30px' }}>
-              <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=settings`} passHref>
-                <a className="guildLink">Settings</a>
+              <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=settings`} className="guildLink">
+                Settings
               </Link>
               <br />
-              <Link href={`/guild`} passHref>
-                <a className="guildLink">More Guilds...</a>
+              <Link href={`/guild`} className="guildLink">
+                More Guilds...
               </Link>
             </div>
           </span>
@@ -135,11 +135,9 @@ const GuildId = (props) => {
                 events, faq, rules, support, and a markdown based custom introduction screen.
               </p>
               <p>
-                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=announcements`} passHref>
-                  <a className="guildLink">
-                    Click HERE to check out the guild announcements room and see what we have to
-                    offer
-                  </a>
+                <Link href={`/guild/-N4G80rHunWzLf1IMz4n?room=announcements`} className="guildLink">
+                  Click HERE to check out the guild announcements room and see what we have to
+                  offer
                 </Link>
               </p>
               <br />

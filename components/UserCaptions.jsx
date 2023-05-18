@@ -6,7 +6,7 @@ import { ref, update } from 'firebase/database';
 
 import Input from './ui/input';
 import Select from './ui/select';
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
 import { useSettings } from '../context/SettingsContext';

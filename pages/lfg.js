@@ -41,10 +41,8 @@ const Lfg = (props) => {
       <div style={{ textAlign: 'center' }}>
         <h1>Looking For Group</h1>
         <p>
-          <Link href={'/sessions'} passHref>
-            <a>
-              <u>Sessions</u>{' '}
-            </a>
+          <Link href={'/sessions'}>
+            <u>Sessions</u>{' '}
           </Link>
           are a core aspect of Callouts Evolved and provide a shared Augmentative and Alternative
           Communication system that allows gamers to communicate in real time without relying on
@@ -86,38 +84,36 @@ const Lfg = (props) => {
           <h4>Groups</h4>
           {Object.entries(sessions).map(([key, data]) => {
             return (
-              <Link href={`/sessions`} key={key} passHref>
-                <a className={`sessionLink${sessions === { preload } ? ' sr-only' : ''}`}>
-                  {data.sessionPhotoURL && (
-                    <span className="guildImageWrapper">
-                      <img src={data.sessionPhotoURL} alt={data.game} height={192} width={144} />
-                    </span>
-                  )}
-                  <span>
-                    <small>{`(${data.lang.toUpperCase()}) ${data.activity}`}</small>
-                    <p>{`${data.description}`}</p>
-                    <small>
-                      {`${data.game}`}&nbsp;
-                      <span>
-                        {data.platform === 'all' ? (
-                          <CrossPlatformIcon width="1em" height="1em" />
-                        ) : data.platform === 'nintendo' ? (
-                          <NintendoIcon width="1em" height="1em" n />
-                        ) : data.platform === 'playstation' ? (
-                          <PlayStationIcon width="1em" height="1em" />
-                        ) : data.platform === 'steam' ? (
-                          <SteamIcon width="1em" height="1em" />
-                        ) : data.platform === 'xbox' ? (
-                          <XboxIcon width="1em" height="1em" />
-                        ) : (
-                          <OtherPlatformIcon width="1em" height="1em" />
-                        )}
-                      </span>
-                      &nbsp;
-                      {`${data.usersCount}/${data.usersMax}`}
-                    </small>
+              <Link href={`/sessions`} key={key} className={`sessionLink${sessions === { preload } ? ' sr-only' : ''}`}>
+                {data.sessionPhotoURL && (
+                  <span className="guildImageWrapper">
+                    <img src={data.sessionPhotoURL} alt={data.game} height={192} width={144} />
                   </span>
-                </a>
+                )}
+                <span>
+                  <small>{`(${data.lang.toUpperCase()}) ${data.activity}`}</small>
+                  <p>{`${data.description}`}</p>
+                  <small>
+                    {`${data.game}`}&nbsp;
+                    <span>
+                      {data.platform === 'all' ? (
+                        <CrossPlatformIcon width="1em" height="1em" />
+                      ) : data.platform === 'nintendo' ? (
+                        <NintendoIcon width="1em" height="1em" n />
+                      ) : data.platform === 'playstation' ? (
+                        <PlayStationIcon width="1em" height="1em" />
+                      ) : data.platform === 'steam' ? (
+                        <SteamIcon width="1em" height="1em" />
+                      ) : data.platform === 'xbox' ? (
+                        <XboxIcon width="1em" height="1em" />
+                      ) : (
+                        <OtherPlatformIcon width="1em" height="1em" />
+                      )}
+                    </span>
+                    &nbsp;
+                    {`${data.usersCount}/${data.usersMax}`}
+                  </small>
+                </span>
               </Link>
             );
           })}

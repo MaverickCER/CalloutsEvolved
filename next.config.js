@@ -1,4 +1,6 @@
+const removeImports = require('next-remove-imports')();
 const runtimeCaching = require('next-pwa/cache');
+
 const withPWA = require('next-pwa')({
   dest: 'public',
   runtimeCaching
@@ -26,9 +28,10 @@ const headers = async () => {
   ];
 };
 
-module.exports = withPWA({
+module.exports = removeImports(withPWA({
+  experimental: { esmExternals: true },
   images: {
     unoptimized: true
   },
   headers,
-});
+}));

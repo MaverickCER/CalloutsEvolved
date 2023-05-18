@@ -1,7 +1,7 @@
 import { httpsCallable } from 'firebase/functions';
 
 import PayPalButton from './paypal';
-import { functions } from '../firebase/firebaseClient';
+import { functions } from '../lib/firebase';
 import { useAuth } from '../context/AuthContext';
 
 const ManageSub = () => {

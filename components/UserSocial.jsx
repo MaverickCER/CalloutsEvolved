@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { child, get, ref, update } from 'firebase/database';
 
 import Input from './ui/input';
-import { database } from '../firebase/firebaseClient';
+import { database } from '../lib/firebase';
 import { useAuth } from '../context/AuthContext';
 
 const UserSocial = ({ userId = 'deleted' }) => {

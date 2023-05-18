@@ -3,10 +3,11 @@ import Link from 'next/link';
 
 export default function CoverImage({ title, src, slug, height, width }) {
   const image = (
-    <img
+    <Image
       src={src}
       alt={`Cover Image for ${title}`}
       className='hover:shadow-md transition-shadow duration-200'
+      layout='responsive'
       width={width}
       height={height}
     />
@@ -14,8 +15,8 @@ export default function CoverImage({ title, src, slug, height, width }) {
   return (
     <div className='sm:mx-0'>
       {slug ? (
-        <Link href={`/blog/${slug}`}>
-          <a aria-label={title}>{image}</a>
+        <Link href={`/blog/${slug}`} aria-label={title}>
+          {image}
         </Link>
       ) : (
         image
