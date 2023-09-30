@@ -1,0 +1,1 @@
+This file will include detailed notes about hosting, deployment, and setting everything up so that you can run your own private instance. It'll also serve to remind us about the sysadmin / devops side of things if needed.
